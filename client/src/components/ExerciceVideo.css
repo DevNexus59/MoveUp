@@ -1,0 +1,36 @@
+.ExerciceVideo-section {
+  /* background: var(--card); */
+  background-color: var(--linkv);
+  padding: 2rem;
+}
+
+.ExerciceVideo-article {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 4rem;
+  padding: 1rem 6rem;
+}
+
+.ExerciceVideo-encart {
+  background-color: var(--bg-font);
+}
+
+.ExerciceVideo-h3 {
+  padding: 0 2rem;
+}
+
+.ExerciceVideo-p {
+  background-color: var(--bg-font);
+  width: 550px;
+  padding: 0 2rem;
+}
+
+.ExerciceVideo-button {
+  margin-top: 2rem;
+  color: #333;
+}
+
+.ExerciceVideo-button:hover {
+  color: #fff;
+}
