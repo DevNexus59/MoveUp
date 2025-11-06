@@ -1,6 +1,6 @@
 .ExerciceVideo-section {
   /* background: var(--card); */
-  background-color: var(--linkv);
+  background-color: var(--bg);
   padding: 2rem;
 }
 
@@ -13,7 +13,7 @@
 }
 
 .ExerciceVideo-encart {
-  background-color: var(--bg-font);
+  background: var(--card);
 }
 
 .ExerciceVideo-h3 {
@@ -21,16 +21,6 @@
 }
 
 .ExerciceVideo-p {
-  background-color: var(--bg-font);
   width: 550px;
   padding: 0 2rem;
-}
-
-.ExerciceVideo-button {
-  margin-top: 2rem;
-  color: #333;
-}
-
-.ExerciceVideo-button:hover {
-  color: #fff;
 }
