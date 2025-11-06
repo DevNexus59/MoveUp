@@ -1,0 +1,165 @@
+/* --- Conteneur Principal --- */
+.register-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* --- Titres --- */
+.register-container h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+.register-container h3 {
+  color: #34495e;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+  margin-top: 2rem;
+}
+
+/* --- Sections et Formulaires --- */
+.register-container section {
+  margin-bottom: 1.5rem;
+}
+
+/* Cible les div qui contiennent un label et un input/select */
+.register-container form > div,
+.register-container > div > div {
+  /* Pour les champs hors form si besoin */
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Labels --- */
+.register-container label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+/* --- Champs de saisie (Inputs & Selects) --- */
+.register-container input[type="text"],
+.register-container input[type="email"],
+.register-container input[type="password"],
+.register-container input[type="tel"],
+.register-container input[type="number"],
+.register-container input[type="time"],
+.register-container select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.register-container input:focus,
+.register-container select:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* --- Boutons --- */
+.register-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 1rem;
+}
+
+.register-container button:hover {
+  background-color: #2980b9;
+}
+
+/* Bouton "Retour" spécifique (si tu veux le différencier plus tard, on pourrait lui mettre une classe) */
+.register-container button[onClick*="setStep(1)"] {
+  background-color: #95a5a6;
+}
+.register-container button[onClick*="setStep(1)"]:hover {
+  background-color: #7f8c8d;
+}
+
+/* --- Étape 2 : Récapitulatif --- */
+.register-container ul {
+  list-style: none;
+  padding: 0;
+  background: #fff;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #eee;
+}
+
+.register-container ul li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* --- Étape 3 : Sélection du Paiement --- */
+/* On transforme la <section> de l'étape 3 en grille flexible */
+.register-container section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Les cartes de choix de paiement */
+.register-container section > div {
+  flex: 1 1 120px; /* Grandit et rétrécit, base de 120px */
+  text-align: center;
+  padding: 1rem;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.register-container section > div:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-color: #3498db;
+}
+
+.register-container section > div h2 {
+  font-size: 1.1rem; /* On réduit la taille des H2 dans les boites de paiement */
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+/* --- Messages d'erreur/succès --- */
+.register-container p {
+  text-align: center;
+  padding: 10px;
+  margin-top: 15px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+/* Petite astuce : si le message contient "Erreur" ou "Impossible", on le met en rouge */
+/* Note: Ce n'est pas du vrai CSS conditionnel, ça dépendra de ton JS idéalement, 
+   mais pour l'instant on peut styliser le <p> par défaut comme une info */
+.register-container > p {
+  background-color: #e8f4fd;
+  color: #2c3e50;
+  border-left: 5px solid #3498db;
+}
+
+/* Dans Register.css */
+.required-star {
+  color: #e74c3c; /* Un rouge sympa */
+  margin-left: 4px;
+}
