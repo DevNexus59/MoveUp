@@ -1,0 +1,16 @@
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  gap: 4em;
+  color: black;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.footer-mentionlegales {
+  color: black;
+}
