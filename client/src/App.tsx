@@ -1,5 +1,7 @@
 import "./App.css";
 
+import "./components/Avis";
+
 function App() {
   return (
     <>
@@ -40,10 +42,8 @@ function App() {
           <h2 className="block-primary-main">JS Monorepo</h2>
           <p className="block-primary-sub">Votre framework JavaScript</p>
         </hgroup>
-        <button type="button">
-          Commencer l'aventure
-        </button>
-        
+        <button type="button">Commencer l'aventure</button>
+
         <p>Vous avez lu le README ?</p>
       </main>
 

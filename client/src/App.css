@@ -6,107 +6,110 @@
 
 /* ===== FONT IMPORT ROOT VARIABLES ===== */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
-	/*Color light */
-	--bg: hsl(0,0%,100%);
-	--bg-font: hsl(0,0%,62%);
-	--link: hsl(0,0%,100%);
-	--linkv: hsl(264,86%,28%);
-	--card: linear-gradient(90deg,rgba(76, 114, 226, 1) 0%, rgba(126, 121, 242, 1) 100%);
+  /*Color light */
+  --bg: hsl(0, 0%, 100%);
+  --bg-font: hsl(0, 0%, 62%);
+  --link: hsl(0, 0%, 100%);
+  --linkv: hsl(264, 86%, 28%);
+  --card: linear-gradient(
+    90deg,
+    rgba(76, 114, 226, 1) 0%,
+    rgba(126, 121, 242, 1) 100%
+  );
 
-	/*font-size*/
-	--font-p: clamp(0.5rem, 0.7rem + 0.3vw, 1rem); /* ~14–16px */
+  /*font-size*/
+  --font-p: clamp(0.5rem, 0.7rem + 0.3vw, 1rem); /* ~14–16px */
   --font-h: clamp(1rem, -0.25rem + 4vw, 2rem); /* ~1-2rem */
-	--font-sub: clamp(1rem, 0.9rem + 0.4vw, 1.125rem); /* ~3-4 rem */
-	--font-title: clamp(3rem, 0.5rem + 8vw, 5rem); /* ~3-5rem */
+  --font-sub: clamp(1rem, 0.9rem + 0.4vw, 1.125rem); /* ~3-4 rem */
+  --font-title: clamp(3rem, 0.5rem + 8vw, 5rem); /* ~3-5rem */
 }
 
 /* ===== RESET LIGHT ===== */
 
 ::before,
 *::after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 html,
 body,
 #root {
-	height: 100%;
+  height: 100%;
 }
 html,
 body {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 body {
-	background: var(--bg);
-	font-family:
-		"Montserrat",
-		system-ui,
-		-apple-system,
-		Segoe UI,
-		sans-serif;
-	color: #fff;
-	font-weight: 400;
+  background: var(--bg);
+  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, sans-serif;
+  color: #fff;
+  font-weight: 400;
 }
 
 a,
 button {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 /*links*/
 a {
-	color: var(--link);
-	font-weight: 600;
-	text-decoration: none;
+  color: var(--link);
+  font-weight: 600;
+  text-decoration: none;
 }
 a:hover {
-	color: var(--linkv);
+  color: var(--linkv);
 }
 
 /*button*/
 button {
-	background-color: var(--link);
-	border: none;
-	padding: .8rem 2rem;
-	color: #fff;
+  background-color: var(--link);
+  border: none;
+  padding: .8rem 2rem;
+  color: #fff;
   font-weight: 600;
-	margin: 0.5rem 1rem;
-	border-radius: 25px;
+  margin: 0.5rem 1rem;
+  border-radius: 25px;
 }
 
 button:hover {
-	background-color: var(--linkv);
+  background-color: var(--linkv);
 }
 
 /*text*/
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
   color: #333;
 }
 
 h1 {
-	font-size: var(--font-title);
-
+  font-size: var(--font-title);
 }
 
 h2 {
-	font-size: calc(var(--font-h)*1.5);
-	text-align: center;
+  font-size: calc(var(--font-h) * 1.5);
+  text-align: center;
 }
 
 h3 {
-  font-size: calc(var(--font-h)*1.2);
+  font-size: calc(var(--font-h) * 1.2);
 }
 
 h4 {
-  font-size: calc(var(--font-h)*1.1);
+  font-size: calc(var(--font-h) * 1.1);
 }
 
 /*img*/
 img {
-	height: auto;
+  height: auto;
 }

@@ -8,6 +8,7 @@
 .mu-avis-grid {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 4em;
@@ -64,4 +65,45 @@
   margin: 0;
   text-align: start;
   font-size: 1em;
+}
+
+/*Tablette (≤1024px) */
+@media (max-width: 1024px) {
+  .mu-avis-grid {
+    margin: 0 4em;
+    gap: 2em;
+  }
+
+  .mu-avis-card {
+    width: 40%;
+    height: auto;
+  }
+}
+
+/*Mobile (≤768px) */
+@media (max-width: 768px) {
+  .mu-avis-grid {
+    flex-direction: column;
+    margin: 0 2em;
+    gap: 2em;
+  }
+
+  .mu-avis-card {
+    width: 100%;
+    height: auto;
+    padding: 1.5em;
+  }
+
+  .mu-avis-card .mu-avis-authorTitle {
+    font-size: 1.1em;
+  }
+
+  .mu-avis-card .mu-avis-comment {
+    font-size: 0.95em;
+  }
+
+  .mu-avis-authotcard .mu-avis-avatar {
+    width: 40px;
+    height: 40px;
+  }
 }
