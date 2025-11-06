@@ -1,0 +1,149 @@
+.pricing {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 2rem;
+  text-align: center;
+}
+
+.pricing_title {
+  margin: 3rem 0;
+}
+
+.pricing_grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+  padding: 0 1rem;
+}
+
+.card {
+  background: var(--card);
+  color: var(--link);
+  padding: 2rem;
+  text-align: left;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.card-highlight {
+  background: var(--card);
+  color: #fff;
+  transform: translateY(-25px);
+}
+
+.card_titles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card_name {
+  margin: 0;
+  color: var(--link);
+}
+
+.card_popular {
+  padding: .5rem;
+  border-radius: 5px;
+  background: var(--link);
+  color: #000;
+}
+
+.card_price {
+  display: flex;
+  align-items: baseline;
+  gap: .2rem;
+}
+
+.card_price_value {
+  font-size: var(--font-h);
+  font-weight: 800;
+}
+.card_price_period {
+  font-weight: 600;
+}
+.card-highlight .card_price_period {
+  color: var(--link);
+}
+
+.card_note {
+  color: var(--link);
+  margin: 1rem 0;
+  line-height: 1.5;
+}
+.card-highlight .card_note {
+  color: var(--link);
+}
+
+.card_divider {
+  height: .1rem;
+  border: 0;
+  margin: 1rem 0;
+  background: rgba(255, 255, 255, 0.25);
+}
+.card-highlight .card_divider {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.card_features {
+  list-style: none;
+  margin: 0 0 1.2rem;
+  padding: 0;
+  display: grid;
+  gap: 1.1rem;
+}
+
+.card_feature {
+  position: relative;
+  padding-left: 28px;
+  color: var(--link);
+}
+.card-highlight .card_feature {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* pastille */
+.card_feature::before,
+.card_feature::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.card_feature::before {
+  left: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #e7e4f4;
+}
+.card_feature::after {
+  left: 6px;
+  width: 6px;
+  height: 10px;
+  transform: translateY(-60%) rotate(45deg);
+  border-right: 2px solid #6a5f87;
+  border-bottom: 2px solid #6a5f87;
+}
+.card-highlight .card_feature::before {
+  background: rgba(255, 255, 255, 0.25);
+}
+.card-highlight .card_feature::after {
+  border-color: #fff;
+}
+
+.card_footer {
+  display: flex;
+  justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .pricing_grid {
+    grid-template-columns: 1fr;
+  }
+  .card {
+    transform: none;
+  }
+}
