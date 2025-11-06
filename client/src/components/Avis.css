@@ -15,18 +15,53 @@
 }
 
 .mu-avis-card {
-  background-color: #9e9e9e;
+  background: linear-gradient(135deg, #a8c5ff 0%, #d0ccff 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 25%;
-  height: 12em;
-  padding: 1em;
+  height: 16em;
+  padding: 1em 1.5em;
+  border-radius: 12px;
+  gap: 0.5em;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.mu-avis-card .mu-avis-author {
-  text-align: center;
-  font-size: 1.5rem;
+.mu-avis-card .mu-avis-authorTitle {
+  margin: 0;
+  text-align: start;
+  font-size: 1.3em;
+}
+
+.mu-avis-card .mu-avis-note {
+  margin: 0;
+  text-align: start;
 }
 
 .mu-avis-card .mu-avis-comment {
-  text-align: center;
+  margin: 0;
+  text-align: start;
   color: black;
+  font-size: 0.9em;
+}
+
+.mu-avis-authotcard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1em;
+}
+
+.mu-avis-authotcard .mu-avis-avatar {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.mu-avis-authotcard .mu-avis-author {
+  margin: 0;
+  text-align: start;
+  font-size: 1em;
 }
