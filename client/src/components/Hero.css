@@ -3,8 +3,6 @@
   width: 100%;
   height: 75svh;
   overflow: hidden;
-  color: #fff;
-  font-family: "Courier New", Courier, monospace;
 }
 
 .hero-slider {
@@ -55,7 +53,7 @@
   padding: 0 1rem;
 }
 
-.hero-title {
+/* .hero-title {
   font-size: 2.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -63,7 +61,7 @@
 
 .hero-title span {
   color: #fff;
-}
+} */
 
 .hero-subtitle {
   font-size: 1.2rem;
@@ -73,7 +71,7 @@
   color: #fff;
 }
 
-.hero-buttons {
+/* .hero-buttons {
   display: flex;
   gap: 1rem;
 }
@@ -86,4 +84,4 @@
 
 .hero-btn:hover {
   background-color: aquamarine;
-}
+} */

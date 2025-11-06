@@ -46,6 +46,7 @@ function App() {
         </hgroup>
         <button type="button">Commencer l'aventure</button>
         <p>Vous avez lu le README ?</p>
+        <Hero />
       </main>
 
       <footer>
