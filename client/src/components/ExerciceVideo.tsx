@@ -20,7 +20,7 @@ function ExerciceVideo() {
           <p className="ExerciceVideo-p">
             Cible : travail du cardio, des abdominaux et des jambes.
           </p>
-          <Link to="/Entrainements">
+          <Link className="ExerciceVideo-link" to="/Entrainements">
             <button className="ExerciceVideo-button" type="button">
               Nos entrainements
             </button>

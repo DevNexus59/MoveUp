@@ -1,5 +1,13 @@
+import CardTarifs from "../components/CardTarifs";
+import ExerciceVideo from "../components/ExerciceVideo";
+
 function Accueil() {
-  return <h1>Accueil</h1>;
+  return (
+    <>
+      <ExerciceVideo />
+      <CardTarifs />
+    </>
+  );
 }
 
 export default Accueil;

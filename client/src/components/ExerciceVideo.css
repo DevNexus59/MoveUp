@@ -1,7 +1,12 @@
 .ExerciceVideo-section {
   /* background: var(--card); */
-  background-color: var(--bg);
+  background-color: var(--bg-font);
   padding: 2rem;
+}
+
+.ExerciceVideo-h2 {
+  color: var(--bg);
+  background-color: var(--bg-font);
 }
 
 .ExerciceVideo-article {
@@ -10,17 +15,33 @@
   justify-content: space-evenly;
   gap: 4rem;
   padding: 1rem 6rem;
+  background-color: var(--bg-font);
 }
 
 .ExerciceVideo-encart {
   background: var(--card);
+  padding: 1rem;
 }
 
 .ExerciceVideo-h3 {
   padding: 0 2rem;
+  background: var(--card);
+  color: var(--bg);
 }
 
 .ExerciceVideo-p {
   width: 550px;
   padding: 0 2rem;
+  background: var(--card);
+}
+.ExerciceVideo-link {
+  background: var(--card);
+  display: inline-block;
+  border-radius: 25px;
+  padding: 0;
+  line-height: 0;
+}
+
+.ExerciceVideo-button {
+  margin: 0;
 }
