@@ -1,0 +1,26 @@
+.ExerciceVideo-section {
+  /* background: var(--card); */
+  background-color: var(--bg);
+  padding: 2rem;
+}
+
+.ExerciceVideo-article {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 4rem;
+  padding: 1rem 6rem;
+}
+
+.ExerciceVideo-encart {
+  background: var(--card);
+}
+
+.ExerciceVideo-h3 {
+  padding: 0 2rem;
+}
+
+.ExerciceVideo-p {
+  width: 550px;
+  padding: 0 2rem;
+}
