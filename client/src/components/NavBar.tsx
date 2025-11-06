@@ -1,5 +1,5 @@
-import { NavLink } from "react-router";
 import { useState } from "react";
+import { NavLink } from "react-router";
 import "./NavBar.css";
 
 function NavBar() {
@@ -31,7 +31,7 @@ function NavBar() {
         </nav>
 
         {/* Hamburger menu accessible */}
-        <button 
+        <button
           type="button"
           className="NavBar-hamburger"
           onClick={toggleMenu}
@@ -39,9 +39,9 @@ function NavBar() {
           aria-expanded={menuOpen}
           aria-label="Menu"
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span />
+          <span />
+          <span />
         </button>
       </div>
     </header>

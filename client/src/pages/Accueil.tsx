@@ -1,5 +1,12 @@
+import CardTarifs from "../components/CardTarifs";
+
 function Accueil() {
-  return <h1>Accueil</h1>;
+  return (
+    <>
+    <CardTarifs />
+    </>
+
+    );
 }
 
 export default Accueil;

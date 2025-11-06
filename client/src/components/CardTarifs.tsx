@@ -36,7 +36,7 @@ function CardTarifs() {
     {
       id: "basic-pro",
       name: "Pro",
-      priceMonthly: 39,
+      priceMonthly: 29,
       popular: true,
       note: "Tout le contenu débloqué avec coach inclus",
       features: [
@@ -49,7 +49,7 @@ function CardTarifs() {
     {
       id: "premium",
       name: "Premium",
-      priceMonthly: 59,
+      priceMonthly: 49,
       note: "Tout le contenu débloqué avec coach dédié",
       features: [
         { id: "feature1", label: "Accès à toutes les vidéos" },
