@@ -78,12 +78,12 @@
   gap: 1rem;
 }
 
-.btn {
+.hero-btn {
   background-color: aliceblue;
   color: #fff;
   border: none;
 }
 
-.btn:hover {
+.hero-btn:hover {
   background-color: aquamarine;
 }

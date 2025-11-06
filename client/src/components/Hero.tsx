@@ -37,10 +37,10 @@ const Hero: React.FC = () => {
           veux
         </h1>
         <div className="hero-buttons">
-          <button type="button" className="btn">
+          <button type="button" className="hero-btn">
             Découvrir les exercices
           </button>
-          <button type="button" className="btn">
+          <button type="button" className="hero-btn">
             Voir nos offres
           </button>
         </div>
