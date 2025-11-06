@@ -48,7 +48,7 @@ const router = createBrowserRouter([
         element: <Connexion />, // Renders the App component for the home page
       },
       {
-        path: "/pages/Entrainement", // The root path
+        path: "/pages/Entrainements", // The root path
         element: <Entrainements />, // Renders the App component for the home page
       },
       {
