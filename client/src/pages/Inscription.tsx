@@ -1,6 +1,6 @@
 import type React from "react";
 import { useState } from "react";
-// import "./Inscription.css"; // Commenté pour résoudre l'erreur de compilation, le fichier CSS est manquant.
+import "./Inscription.css";
 
 const regexCodePostal = /^\d{5}$/;
 const regexPhoneNumber = /^\d{10}$/;

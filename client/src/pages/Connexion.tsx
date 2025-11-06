@@ -62,7 +62,7 @@ function Login() {
           />
         </div>
         <div>
-          <Link to="/register">Je ne suis pas inscrit</Link>
+          <Link to="/pages/Inscription">Je ne suis pas inscrit</Link>
         </div>
         <button type="submit">Se connecter</button>
       </form>
