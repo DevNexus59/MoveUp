@@ -1,5 +1,6 @@
 // import hook react
 import { useEffect, useState } from "react";
+import { useEffect as useEffectType } from "react";
 
 // Composant Toggle pour changer le thème clair/sombre en gros il y a deux valeurs "light" et "dark"
 function Toggle() {
@@ -31,7 +32,7 @@ function Toggle() {
   }, [theme]);
 
   // écoute changement du système (si pas de préférence enregistrée)
-  useEffect(() => {
+  useEffectType(() => {
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
     const handleChange = (e: MediaQueryListEvent) => {
       if (!getStoredTheme()) setTheme(e.matches ? "dark" : "light");
