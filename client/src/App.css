@@ -14,6 +14,7 @@
   --bg-font: hsl(0, 0%, 62%);
   --link: hsl(0, 0%, 100%);
   --linkv: hsl(264, 86%, 28%);
+  --black: hsl(0, 0%, 0%);
   --card: linear-gradient(
     90deg,
     rgba(76, 114, 226, 1) 0%,
@@ -25,6 +26,20 @@
   --font-h: clamp(1rem, -0.25rem + 4vw, 2rem); /* ~1-2rem */
   --font-sub: clamp(1rem, 0.9rem + 0.4vw, 1.125rem); /* ~3-4 rem */
   --font-title: clamp(3rem, 0.5rem + 8vw, 5rem); /* ~3-5rem */
+}
+
+:root[data-theme="dark"] {
+  /*Color dark */
+  --bg: hsl(260, 20%, 12%);
+  --bg-font: hsl(0, 0%, 100%);
+  --link: hsl(0, 0%, 100%);
+  --linkv: hsl(264, 86%, 68%);
+  --black: hsl(0, 0%, 0%);
+  --card: linear-gradient(
+    90deg,
+    rgba(240, 105, 235, 1) 0%,
+    rgba(159, 106, 231, 1) 100%
+  );
 }
 
 /* ===== RESET LIGHT ===== */
@@ -67,7 +82,7 @@ a:hover {
 
 /*button*/
 button {
-  background-color: var(--link);
+  background-color: var(--black);
   border: none;
   padding: .8rem 2rem;
   color: #fff;
@@ -89,7 +104,7 @@ h4,
 h5,
 h6 {
   font-weight: 700;
-  color: #333;
+  color: var(--bg-font);
 }
 
 h1 {
