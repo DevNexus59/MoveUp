@@ -1,0 +1,89 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 75svh;
+  overflow: hidden;
+  color: #fff;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.hero-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 200%;
+  height: 100%;
+  animation: scroll 30s linear infinite;
+}
+
+.hero-image {
+  width: 20%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  animation: 30s ease-in-out infinite alternate;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.hero-slider:hover {
+  animation-play-state: paused;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, O 0.5);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.hero-title span {
+  color: #fff;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  background-color: aliceblue;
+  color: #fff;
+  border: none;
+}
+
+.btn:hover {
+  background-color: aquamarine;
+}
