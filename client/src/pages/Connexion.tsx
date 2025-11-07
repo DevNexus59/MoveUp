@@ -1,6 +1,11 @@
 import type React from "react";
 import { useState } from "react";
 import { Link } from "react-router";
+import Footer from "../components/Footer";
+import Hero from "../components/Hero";
+import "../App.css"
+import "./Connexion.css"
+
 
 function Login() {
   const [email, setEmail] = useState<string>("");
@@ -40,8 +45,12 @@ function Login() {
   };
 
   return (
-    <div>
+      <>
+      <div>
+      <Hero />
+      </div>
       <h2>Connexion:</h2>
+      <div className="connexion-board">
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">Email:</label>
@@ -68,7 +77,9 @@ function Login() {
       </form>
 
       {message && <p>{message}</p>}
+      <Footer/>
     </div>
+    </>
   );
 }
 

@@ -1,0 +1,99 @@
+.connexion-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  width: 100%;
+}
+
+.connexion-board h2 {
+  margin-bottom: 2rem;
+  /* La couleur est déjà gérée par le style global h2 { color: var(--bg-font); } */
+}
+
+.connexion-board form {
+  background: var(--card); /* Déjà correct */
+  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  color: var(--link); /* CHANGÉ: Utilise la variable pour le texte blanc */
+  width: 100%;
+  max-width: 450px;
+}
+
+.connexion-board form div {
+  margin-bottom: 1.5rem;
+}
+
+.connexion-board label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--link); /* CHANGÉ: Utilise la variable pour le texte blanc */
+}
+
+.connexion-board input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 1rem;
+  color: #333; /* NOTE: Gardé en dur, car les variables root ne gèrent pas le style des inputs (texte intérieur) */
+  box-sizing: border-box;
+}
+
+.connexion-board input:focus {
+  outline: 2px solid var(--linkv); /* Déjà correct */
+}
+
+.connexion-board form a {
+  color: var(--link); /* CHANGÉ: Utilise la variable pour le texte blanc */
+  text-decoration: underline;
+}
+
+.connexion-board form a:hover {
+  color: #eee; /* NOTE: Gardé, car c'est un effet spécifique (blanc -> blanc cassé) non défini dans :root */
+}
+
+.connexion-board button {
+  width: 100%;
+  margin: 1rem 0 0 0;
+  /* Le style (couleur, hover) est déjà géré par le style global 'button' */
+}
+
+.connexion-board p {
+  margin-top: 1.5rem;
+  font-weight: 500;
+  color: var(--bg-font); /* Déjà correct */
+  text-align: center;
+}
+
+/* --- Placeholders --- */
+/* NOTE: Je n'ai pas modifié les placeholders, car ils semblent être des blocs temporaires 
+   et ne font pas directement partie du design "formulaire" à thématiser. */
+
+.hero-placeholder {
+  background: #f4f4f4;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+.hero-placeholder h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.footer-placeholder {
+  background: #333;
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-top: auto;
+}
+
+/* Conteneur global pour le layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

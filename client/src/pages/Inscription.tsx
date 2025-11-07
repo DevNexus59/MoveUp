@@ -1,6 +1,8 @@
 import type React from "react";
 import { useState } from "react";
+import Footer from "../components/Footer";
 import "./Inscription.css";
+import "../App.css";
 
 const regexCodePostal = /^\d{5}$/;
 const regexPhoneNumber = /^\d{10}$/;
@@ -45,6 +47,10 @@ function Register() {
   const [cardNumber, setCardNumber] = useState<string>("");
   const [cardExpiry, setCardExpiry] = useState<string>("");
   const [cardCvv, setCardCvv] = useState<string>("");
+
+  // Nouveaux états pour la visibilité des mots de passe
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showCheckPassword, setShowCheckPassword] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -110,343 +116,370 @@ function Register() {
   };
 
   return (
-    <div className="register-container">
-      <h2>Inscription</h2>
-      {step === 1 && (
-        <form onSubmit={handleSubmit}>
-          <section>
+    <>
+      <div className="register-container">
+        <h2>Inscription</h2>
+        {step === 1 && (
+          <form onSubmit={handleSubmit}>
+            <section>
+              <h3>Informations personnelles</h3>
+            </section>
+            <div>
+              <label htmlFor="name">
+                Nom<span className="required-star">*</span> :
+              </label>
+              <input
+                id="name"
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="firstname">
+                Prénom<span className="required-star">*</span> :
+              </label>
+              <input
+                id="firstname"
+                type="text"
+                value={firstname}
+                onChange={(e) => setFirstName(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="address">
+                Adresse<span className="required-star">*</span> :
+              </label>
+              <input
+                id="address"
+                type="text"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="zipcode">Code postal :</label>
+              <input
+                id="zipcode"
+                type="text"
+                value={zipcode}
+                onChange={(e) => setZipCode(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="city">
+                Ville<span className="required-star">*</span> :
+              </label>
+              <input
+                id="city"
+                type="text"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="phone">
+                Téléphone<span className="required-star">*</span> :
+              </label>
+              <input
+                id="phone"
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="email">
+                Email<span className="required-star">*</span>:
+              </label>
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+
+            {/* --- MODIFICATION MOT DE PASSE --- */}
+            <div>
+              <label htmlFor="password">
+                Mot de passe<span className="required-star">*</span>:
+              </label>
+              <div className="password-wrapper">
+                <input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <button
+                  type="button"
+                  className="toggle-password-btn"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? "🙈" : "👁️"}
+                </button>
+              </div>
+            </div>
+
+          
+            <div>
+              <label htmlFor="checkpassword">
+                Confirmation du mot de passe
+                <span className="required-star">*</span>:
+              </label>
+              <div className="password-wrapper">
+                <input
+                  id="checkpassword"
+                  type={showCheckPassword ? "text" : "password"}
+                  value={checkpassword}
+                  onChange={(e) => setCheckPassword(e.target.value)}
+                  required
+                />
+                <button
+                  type="button"
+                  className="toggle-password-btn"
+                  onClick={() => setShowCheckPassword(!showCheckPassword)}
+                >
+                  {showCheckPassword ? "🙈" : "👁️"}
+                </button>
+              </div>
+            </div>
+            {/* --- FIN DES MODIFICATIONS --- */}
+
+            <div>
+              <label htmlFor="usertype">
+                Type d'utilisateur <span className="required-star">*</span>:
+              </label>
+              <select
+                id="usertype"
+                value={usertype}
+                onChange={(e) => setUserType(e.target.value)}
+                required
+              >
+                <option value="">-- Veuillez choisir --</option>
+                <option value="Professionnel">Professionnel</option>
+                <option value="Personnel">Personnel</option>
+              </select>
+            </div>
+            <section>
+              <h3>Mon profil sportif</h3>
+            </section>
+            <div>
+              <label htmlFor="levelexperiency">Mon niveau d'expérience:</label>
+              <select
+                id="levelexperiency"
+                value={levelexperiency}
+                onChange={(e) => setLevelExperiency(e.target.value)}
+              >
+                <option value="">-- Veuillez choisir --</option>
+                <option value="Debutant">
+                  Débutant - Je n'ai pas l'habitude de pratiquer
+                </option>
+                <option value="Intermédiaire">
+                  Intermédiaire - Je pratique régulièrement
+                </option>
+                <option value="Expert">
+                  Expert - Je pratique intensivement ou je suis coach
+                </option>
+              </select>
+            </div>
+            <div>
+              <label htmlFor="timerequired">Mon temps libre:</label>
+              <input
+                id="timerequired"
+                type="time"
+                value={timerequired}
+                onChange={(e) => setTimeRequired(e.target.value)}
+              />
+            </div>
+            <div>
+              <label htmlFor="diet">Mon régime alimentaire:</label>
+              <select
+                id="diet"
+                value={diet}
+                onChange={(e) => setDiet(e.target.value)}
+              >
+                <option value="">-- Veuillez choisir --</option>
+                <option value="Végétarien">Végétarien</option>
+                <option value="Sans restriction">Sans restriction</option>
+                <option value="Végan">Végan</option>
+                <option value="Pescétarisme">Pescétarisme</option>
+                <option value="Flexitarisme">Flexitarisme</option>
+                <option value="Clean Eating">Clean Eating</option>
+              </select>
+            </div>
+            <div>
+              <label htmlFor="subscription">Mon abonnement:</label>
+              <select
+                id="subscription"
+                value={subscription}
+                onChange={(e) => setSubscription(e.target.value)}
+                required
+              >
+                <option value="">-- Veuillez choisir --</option>
+                <option value="Basic">Basic - 19€ par mois</option>
+                <option value="Pro">Pro - 29€ par mois</option>
+                <option value="Premium">Premium - 49€ par mois</option>
+              </select>
+            </div>
+            <button type="submit">S'inscrire</button>
+          </form>
+        )}
+
+        {step === 2 && (
+          <div>
+            <h3>Récapitulatif</h3>
+            <p>Vérifiez vos informations avant de continuer.</p>
             <h3>Informations personnelles</h3>
-          </section>
-          <div>
-            <label htmlFor="name">
-              Nom<span className="required-star">*</span> :
-            </label>
-            <input
-              id="name"
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="firstname">
-              Prénom<span className="required-star">*</span> :
-            </label>
-            <input
-              id="firstname"
-              type="text"
-              value={firstname}
-              onChange={(e) => setFirstName(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="address">
-              Adresse<span className="required-star">*</span> :
-            </label>
-            <input
-              id="address"
-              type="text"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="zipcode">Code postal :</label>
-            <input
-              id="zipcode"
-              type="text"
-              value={zipcode}
-              onChange={(e) => setZipCode(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="city">
-              Ville<span className="required-star">*</span> :
-            </label>
-            <input
-              id="city"
-              type="text"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="phone">
-              Téléphone<span className="required-star">*</span> :
-            </label>
-            <input
-              id="phone"
-              type="tel"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="email">
-              Email<span className="required-star">*</span>:
-            </label>
-            <input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="password">
-              Mot de passe<span className="required-star">*</span>:
-            </label>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="checkpassword">
-              Confirmation du mot de passe
-              <span className="required-star">*</span>:
-            </label>
-            <input
-              id="checkpassword"
-              type="password"
-              value={checkpassword}
-              onChange={(e) => setCheckPassword(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="usertype">
-              Type d'utilisateur <span className="required-star">*</span>:
-            </label>
-            <select
-              id="usertype"
-              value={usertype}
-              onChange={(e) => setUserType(e.target.value)}
-              required
-            >
-              <option value="">-- Veuillez choisir --</option>
-              <option value="Professionnel">Professionnel</option>
-              <option value="Personnel">Personnel</option>
-            </select>
-          </div>
-          <section>
+            <ul>
+              <li>
+                <strong>Nom complet :</strong> {firstname} {name}
+              </li>
+              <li>
+                <strong>Adresse complête :</strong> <br />
+                {address}
+                <br />
+                {zipcode} {city}
+              </li>
+              <li>
+                <strong>Téléphone :</strong> {phone}
+              </li>
+              <li>
+                <strong>Email :</strong> {email}
+              </li>
+              <li>
+                <strong>Type utilisateur :</strong> {usertype}
+              </li>
+            </ul>
             <h3>Mon profil sportif</h3>
-          </section>
-          <div>
-            <label htmlFor="levelexperiency">Mon niveau d'expérience:</label>
-            <select
-              id="levelexperiency"
-              value={levelexperiency}
-              onChange={(e) => setLevelExperiency(e.target.value)}
-            >
-              <option value="">-- Veuillez choisir --</option>
-              <option value="Debutant">
-                Débutant - Je n'ai pas l'habitude de pratiquer
-              </option>
-              <option value="Intermédiaire">
-                Intermédiaire - Je pratique régulièrement
-              </option>
-              <option value="Expert">
-                Expert - Je pratique intensivement ou je suis coach
-              </option>
-            </select>
+            <ul>
+              <li>
+                <strong>Mon niveau d'expérience :</strong> {levelexperiency}
+              </li>
+              <li>
+                <strong>Mon temps libre :</strong> {timerequired}
+              </li>
+              <li>
+                <strong>Mon régime alimentaire :</strong> {diet}
+              </li>
+            </ul>
+            <h3>Mon abonnement sélectionné :</h3>
+            <ul>
+              <li>
+                <strong>Niveau d'abonnement :</strong> {subscription}
+              </li>
+            </ul>
+            <button type="button" onClick={() => setStep(1)}>
+              Retour
+            </button>
+            <button type="button" onClick={() => setStep(3)}>
+              Valider et payer
+            </button>
           </div>
-          <div>
-            <label htmlFor="timerequired">Mon temps libre:</label>
-            <input
-              id="timerequired"
-              type="time"
-              value={timerequired}
-              onChange={(e) => setTimeRequired(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="diet">Mon régime alimentaire:</label>
-            <select
-              id="diet"
-              value={diet}
-              onChange={(e) => setDiet(e.target.value)}
-            >
-              <option value="">-- Veuillez choisir --</option>
-              <option value="Végétarien">Végétarien</option>
-              <option value="Sans restriction">Sans restriction</option>
-              <option value="Végan">Végan</option>
-              <option value="Pescétarisme">Pescétarisme</option>
-              <option value="Flexitarisme">Flexitarisme</option>
-              <option value="Clean Eating">Clean Eating</option>
-            </select>
-          </div>
-          <div>
-            <label htmlFor="subscription">Mon abonnement:</label>
-            <select
-              id="subscription"
-              value={subscription}
-              onChange={(e) => setSubscription(e.target.value)}
-              required
-            >
-              <option value="">-- Veuillez choisir --</option>
-              <option value="Basic">Basic - 19€ par mois</option>
-              <option value="Pro">Pro - 29€ par mois</option>
-              <option value="Premium">Premium - 49€ par mois</option>
-            </select>
-          </div>
-          <button type="submit">S'inscrire</button>
-        </form>
-      )}
+        )}
 
-      {step === 2 && (
-        <div>
-          <h3>Récapitulatif</h3>
-          <p>Vérifiez vos informations avant de continuer.</p>
-          <h3>Informations personnelles</h3>
-          <ul>
-            <li>
-              <strong>Nom complet :</strong> {firstname} {name}
-            </li>
-            <li>
-              <strong>Adresse complête :</strong> <br />
-              {address}
-              <br />
-              {zipcode} {city}
-            </li>
-            <li>
-              <strong>Téléphone :</strong> {phone}
-            </li>
-            <li>
-              <strong>Email :</strong> {email}
-            </li>
-            <li>
-              <strong>Type utilisateur :</strong> {usertype}
-            </li>
-          </ul>
-          <h3>Mon profil sportif</h3>
-          <ul>
-            <li>
-              <strong>Mon niveau d'expérience :</strong> {levelexperiency}
-            </li>
-            <li>
-              <strong>Mon temps libre :</strong> {timerequired}
-            </li>
-            <li>
-              <strong>Mon régime alimentaire :</strong> {diet}
-            </li>
-          </ul>
-          <h3>Mon abonnement sélectionné :</h3>
-          <ul>
-            <li>
-              <strong>Niveau d'abonnement :</strong> {subscription}
-            </li>
-          </ul>
-          <button type="button" onClick={() => setStep(1)}>
-            Retour
-          </button>
-          <button type="button" onClick={() => setStep(3)}>
-            Valider et payer
-          </button>
-        </div>
-      )}
+        {step === 3 && (
+          <div>
+            <h3>Paiement</h3>
+            <section>
+              <div>
+                <h2>Carte Bancaire</h2>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setPaymentMethod("CB");
+                    setStep(4);
+                  }}
+                >
+                  Choisir
+                </button>
+              </div>
+              <div>
+                <h2>Apple Pay</h2>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setPaymentMethod("APAY");
+                    setStep(4);
+                  }}
+                >
+                  Choisir
+                </button>
+              </div>
+              <div>
+                <h2>Google Pay</h2>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setPaymentMethod("GPAY");
+                    setStep(4);
+                  }}
+                >
+                  Choisir
+                </button>
+              </div>
+            </section>
+          </div>
+        )}
 
-      {step === 3 && (
-        <div>
-          <h3>Paiement</h3>
-          <section>
+        {step === 4 && (
+          <form onSubmit={handleFinalSubmit}>
             <div>
-              <h2>Carte Bancaire</h2>
-              <button
-                type="button"
-                onClick={() => {
-                  setPaymentMethod("CB");
-                  setStep(4);
-                }}
-              >
-                Choisir
-              </button>
+              <h3>Détails du paiement</h3>
             </div>
             <div>
-              <h2>Apple Pay</h2>
-              <button
-                type="button"
-                onClick={() => {
-                  setPaymentMethod("APAY");
-                  setStep(4);
-                }}
-              >
-                Choisir
-              </button>
+              <label htmlFor="cardNumber">
+                Numéro de carte<span className="required-star">*</span>:
+              </label>
+              <input
+                id="cardNumber"
+                type="text"
+                value={cardNumber}
+                onChange={(e) => setCardNumber(e.target.value)}
+                required
+              />
             </div>
             <div>
-              <h2>Google Pay</h2>
-              <button
-                type="button"
-                onClick={() => {
-                  setPaymentMethod("GPAY");
-                  setStep(4);
-                }}
-              >
-                Choisir
-              </button>
+              <label htmlFor="cardExpiry">
+                Date d'expiration<span className="required-star">*</span>:
+              </label>
+              <input
+                id="cardExpiry"
+                type="text"
+                value={cardExpiry}
+                onChange={(e) => setCardExpiry(e.target.value)}
+                required
+              />
             </div>
-          </section>
-        </div>
-      )}
+            <div>
+              <label htmlFor="cardCvv">
+                Cryptogramme<span className="required-star">*</span>:
+              </label>
+              <input
+                id="cardCvv"
+                type="text"
+                value={cardCvv}
+                onChange={(e) => setCardCvv(e.target.value)}
+                required
+              />
+            </div>
+            <button type="submit">Valider et Payer</button>
+          </form>
+        )}
 
-      {step === 4 && (
-        <form onSubmit={handleFinalSubmit}>
-          <div>
-            <h3>Détails du paiement</h3>
-          </div>
-          <div>
-            <label htmlFor="cardNumber">
-              Numéro de carte<span className="required-star">*</span>:
-            </label>
-            <input
-              id="cardNumber"
-              type="text"
-              value={cardNumber}
-              onChange={(e) => setCardNumber(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="cardExpiry">
-              Date d'expiration<span className="required-star">*</span>:
-            </label>
-            <input
-              id="cardExpiry"
-              type="text"
-              value={cardExpiry}
-              onChange={(e) => setCardExpiry(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="cardCvv">
-              Cryptogramme<span className="required-star">*</span>:
-            </label>
-            <input
-              id="cardCvv"
-              type="text"
-              value={cardCvv}
-              onChange={(e) => setCardCvv(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit">Valider et Payer</button>
-        </form>
-      )}
-
-      {message && <p>{message}</p>}
-    </div>
+        {message && <p>{message}</p>}
+      </div>
+      <Footer />
+    </>
   );
 }
 
