@@ -1,6 +1,7 @@
 // import hook react
 import { useEffect, useState } from "react";
 import { useEffect as useEffectType } from "react";
+import "./Toggle.css";
 
 // Composant Toggle pour changer le thème clair/sombre en gros il y a deux valeurs "light" et "dark"
 function Toggle() {
@@ -45,6 +46,7 @@ function Toggle() {
   return (
     <button
       type="button"
+      className="theme-toggle"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     >
       {theme === "light" ? "🌙 Mode sombre" : "☀️ Mode clair"}
