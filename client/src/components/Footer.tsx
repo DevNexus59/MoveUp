@@ -15,7 +15,9 @@ const Footer = ({ companyName = "MoveUp", year = 2026 }: FooterProps) => {
       </p>
       <p className="footer-mentionlegales">
         {" "}
-        <Link to="/mentions-legales">Terms & Conditions | Privacy Policy</Link>
+        <Link to="/pages/MentionsLegales">
+          Terms & Conditions | Privacy Policy
+        </Link>
       </p>
     </footer>
   );
