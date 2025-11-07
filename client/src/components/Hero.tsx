@@ -11,8 +11,8 @@ interface HeroProps {
 }
 
 function Hero({
-  title = "MoveUp",
-  subtitle = "L'entrainement où tu veux, quand tu veux, comme tu veux",
+  title = "",
+  subtitle = "L'entrainement où tu veux, quand tu veux, comme tu veux !",
 }: HeroProps) {
   const images = [
     { name: "etirement", src: etirement },
