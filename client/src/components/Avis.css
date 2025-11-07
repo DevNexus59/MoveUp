@@ -1,0 +1,109 @@
+.mu-avis-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mu-avis-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 4em;
+  margin: 0 12em;
+}
+
+.mu-avis-card {
+  background: var(--card);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25%;
+  height: 16em;
+  padding: 1em 1.5em;
+  border-radius: 12px;
+  gap: 0.5em;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mu-avis-card .mu-avis-authorTitle {
+  margin: 0;
+  text-align: start;
+  font-size: 1.3em;
+}
+
+.mu-avis-card .mu-avis-note {
+  margin: 0;
+  text-align: start;
+}
+
+.mu-avis-card .mu-avis-comment {
+  margin: 0;
+  text-align: start;
+  color: black;
+  font-size: 0.9em;
+}
+
+.mu-avis-authotcard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1em;
+}
+
+.mu-avis-authotcard .mu-avis-avatar {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.mu-avis-authotcard .mu-avis-author {
+  margin: 0;
+  text-align: start;
+  font-size: 1em;
+}
+
+/*Tablette (≤1024px) */
+@media (max-width: 1024px) {
+  .mu-avis-grid {
+    margin: 0 4em;
+    gap: 2em;
+  }
+
+  .mu-avis-card {
+    width: 40%;
+    height: auto;
+  }
+}
+
+/*Mobile (≤768px) */
+@media (max-width: 768px) {
+  .mu-avis-grid {
+    flex-direction: column;
+    margin: 0 2em;
+    gap: 2em;
+  }
+
+  .mu-avis-card {
+    width: 100%;
+    height: auto;
+    padding: 1.5em;
+  }
+
+  .mu-avis-card .mu-avis-authorTitle {
+    font-size: 1.1em;
+  }
+
+  .mu-avis-card .mu-avis-comment {
+    font-size: 0.95em;
+  }
+
+  .mu-avis-authotcard .mu-avis-avatar {
+    width: 40px;
+    height: 40px;
+  }
+}

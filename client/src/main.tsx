@@ -7,11 +7,13 @@ import { RouterProvider, createBrowserRouter } from "react-router";
 
 // Import the main app component
 import App from "./App";
+import { AuthProvider } from "./context/AuthContext";
 import About from "./pages/About";
 import Accueil from "./pages/Accueil";
 import Connexion from "./pages/Connexion";
 import Entrainements from "./pages/Entrainements";
 import Inscription from "./pages/Inscription";
+import Register from "./pages/Inscription";
 import MentionsLegales from "./pages/MentionsLegales";
 import Tarifs from "./pages/Tarifs";
 
@@ -48,7 +50,7 @@ const router = createBrowserRouter([
         element: <Connexion />, // Renders the App component for the home page
       },
       {
-        path: "/pages/Entrainement", // The root path
+        path: "/pages/Entrainements", // The root path
         element: <Entrainements />, // Renders the App component for the home page
       },
       {
@@ -63,8 +65,13 @@ const router = createBrowserRouter([
         path: "/pages/Tarifs", // The root path
         element: <Tarifs />, // Renders the App component for the home page
       },
+      {
+        path: "/pages/Inscription", // The root path
+        element: <Register />,
+      },
     ],
   },
+  // Try adding a new route! For example, "/about" with an About component
 ]);
 
 /* ************************************************************************* */
@@ -78,7 +85,9 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 );
 
@@ -86,23 +95,23 @@ createRoot(rootElement).render(
  * Helpful Notes:
  *
  * 1. Adding More Routes:
- *    To add more pages to your app, first create a new component (e.g., About.tsx).
- *    Then, import that component above like this:
+ *    To add more pages to your app, first create a new component (e.g., About.tsx).
+ *    Then, import that component above like this:
  *
- *    import About from "./pages/About";
+ *    import About from "./pages/About";
  *
- *    Add a new route to the router:
+ *    Add a new route to the router:
  *
- *      {
- *        path: "/about",
- *        element: <About />,  // Renders the About component
- *      }
+ *      {
+ *        path: "/about",
+ *        element: <About />,  // Renders the About component
+ *      }
  *
  * 2. Try Nested Routes:
- *    For more complex applications, you can nest routes. This lets you have sub-pages within a main page.
- *    Documentation: https://reactrouter.com/en/main/start/tutorial#nested-routes
+ *    For more complex applications, you can nest routes. This lets you have sub-pages within a main page.
+ *    Documentation: https://reactrouter.com/en/main/start/tutorial#nested-routes
  *
  * 3. Experiment with Dynamic Routes:
- *    You can create routes that take parameters (e.g., /users/:id).
- *    Documentation: https://reactrouter.com/en/main/start/tutorial#url-params-in-loaders
+ *    You can create routes that take parameters (e.g., /users/:id).
+ *    Documentation: https://reactrouter.com/en/main/start/tutorial#url-params-in-loaders
  */
