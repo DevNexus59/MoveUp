@@ -62,7 +62,7 @@ function CardTarifs() {
 
   return (
     <section className="pricing">
-      <h2 className="pricing_title">nos tarifs</h2>
+      <h2 className="pricing_title">Nos tarifs</h2>
 
       <div className="pricing_grid">
         {plans.map((plan) => (
@@ -100,7 +100,7 @@ function CardTarifs() {
               <button
                 type="button"
                 className="card_cta"
-                onClick={() => navigate("/inscription")}
+                onClick={() => navigate("/pages/Inscription")}
               >
                 Commencer
               </button>
