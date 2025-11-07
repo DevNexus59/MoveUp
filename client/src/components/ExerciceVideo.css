@@ -45,3 +45,9 @@
 .ExerciceVideo-button {
   margin: 0;
 }
+
+@media screen and (max-width: 992px) {
+  .ExerciceVideo-article {
+    flex-direction: column-reverse;
+  }
+}
