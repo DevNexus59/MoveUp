@@ -1,12 +1,6 @@
 .ExerciceVideo-section {
-  /* background: var(--card); */
-  background-color: var(--bg-font);
+  background-color: var(--bg);
   padding: 2rem;
-}
-
-.ExerciceVideo-h2 {
-  color: var(--bg);
-  background-color: var(--bg-font);
 }
 
 .ExerciceVideo-article {
@@ -15,7 +9,6 @@
   justify-content: space-evenly;
   gap: 4rem;
   padding: 1rem 6rem;
-  background-color: var(--bg-font);
 }
 
 .ExerciceVideo-encart {
@@ -26,7 +19,7 @@
 .ExerciceVideo-h3 {
   padding: 0 2rem;
   background: var(--card);
-  color: var(--bg);
+  color: hsl(0, 0%, 100%);
 }
 
 .ExerciceVideo-p {
