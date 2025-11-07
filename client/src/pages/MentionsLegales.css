@@ -1,22 +1,25 @@
-.mentionlgl{
-    color:var(--bg-font);
-    margin: 0 auto;       
-    padding: 2rem 15rem;             
-    text-align: center;        
-    line-height: 1.6;    
+.mentionlgl {
+  color: var(--bg-font);
+  margin: 0 auto;
+  padding: 2rem 15rem;
+  text-align: center;
+  line-height: 1.6;
 
-    p, ul, address{
-        margin-bottom: 1.5rem;
-    }
+  p,
+  ul,
+  address {
+    margin-bottom: 1.5rem;
+  }
 
-    a{
-        color:var(--bg-font);
-    }
+  a {
+    color: var(--bg-font);
+  }
 
-    ul, ol {
-        list-style: none;
-        text-align: left;
-        display: inline-block;
-        padding-left: 1rem;
-    }
+  ul,
+  ol {
+    list-style: none;
+    text-align: left;
+    display: inline-block;
+    padding-left: 1rem;
+  }
 }
