@@ -16,7 +16,7 @@
 }
 
 .mu-avis-card {
-  background: linear-gradient(135deg, #a8c5ff 0%, #d0ccff 100%);
+  background: var(--card);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
