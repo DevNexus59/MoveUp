@@ -1,51 +1,44 @@
-/* --- Conteneur Principal --- */
 .register-container {
   max-width: 500px;
   margin: 2rem auto;
   padding: 2rem;
-  background-color: #f9f9f9;
+  background: var(--card);
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
+  color: var(--link);
 }
 
-/* --- Titres --- */
 .register-container h2 {
   text-align: center;
-  color: #2c3e50;
+  color: var(--link);
   margin-bottom: 1.5rem;
 }
 
 .register-container h3 {
-  color: #34495e;
-  border-bottom: 2px solid #3498db;
+  color: var(--link);
+  border-bottom: 2px solid var(--linkv);
   padding-bottom: 10px;
   margin-top: 2rem;
 }
 
-/* --- Sections et Formulaires --- */
 .register-container section {
   margin-bottom: 1.5rem;
 }
 
-/* Cible les div qui contiennent un label et un input/select */
 .register-container form > div,
 .register-container > div > div {
-  /* Pour les champs hors form si besoin */
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
 }
 
-/* --- Labels --- */
 .register-container label {
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #555;
+  color: var(--link);
 }
 
-/* --- Champs de saisie (Inputs & Selects) --- */
+/* --- CHANGEMENTS APPLIQUÉS ICI --- */
 .register-container input[type="text"],
 .register-container input[type="email"],
 .register-container input[type="password"],
@@ -53,39 +46,25 @@
 .register-container input[type="number"],
 .register-container input[type="time"],
 .register-container select {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 10px 12px; /* Ajustement du padding */
+  border: none; /* CHANGÉ: Pas de bordure, comme sur l'image */
+  border-radius: 0.5rem; /* CHANGÉ: Bords arrondis (8px) comme sur l'image */
   font-size: 16px;
-  transition: border-color 0.3s;
+  color: #333;
+  background-color: #fff; /* Assure que le fond est blanc */
 }
 
+/* --- CHANGEMENTS APPLIQUÉS ICI --- */
 .register-container input:focus,
 .register-container select:focus {
-  border-color: #3498db;
-  outline: none;
-}
-
-/* --- Boutons --- */
-.register-container button {
-  width: 100%;
-  padding: 12px;
-  background-color: #3498db;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-top: 1rem;
+  /* border-color: var(--linkv); (l'ancienne règle n'est plus utile) */
+  outline: 2px solid var(--linkv); /* CHANGÉ: Utilise outline pour le focus */
 }
 
 .register-container button:hover {
-  background-color: #2980b9;
+  background-color: var(--linkv);
 }
 
-/* Bouton "Retour" spécifique (si tu veux le différencier plus tard, on pourrait lui mettre une classe) */
 .register-container button[onClick*="setStep(1)"] {
   background-color: #95a5a6;
 }
@@ -93,14 +72,14 @@
   background-color: #7f8c8d;
 }
 
-/* --- Étape 2 : Récapitulatif --- */
+/* "Îlots" blancs pour le récapitulatif */
 .register-container ul {
   list-style: none;
-  padding: 0;
-  background: #fff;
   padding: 15px;
+  background: #fff;
   border-radius: 6px;
   border: 1px solid #eee;
+  color: var(--black);
 }
 
 .register-container ul li {
@@ -108,36 +87,40 @@
   line-height: 1.5;
 }
 
-/* --- Étape 3 : Sélection du Paiement --- */
-/* On transforme la <section> de l'étape 3 en grille flexible */
-.register-container section {
+/* --- Étape 3 : Sélection du Paiement (Règles spécifiques corrigées) --- */
+.register-container > div > section {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
+  margin-bottom: 1.5rem;
 }
 
-/* Les cartes de choix de paiement */
-.register-container section > div {
-  flex: 1 1 120px; /* Grandit et rétrécit, base de 120px */
+/* "Îlots" blancs pour les choix de paiement */
+.register-container > div > section > div {
+  flex: 1 1 120px;
   text-align: center;
   padding: 1rem;
   background: white;
   border: 1px solid #ddd;
   border-radius: 8px;
   transition: transform 0.2s, box-shadow 0.2s;
+  color: var(--black);
 }
 
-.register-container section > div:hover {
+.register-container > div > section > div:hover {
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  border-color: #3498db;
+  border-color: var(--linkv);
 }
 
-.register-container section > div h2 {
-  font-size: 1.1rem; /* On réduit la taille des H2 dans les boites de paiement */
+.register-container > div > section > div h2 {
+  font-size: 1.1rem;
   margin-bottom: 0.5rem;
-  color: #555;
+  color: var(--black);
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-top: 0;
 }
 
 /* --- Messages d'erreur/succès --- */
@@ -149,17 +132,50 @@
   font-weight: bold;
 }
 
-/* Petite astuce : si le message contient "Erreur" ou "Impossible", on le met en rouge */
-/* Note: Ce n'est pas du vrai CSS conditionnel, ça dépendra de ton JS idéalement, 
-   mais pour l'instant on peut styliser le <p> par défaut comme une info */
 .register-container > p {
   background-color: #e8f4fd;
-  color: #2c3e50;
-  border-left: 5px solid #3498db;
+  color: var(--black);
+  border-left: 5px solid var(--linkv);
 }
 
-/* Dans Register.css */
 .required-star {
-  color: #e74c3c; /* Un rouge sympa */
+  color: #e74c3c;
   margin-left: 4px;
+}
+/* Ce conteneur permet de positionner le bouton par rapport à l'input */
+.password-wrapper {
+  position: relative;
+}
+
+/* On s'assure que l'input prend toute la largeur */
+.password-wrapper input {
+  width: 100%;
+
+  /* CHANGEMENT : Padding réduit pour un look plus fin */
+  padding-right: 45px;
+
+  /* S'assure que le padding ne modifie pas la largeur totale */
+  box-sizing: border-box;
+}
+
+/* Le bouton pour afficher/masquer */
+.toggle-password-btn {
+  position: absolute;
+
+  /* CHANGEMENT : Légèrement plus loin du bord */
+  right: 12px;
+
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  /* CHANGEMENT : Icône plus petite */
+  font-size: 1.1rem;
+
+  padding: 0;
+
+  /* Ajout : Un peu de transparence pour le fond */
+  opacity: 0.7;
 }
