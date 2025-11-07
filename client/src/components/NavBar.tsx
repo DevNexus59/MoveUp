@@ -7,7 +7,7 @@ function NavBar() {
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
     // Activation du menu avec Enter ou Space
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault(); // empêche le scroll avec Space
