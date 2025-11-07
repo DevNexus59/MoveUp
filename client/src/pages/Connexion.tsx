@@ -1,7 +1,6 @@
 import type React from "react";
 import { useState } from "react";
 import { Link } from "react-router";
-import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import "../App.css";
 import "./Connexion.css";
@@ -76,7 +75,6 @@ function Login() {
         </form>
 
         {message && <p>{message}</p>}
-        <Footer />
       </div>
     </>
   );

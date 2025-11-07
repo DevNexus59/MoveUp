@@ -1,6 +1,5 @@
 import type React from "react";
 import { useState } from "react";
-import Footer from "../components/Footer";
 import "./Inscription.css";
 import "../App.css";
 
@@ -477,7 +476,6 @@ function Register() {
 
         {message && <p>{message}</p>}
       </div>
-      <Footer />
     </>
   );
 }

@@ -61,20 +61,6 @@
   outline: 2px solid var(--linkv); /* CHANGÉ: Utilise outline pour le focus */
 }
 
-.register-container button {
-  width: 100%;
-  padding: 0.8rem 2rem;
-  background-color: var(--black);
-  color: white;
-  border: none;
-  border-radius: 25px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-top: 1rem;
-}
-
 .register-container button:hover {
   background-color: var(--linkv);
 }
