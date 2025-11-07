@@ -5,7 +5,6 @@ import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import Toggle from "../components/Toggle";
 
-
 function Accueil() {
   return (
     <>
