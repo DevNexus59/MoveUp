@@ -15,11 +15,7 @@
   --link: hsl(0, 0%, 100%);
   --linkv: hsl(264, 86%, 28%);
   --black: hsl(0, 0%, 0%);
-  --card: linear-gradient(
-    90deg,
-    rgba(76, 114, 226, 1) 0%,
-    rgba(126, 121, 242, 1) 100%
-  );
+  --card: linear-gradient(135deg, #a8c0ff 0%, #c0a8ff 20%, #ffb3d9 100%);
 
   /*font-size*/
   --font-p: clamp(0.5rem, 0.7rem + 0.3vw, 1rem); /* ~14–16px */
