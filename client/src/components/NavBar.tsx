@@ -1,5 +1,5 @@
-import { NavLink } from "react-router";
 import { useState } from "react";
+import { NavLink } from "react-router";
 import "./NavBar.css";
 
 function NavBar() {
@@ -7,7 +7,7 @@ function NavBar() {
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
     // Activation du menu avec Enter ou Space
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault(); // empêche le scroll avec Space
@@ -31,7 +31,7 @@ function NavBar() {
         </nav>
 
         {/* Hamburger menu accessible */}
-        <button 
+        <button
           type="button"
           className="NavBar-hamburger"
           onClick={toggleMenu}
@@ -39,9 +39,9 @@ function NavBar() {
           aria-expanded={menuOpen}
           aria-label="Menu"
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span />
+          <span />
+          <span />
         </button>
       </div>
     </header>
