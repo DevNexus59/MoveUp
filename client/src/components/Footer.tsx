@@ -13,7 +13,7 @@ const Footer = ({ companyName = "MoveUp", year = 2026 }: FooterProps) => {
       <p>
         {companyName} © {year} - All rights reserved.
       </p>
-      <p className="footer-mentionlegales">
+      <p>
         {" "}
         <Link to="/mentions-legales">Terms & Conditions | Privacy Policy</Link>
       </p>
