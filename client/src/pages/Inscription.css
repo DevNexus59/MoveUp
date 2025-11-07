@@ -164,32 +164,32 @@
 /* On s'assure que l'input prend toute la largeur */
 .password-wrapper input {
   width: 100%;
-  
+
   /* CHANGEMENT : Padding réduit pour un look plus fin */
-  padding-right: 45px; 
-  
+  padding-right: 45px;
+
   /* S'assure que le padding ne modifie pas la largeur totale */
   box-sizing: border-box;
 }
 
 /* Le bouton pour afficher/masquer */
 .toggle-password-btn {
-  position: absolute; 
-  
+  position: absolute;
+
   /* CHANGEMENT : Légèrement plus loin du bord */
-  right: 12px; 
-  
-  top: 50%; 
+  right: 12px;
+
+  top: 50%;
   transform: translateY(-50%);
-  background: none; 
-  border: none; 
+  background: none;
+  border: none;
   cursor: pointer;
-  
+
   /* CHANGEMENT : Icône plus petite */
-  font-size: 1.1rem; 
-  
+  font-size: 1.1rem;
+
   padding: 0;
-  
+
   /* Ajout : Un peu de transparence pour le fond */
-  opacity: 0.7; 
+  opacity: 0.7;
 }

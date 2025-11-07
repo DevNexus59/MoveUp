@@ -3,9 +3,8 @@ import { useState } from "react";
 import { Link } from "react-router";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
-import "../App.css"
-import "./Connexion.css"
-
+import "../App.css";
+import "./Connexion.css";
 
 function Login() {
   const [email, setEmail] = useState<string>("");
@@ -45,40 +44,40 @@ function Login() {
   };
 
   return (
-      <>
+    <>
       <div>
-      <Hero />
+        <Hero />
       </div>
       <h2>Connexion:</h2>
       <div className="connexion-board">
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Mot de passe:</label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div>
-          <Link to="/pages/Inscription">Je ne suis pas inscrit</Link>
-        </div>
-        <button type="submit">Se connecter</button>
-      </form>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="email">Email:</label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Mot de passe:</label>
+            <input
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <div>
+            <Link to="/pages/Inscription">Je ne suis pas inscrit</Link>
+          </div>
+          <button type="submit">Se connecter</button>
+        </form>
 
-      {message && <p>{message}</p>}
-      <Footer/>
-    </div>
+        {message && <p>{message}</p>}
+        <Footer />
+      </div>
     </>
   );
 }

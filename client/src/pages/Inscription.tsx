@@ -230,7 +230,6 @@ function Register() {
               </div>
             </div>
 
-          
             <div>
               <label htmlFor="checkpassword">
                 Confirmation du mot de passe
