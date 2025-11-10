@@ -36,11 +36,14 @@ export const ExercicesProvider = ({ children }: ExercicesProviderProps) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://localhost:4000");
+        console.log("📡 Tentative de fetch vers le back...");
+        const response = await fetch("http://localhost:4000/api/exercices");
+        console.log("✅ Réponse brute :", response);
         if (!response.ok) {
           throw new Error(`Erreur HTTP: ${response.status}`);
         }
         const jsonData = await response.json();
+        console.log("📦 Données reçues :", jsonData);
         setData(jsonData);
       } catch (e) {
         setError(e as Error);
