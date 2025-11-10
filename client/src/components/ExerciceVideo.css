@@ -18,17 +18,15 @@
 
 .ExerciceVideo-h3 {
   padding: 0 2rem;
-  background: var(--card);
   color: hsl(0, 0%, 100%);
 }
 
 .ExerciceVideo-p {
   width: 550px;
   padding: 0 2rem;
-  background: var(--card);
 }
+
 .ExerciceVideo-link {
-  background: var(--card);
   display: inline-block;
   border-radius: 25px;
   padding: 0;
@@ -36,7 +34,7 @@
 }
 
 .ExerciceVideo-button {
-  margin: 0;
+  margin-left: 30px;
 }
 
 @media screen and (max-width: 992px) {
