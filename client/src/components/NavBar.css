@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
   color: white;
   position: sticky;
   top: 0;
@@ -27,8 +27,8 @@
 }
 
 .NavBar-header-logo {
-  height: 60px;
-  width: auto;
+  width: 150px;
+  height: auto;
 }
 
 .NavBar-links {
