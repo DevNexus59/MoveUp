@@ -1,0 +1,32 @@
+.cookie-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(154, 167, 232, 0.716);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 1);
+}
+
+.popup-content h3 {
+}
+
+.popup-content p {
+}
+
+.popup-content {
+  text-align: center;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(84, 90, 93, 0.706);
+}
+
+.buttons-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
