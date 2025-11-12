@@ -29,6 +29,18 @@ function FAQ() {
       comment:
         "Absolument. Vous pouvez annuler votre abonnement à tout moment depuis votre espace personnel. Aucun frais caché, aucune contrainte.",
     },
+    {
+      id: 5,
+      question: "Combien de temps dure une séance MoveUp ?",
+      comment:
+        "Les séances sont ajustables selon votre temps disponible. Des séances sont disponibles à partir de 3 minutes. Vous pouvez vous entraîner jusqu'à la durée souhaitée grâce à des filtres dans la liste des exercices",
+    },
+    {
+      id: 6,
+      question: "En quoi MoveUp est personnalisé ?",
+      comment:
+        "Chaque programme s'adapte à votre niveau et à vos disponibilités, grâce au questionnaire qui vous est proposé en début d'inscription. Résultat : un entraînement sur-mesure, qui respecte votre objectif et votre rythme de vie !",
+    },
   ];
 
   const toggleQuestion = (id: number) => {
