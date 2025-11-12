@@ -1,4 +1,4 @@
-import { type CredentialResponse, GoogleLogin } from "@react-oauth/google";
+// import { type CredentialResponse, GoogleLogin } from "@react-oauth/google";
 import type React from "react";
 import { useState } from "react";
 import { Link } from "react-router";
@@ -10,30 +10,30 @@ function Login() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [message, setMessage] = useState<string>("");
-  const handleSuccess = async (credentialResponse: CredentialResponse) => {
-    const credential = credentialResponse.credential;
-    try {
-      const res = await fetch("http://localhost:4000/api/auth/google-login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ credential }),
-      });
+  // const handleSuccess = async (credentialResponse: CredentialResponse) => {
+  //   const credential = credentialResponse.credential;
+  //   try {
+  //     const res = await fetch("http://localhost:4000/api/auth/google-login", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ credential }),
+  //     });
 
-      if (!res.ok) {
-        throw new Error("Échec de l'authentification backend");
-      }
-      const { token } = await res.json();
-      localStorage.setItem("TokenAuthGoogle", token);
-      window.location.href = "/dashboard";
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  const handleError = () => {
-    console.log("Échec de la connexion Google");
-  };
+  //     if (!res.ok) {
+  //       throw new Error("Échec de l'authentification backend");
+  //     }
+  //     const { token } = await res.json();
+  //     localStorage.setItem("TokenAuthGoogle", token);
+  //     window.location.href = "/dashboard";
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+  // const handleError = () => {
+  //   console.log("Échec de la connexion Google");
+  // };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setMessage("");
@@ -98,11 +98,11 @@ function Login() {
           </div>
           <button type="submit">Se connecter</button>
         </form>
-        <GoogleLogin
+        {/* <GoogleLogin
           onSuccess={handleSuccess}
           onError={handleError}
           useOneTap
-        />
+        /> */}
 
         {message && <p>{message}</p>}
       </div>
