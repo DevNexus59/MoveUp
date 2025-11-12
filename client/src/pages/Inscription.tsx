@@ -5,7 +5,15 @@ import "../App.css";
 
 const regexCodePostal = /^\d{5}$/;
 const regexPhoneNumber = /^\d{10}$/;
-
+interface AddressSuggestion {
+  properties: {
+    id: string;
+    label: string;
+    name: string;
+    postcode: string;
+    city: string;
+  };
+}
 const isValidCreditCard = (number: string): boolean => {
   const cleanNumber = number.replace(/\D/g, "");
   if (cleanNumber.length < 13 || cleanNumber.length > 19) return false;
@@ -29,6 +37,7 @@ function Register() {
   const [name, setName] = useState<string>("");
   const [firstname, setFirstName] = useState<string>("");
   const [address, setAddress] = useState<string>("");
+  const [addressSuggest, setAddressSuggest] = useState<AddressSuggestion[]>([]);
   const [zipcode, setZipCode] = useState<string>("");
   const [city, setCity] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
@@ -50,7 +59,38 @@ function Register() {
   // Nouveaux états pour la visibilité des mots de passe
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showCheckPassword, setShowCheckPassword] = useState<boolean>(false);
-
+  const handleSuggestionClick = (suggestion: AddressSuggestion) => {
+    setAddress(suggestion.properties.name);
+    setZipCode(suggestion.properties.postcode);
+    setCity(suggestion.properties.city);
+    setAddressSuggest([]);
+  };
+  const handleAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    setAddress(newValue);
+    if (newValue.length > 2) {
+      const url = `https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(newValue)}`;
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          setAddressSuggest(data.features || []);
+        })
+        .catch((error) => {
+          console.error("Erreur lors de la récupération des adresses:", error);
+          setAddressSuggest([]);
+        });
+    } else {
+      setAddressSuggest([]);
+    }
+  };
+  const handleSuggestionKeyDown = (
+    e: React.KeyboardEvent<HTMLLIElement>,
+    suggestion: AddressSuggestion,
+  ) => {
+    if (e.key === "Enter") {
+      handleSuggestionClick(suggestion);
+    }
+  };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setMessage("");
@@ -155,9 +195,22 @@ function Register() {
                 id="address"
                 type="text"
                 value={address}
-                onChange={(e) => setAddress(e.target.value)}
+                onChange={handleAddressChange}
                 required
               />
+              {addressSuggest.length > 0 && (
+                <ul>
+                  {addressSuggest.map((suggestion) => (
+                    <li
+                      key={suggestion.properties.id}
+                      onClick={() => handleSuggestionClick(suggestion)}
+                      onKeyDown={(e) => handleSuggestionKeyDown(e, suggestion)}
+                    >
+                      {suggestion.properties.label}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
             <div>
               <label htmlFor="zipcode">Code postal :</label>
