@@ -1,22 +1,15 @@
 .theme-toggle {
   position: fixed;
-  left: calc(16px + env(safe-area-inset-left, 0px));
+  right: calc(16px + env(safe-area-inset-left, 0px));
   bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   z-index: 1000;
   padding: 1rem;
   border: none;
-  background: rgba(0, 0, 0, 0.103);
+  background: rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   color: var(--bg-font);
   cursor: pointer;
-  transition:
-    background-color .45s ease,
-    color .45s ease,
-    box-shadow .35s ease,
-    transform .25s ease,
-    filter .35s ease;
-  will-change: transform, filter;
 }
 
 .theme-toggle:hover {
@@ -33,6 +26,40 @@
 .theme-toggle:focus-visible {
   outline: 3px solid var(--card);
   outline-offset: .5rem;
+}
+
+:root[data-theme="dark"] .theme-toggle img {
+  filter: invert(1) brightness(1.5);
+}
+
+.icon-viewport {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.icon-stack {
+  display: inline-flex;
+  flex-direction: column;
+  transition: transform 0.45s ease;
+  will-change: transform;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  pointer-events: none;
+}
+
+:root[data-theme="light"] .icon-stack {
+  transform: translateY(0%);
+}
+
+:root[data-theme="dark"] .icon-stack {
+  transform: translateY(-50%);
 }
 
 @media (max-width: 480px) {

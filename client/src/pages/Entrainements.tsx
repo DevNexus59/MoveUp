@@ -1,5 +1,5 @@
-import HeroSecondary from "../components/HeroSecondary";
 import entrainement from "../assets/images/entrainement.jpg";
+import HeroSecondary from "../components/HeroSecondary";
 
 function Entrainements() {
   return (

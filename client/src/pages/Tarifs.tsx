@@ -1,5 +1,5 @@
-import HeroSecondary from "../components/HeroSecondary";
 import balance from "../assets/images/balance.jpg";
+import HeroSecondary from "../components/HeroSecondary";
 
 function Tarifs() {
   return (
