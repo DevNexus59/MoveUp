@@ -9,7 +9,7 @@ function FreeTrial() {
     <section className="free-trial-section">
       <img src={Cadeau} alt="7 jours gratuit" className="free-trial-gift" />
       <div className="free-trial-card">
-        <h3 className="free-trial-title">Essait gratuit 7 jours</h3>
+        <h3 className="free-trial-title">Essai gratuit 7 jours</h3>
         <p className="free-trial-comment">
           Testez gratuitement nos vidéos "basic" et découvrez nos coachs avant
           de choisir votre formule.
