@@ -36,7 +36,7 @@ function ExerciceVideo() {
           playsInline
           preload="metadata"
         >
-          <track kind="captions" src="" label="Aucun sous-titre" />
+          <track kind="captions" src="#" label="Aucun sous-titre" />
         </video>
       </article>
     </section>

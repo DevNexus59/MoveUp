@@ -1,0 +1,72 @@
+.scroll-up {
+  position: fixed;
+  right: calc(16px + env(safe-area-inset-left, 0px));
+  bottom: calc(95px + env(safe-area-inset-bottom, 0px));
+  z-index: 1000;
+  padding: 1rem;
+  border: none;
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.scroll-up:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  opacity: 1;
+}
+
+.scroll-up:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-up:focus-visible {
+  outline: 3px solid var(--card);
+  outline-offset: 0.4rem;
+}
+
+:root[data-theme="dark"] .scroll-up img {
+  filter: invert(1) brightness(1.5);
+}
+
+.scroll-up svg,
+.scroll-up img {
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+  transition: transform 0.25s ease;
+}
+
+.scroll-up:hover svg {
+  transform: translateY(-2px);
+}
+
+.scroll-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.scroll-up.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .scroll-up {
+    padding: 0.8rem;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    right: calc(12px + env(safe-area-inset-left, 0px));
+  }
+}
