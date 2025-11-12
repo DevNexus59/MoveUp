@@ -50,6 +50,14 @@
   line-height: 1.4;
 }
 
+:root[data-theme="dark"] .free-trial-title {
+  color: var(--bg-font);
+}
+
+:root[data-theme="dark"] .free-trial-comment {
+  color: var(--bg-font);
+}
+
 @media (max-width: 768px) {
   .free-trial-section {
     max-width: 83%;
