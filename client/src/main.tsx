@@ -1,4 +1,5 @@
 // Import necessary modules from React and React Router
+// import { GoogleOAuthProvider } from "@react-oauth/google";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router";
@@ -85,9 +86,11 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
+    {/* <GoogleOAuthProvider clientId="576518412561-g6gv2t0m3jqc15k4st98eu6i3m06jc3f.apps.googleusercontent.com"> */}
     <AuthProvider>
       <RouterProvider router={router} />
     </AuthProvider>
+    {/* </GoogleOAuthProvider> */}
   </StrictMode>,
 );
 
