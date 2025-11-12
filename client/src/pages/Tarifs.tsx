@@ -6,8 +6,8 @@ function Tarifs() {
   return (
     <>
       <h1>Tarifs</h1>
-      <FreeTrial />
       <CardTarifs />
+      <FreeTrial />
       <FAQ />
     </>
   );

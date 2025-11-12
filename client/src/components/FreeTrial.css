@@ -4,25 +4,32 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1em 0.5em;
-  margin: 2em auto;
+  padding: 1em 2em;
+  margin: 3em auto 2em auto;
   max-width: 400px;
+  background: url("../assets/images/background_freetrial.png"), var(--card);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   position: relative;
   z-index: 1;
-  background: var(--card);
-  opacity: 80%;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-blend-mode: overlay;
 }
 
 .free-trial-gift {
-  width: 4rem;
+  width: 5rem;
+  height: auto;
 }
 
 .free-trial-title {
-  font-size: var(--font-h);
+  font-size: 1.5rem;
+  color: var(--bg);
   margin: 0.6em 0 0 0;
+  font-weight: 600;
 }
 
 .free-trial-card {
@@ -35,7 +42,36 @@
 }
 
 .free-trial-comment {
-  color: var(--bg-font);
+  color: var(--bg);
+  font-size: 1rem;
   text-align: center;
-  margin: 1em 0 0 0;
+  margin: 1em;
+  max-width: 320px;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .free-trial-section {
+    max-width: 83%;
+    padding: 1.2em 1em;
+    background-size: cover;
+  }
+
+  .free-trial-gift {
+    width: 4rem;
+  }
+
+  .free-trial-title {
+    font-size: 1.3rem;
+  }
+
+  .free-trial-comment {
+    font-size: 0.9rem;
+    margin: 0.8em;
+  }
+
+  .free-trial-card {
+    flex-direction: column;
+    gap: 0.6em;
+  }
 }
