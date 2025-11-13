@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import NavBarLogged from "./components/NavBarLogged";
 import Toggle from "./components/Toggle";
 import "./App.css";
+import ScrollUpButton from "./components/ScrollUpButton";
 import { useAuth } from "./context/AuthContext";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <nav>{isAuthenticated ? <NavBarLogged /> : <NavBar />}</nav>
       <main>
         <Outlet />
+        <ScrollUpButton />
         <Toggle />
       </main>
       <footer>

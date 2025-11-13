@@ -1,5 +1,8 @@
-import HeroSecondary from "../components/HeroSecondary";
 import balance from "../assets/images/balance.jpg";
+import CardTarifs from "../components/CardTarifs";
+import FAQ from "../components/FAQ";
+import FreeTrial from "../components/FreeTrial";
+import HeroSecondary from "../components/HeroSecondary";
 
 function Tarifs() {
   return (
@@ -12,6 +15,9 @@ Pas de frais cachés. Pas d'engagement piège. Juste un investissement clair dan
 Choisissez votre formule et commencez dès aujourd'hui."
         image={balance}
       />
+      <CardTarifs />
+      <FreeTrial />
+      <FAQ />
     </>
   );
 }

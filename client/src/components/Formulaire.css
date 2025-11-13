@@ -1,0 +1,117 @@
+.form-section {
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+  max-width: 600px;
+}
+
+.form-section h2 {
+  margin-bottom: 1.5rem;
+}
+
+.form-contact {
+  background: var(--card);
+  padding: 1.5rem;
+}
+
+.form-contact fieldset {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.form-contact legend {
+  padding: 0 .5rem;
+  font-weight: 700;
+  font-size: calc(var(--font-h) * 1.1);
+}
+
+.form-field {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-field label {
+  font-weight: 600;
+}
+
+.form-contact input[type="text"],
+.form-contact input[type="email"],
+.form-contact textarea {
+  /* width: 80%; */
+  padding: .9rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--link);
+  outline: none;
+  transition: box-shadow .25s ease, border-color .25s ease, background .25s ease;
+}
+
+.form-contact input::placeholder,
+.form-contact textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-consent {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  align-items: start;
+  gap: .75rem;
+  margin: .75rem 0 .5rem;
+}
+
+.form-consent input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--linkv);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-top: .5rem;
+}
+
+.form-status {
+  min-height: 1.25rem;
+  margin-top: 0.5rem;
+  font-weight: 600;
+  color: var(--bg-font);
+}
+:root[data-theme="light"] .form-status.success {
+  color: #05b80e;
+}
+
+:root[data-theme="dark"] .form-status.success {
+  color: #357739;
+}
+
+:root[data-theme="light"] .form-status.error {
+  color: #b11f1f;
+}
+
+:root[data-theme="dark"] .form-status.error {
+  color: #f86b6b;
+}
+
+/* Honeypot caché */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (min-width: 720px) {
+  .form-contact {
+    padding: 2rem;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}

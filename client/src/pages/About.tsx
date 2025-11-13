@@ -1,5 +1,7 @@
-import HeroSecondary from "../components/HeroSecondary";
 import sportifs from "../assets/images/sportifs.jpg";
+import Avis from "../components/Avis";
+import Formulaire from "../components/Formulaire";
+import HeroSecondary from "../components/HeroSecondary";
 
 function About() {
   return (
@@ -15,6 +17,8 @@ Chez Move UP, on célèbre les progrès, on partage les victoires, et on transfo
 Prêt à écrire votre propre histoire ?"
         image={sportifs}
       />
+      <Formulaire />
+      <Avis />
     </>
   );
 }
