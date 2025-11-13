@@ -24,8 +24,8 @@ const Search: React.FC<SearchProps> = ({ data }) => {
       />
       {filteredData.length > 0 ? (
         <ul className="search-results">
-          {filteredData.map((item, index) => (
-            <li key={index} className="search-item">
+          {filteredData.map((item, id) => (
+            <li key={id} className="search-item">
               {item}
             </li>
           ))}
