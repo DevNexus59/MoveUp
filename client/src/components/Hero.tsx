@@ -26,9 +26,9 @@ function Hero({
   return (
     <section className="hero">
       <div className="hero-slider">
-        {duplicateImages.map((img) => (
+        {duplicateImages.map((img, i) => (
           <img
-            key={`slide-${img.name}`}
+            key={`slide-${img.name}-${i}`}
             src={img.src}
             alt={img.name}
             className="hero-image"

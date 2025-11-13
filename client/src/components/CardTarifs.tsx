@@ -25,7 +25,7 @@ function CardTarifs() {
       id: "basic",
       name: "Basic",
       priceMonthly: 19,
-      note: "Exercice illimité accessibles",
+      note: "Des exercices ciblés pour progresser à votre rythme",
       features: [
         { id: "feature1", label: "Accès aux videos de base" },
         { id: "feature2", label: "Support par email" },
