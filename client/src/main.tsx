@@ -16,8 +16,8 @@ import Entrainements from "./pages/Entrainements";
 import Inscription from "./pages/Inscription";
 import Register from "./pages/Inscription";
 import MentionsLegales from "./pages/MentionsLegales";
+import Profil from "./pages/Profil";
 import Tarifs from "./pages/Tarifs";
-
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
 
@@ -30,7 +30,11 @@ import Tarifs from "./pages/Tarifs";
 // You can add more routes as you build out your app!
 const router = createBrowserRouter([
   {
-    element: <App />,
+    element: (
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    ),
     children: [
       {
         path: "/", // The root path
@@ -70,6 +74,10 @@ const router = createBrowserRouter([
         path: "/pages/Inscription", // The root path
         element: <Register />,
       },
+      {
+        path: "/pages/Profil", // The root path
+        element: <Profil />,
+      },
     ],
   },
   // Try adding a new route! For example, "/about" with an About component
@@ -87,9 +95,8 @@ if (rootElement == null) {
 createRoot(rootElement).render(
   <StrictMode>
     {/* <GoogleOAuthProvider clientId="576518412561-g6gv2t0m3jqc15k4st98eu6i3m06jc3f.apps.googleusercontent.com"> */}
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
+
+    <RouterProvider router={router} />
     {/* </GoogleOAuthProvider> */}
   </StrictMode>,
 );
