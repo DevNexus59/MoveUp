@@ -1,4 +1,5 @@
 import Avis from "../components/Avis";
+import CallToAction from "../components/CallToAction";
 import CardTarifs from "../components/CardTarifs";
 import CookiePopUp from "../components/CookiePopUp";
 import ExerciceVideo from "../components/ExerciceVideo";
@@ -12,6 +13,7 @@ function Accueil() {
       <ExerciceVideo />
       <CardTarifs />
       <Avis />
+      <CallToAction />
     </>
   );
 }
