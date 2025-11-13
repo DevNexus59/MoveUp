@@ -1,20 +1,18 @@
 import { createContext } from "react";
+import type { Exercice } from "../components/ExercicesProvider";
 
-export type Exercice = {
-  id: number;
-  exerciseId: string;
-  nom: string;
-  gifUrl: string;
-  muscleCible: string;
-  partieDuCorps: string;
-  equipement: string;
-  musclesSecondaires: string;
-  instructions: string;
-  duree: string;
-  difficulte: string;
-  activite: string;
-};
+interface ExerciceContextState {
+  data: Exercice[];
+  setData: (data: Exercice[]) => void;
+  isLoading: boolean;
+  error: Error | null;
+}
 
-const ExercicesContext = createContext<Exercice | null>(null);
+const ExercicesContext = createContext<ExerciceContextState>({
+  data: [],
+  setData: () => {},
+  isLoading: false,
+  error: null,
+});
 
 export default ExercicesContext;

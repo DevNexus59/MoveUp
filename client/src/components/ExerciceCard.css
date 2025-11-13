@@ -1,0 +1,40 @@
+.ExerciceCardArticle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem;
+  width: 250px;
+  border-style: solid;
+  border-color: var(--bg-font);
+}
+.ExerciceCardImageContainer {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.ExerciceCardImage {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+.ExerciceCardEtoileVide {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  z-index: 1;
+}
+.ExerciceCardButton {
+  display: none;
+}
+
+.exerciceCardIsConnecting {
+  display: inline-block;
+}
+
+/* .ExerciceCardH5 {
+} */

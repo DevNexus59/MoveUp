@@ -18,8 +18,8 @@ export type Exercice = {
 };
 
 interface ExercicesContextState {
-  data: Exercice | null;
-  setData: (data: Exercice) => void;
+  data: Exercice[];
+  setData: (data: Exercice[]) => void;
   isLoading: boolean;
   error: Error | null;
 }
@@ -29,7 +29,7 @@ type ExercicesProviderProps = {
 };
 
 export const ExercicesProvider = ({ children }: ExercicesProviderProps) => {
-  const [data, setData] = useState<Exercice | null>(null);
+  const [data, setData] = useState<Exercice[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
@@ -62,7 +62,7 @@ export const ExercicesProvider = ({ children }: ExercicesProviderProps) => {
   };
 
   return (
-    <ExercicesContext.Provider value={value as unknown as Exercice}>
+    <ExercicesContext.Provider value={value}>
       {children}
     </ExercicesContext.Provider>
   );

@@ -13,7 +13,8 @@ function Entrainements() {
   return (
     <>
       <h1>Entraînements</h1>
-      <ExerciceCard exercice={context} />
+
+      <ExerciceCard />
     </>
   );
 }

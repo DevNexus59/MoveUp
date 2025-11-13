@@ -1,22 +1,50 @@
 import "./ExerciceCard.css";
+import { useState } from "react";
+import etoilePleine from "../assets/etoile-pleine.png";
+import etoileVide from "../assets/etoile-vide.png";
 
-interface ExercicesI {
-  gifUrl: string;
-  nom: string;
-}
+//INTERFACE pour TYPER LES PROPS
+// interface ExercicesI {
+//   gifUrl: string;
+//   nom: string;
+// }
 
-interface Exercice {
-  exercice: ExercicesI;
-}
+//INTERFACE pour TYPER LES PROPS
+// interface Exercice {
+//   exercice: ExercicesI;
+// }
 
-function ExerciceCard({ exercice }: Exercice) {
-  const { gifUrl, nom } = exercice;
-  console.log(exercice);
+const test = {
+  nom: "Haussement d'épaules avec bande",
+  gifUrl: "https://static.exercisedb.dev/media/trmte8s.gif",
+};
+
+function ExerciceCard() {
+  // permet l'affichage ou non  du button, et du favoris TEMPORAIRE en attendant de voir comment on fait avec le groupe
+  const [exerciceCardIsConnecting, setExerciceCardIsConnecting] =
+    useState(true);
+  setExerciceCardIsConnecting(true);
+  const [exerciceCardIsFavorite, setExerciceCardIsFavorite] = useState(false);
+  setExerciceCardIsFavorite(true);
+  // Il faudra modifier le test en dessous lorsque le props sera validé
+  const { gifUrl, nom } = test;
   return (
-    <article>
-      <img src={gifUrl} alt={nom} />
-      <h4>{nom}</h4>
-      <button type="button">Commencer</button>
+    <article className="ExerciceCardArticle">
+      <div className="ExerciceCardImageContainer">
+        <img
+          className={`ExerciceCardEtoileVide ${exerciceCardIsConnecting ? "exerciceCardIsConnecting" : ""}`}
+          src={exerciceCardIsFavorite ? etoilePleine : etoileVide}
+          alt="étoile"
+        />
+        <img className="ExerciceCardImage" src={gifUrl} alt={nom} />
+      </div>
+      <h5 className="ExerciceCardH5">{nom}</h5>
+      <button
+        className={`ExerciceCardButton ${exerciceCardIsConnecting ? "exerciceCardIsConnecting" : ""}`}
+        type="button"
+      >
+        Commencer
+      </button>
     </article>
   );
 }
