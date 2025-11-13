@@ -21,11 +21,8 @@ const test = {
 
 function ExerciceCard() {
   // permet l'affichage ou non  du button, et du favoris TEMPORAIRE en attendant de voir comment on fait avec le groupe
-  const [exerciceCardIsConnecting, setExerciceCardIsConnecting] =
-    useState(true);
-  setExerciceCardIsConnecting(true);
-  const [exerciceCardIsFavorite, setExerciceCardIsFavorite] = useState(false);
-  setExerciceCardIsFavorite(true);
+  const [exerciceCardIsConnecting] = useState(false);
+  const [exerciceCardIsFavorite] = useState(false);
   // Il faudra modifier le test en dessous lorsque le props sera validé
   const { gifUrl, nom } = test;
   return (
