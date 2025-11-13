@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
-import './Search.css';
+import type React from "react";
+import { useState } from "react";
+import "./Search.css";
 
 interface SearchProps {
   data: string[];
 }
 
 const Search: React.FC<SearchProps> = ({ data }) => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
 
   // Filtrage des données en ignorant la casse et les espaces
-  const filteredData = data.filter(item =>
-    item.toLowerCase().trim().includes(query.toLowerCase().trim())
+  const filteredData = data.filter((item) =>
+    item.toLowerCase().trim().includes(query.toLowerCase().trim()),
   );
 
   return (
