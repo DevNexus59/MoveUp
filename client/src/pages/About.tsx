@@ -1,4 +1,5 @@
 import sportifs from "../assets/images/sportifs.jpg";
+import Avis from "../components/Avis";
 import Formulaire from "../components/Formulaire";
 import HeroSecondary from "../components/HeroSecondary";
 
@@ -17,6 +18,7 @@ Prêt à écrire votre propre histoire ?"
         image={sportifs}
       />
       <Formulaire />
+      <Avis />
     </>
   );
 }
