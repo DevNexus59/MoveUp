@@ -1,0 +1,28 @@
+h1 {
+  text-align: center;
+}
+
+.Profil-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--card);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  color: var(--link);
+}
+
+a {
+  text-align: center;
+}
+
+.button-delete {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}

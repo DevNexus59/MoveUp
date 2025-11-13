@@ -1,10 +1,11 @@
 // import { type CredentialResponse, GoogleLogin } from "@react-oauth/google";
 import type React from "react";
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Hero from "../components/Hero";
 import "../App.css";
 import "./Connexion.css";
+import { useAuth } from "../context/AuthContext";
 
 function Login() {
   const [email, setEmail] = useState<string>("");
@@ -34,6 +35,8 @@ function Login() {
   // const handleError = () => {
   //   console.log("Échec de la connexion Google");
   // };
+  const { login } = useAuth();
+  const navigate = useNavigate();
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setMessage("");
@@ -51,12 +54,8 @@ function Login() {
 
       if (response.ok) {
         const data = await response.json();
-        const token = data.token;
-        localStorage.setItem("authToken", token);
-
-        setMessage("Connexion Reussie ! Token stocké.");
-        setEmail("");
-        setPassword("");
+        login(data.token, data.userId, data.userFirstName);
+        navigate("/");
       } else {
         const errorText = await response.text();
         setMessage(`Erreur: ${errorText}`);
