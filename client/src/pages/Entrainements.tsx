@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import ExerciceCard from "../components/ExerciceCard";
-import ExercicesContext from "../context/ExercicesContext";
-import Search from "../components/Search";
 import entrainement from "../assets/images/entrainement.jpg";
+import ExerciceCard from "../components/ExerciceCard";
 import HeroSecondary from "../components/HeroSecondary";
+import Search from "../components/Search";
+import ExercicesContext from "../context/ExercicesContext";
 
 const exercices = [
   "Pompes",
