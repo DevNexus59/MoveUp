@@ -1,6 +1,9 @@
 // import hook react
 import { useEffect, useState } from "react";
 import { useEffect as useEffectType } from "react";
+import moonIcon from "../assets/images/moon.svg";
+import sunIcon from "../assets/images/sun.svg";
+import "./Toggle.css";
 
 // Composant Toggle pour changer le thème clair/sombre en gros il y a deux valeurs "light" et "dark"
 function Toggle() {
@@ -41,13 +44,23 @@ function Toggle() {
     return () => mq.removeEventListener("change", handleChange);
   }, []);
 
+  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
+
   // et voici le bouton qui change le thème au clic
   return (
     <button
       type="button"
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      className="theme-toggle"
+      aria-pressed={theme === "dark"}
+      aria-label="Basculer le thème"
+      onClick={toggleTheme}
     >
-      {theme === "light" ? "🌙 Mode sombre" : "☀️ Mode clair"}
+      <span className="icon-viewport" aria-hidden="true">
+        <span className="icon-stack">
+          <img src={sunIcon} alt="" className="icon" />
+          <img src={moonIcon} alt="" className="icon" />
+        </span>
+      </span>
     </button>
   );
 }

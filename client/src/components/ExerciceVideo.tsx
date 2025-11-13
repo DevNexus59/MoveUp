@@ -20,7 +20,7 @@ function ExerciceVideo() {
           <p className="ExerciceVideo-p">
             Cible : travail du cardio, des abdominaux et des jambes.
           </p>
-          <Link to="/Entrainements">
+          <Link className="ExerciceVideo-link" to="/Pages/Entrainements">
             <button className="ExerciceVideo-button" type="button">
               Nos entrainements
             </button>
@@ -36,7 +36,7 @@ function ExerciceVideo() {
           playsInline
           preload="metadata"
         >
-          <track kind="captions" src="" label="Aucun sous-titre" />
+          <track kind="captions" src="#" label="Aucun sous-titre" />
         </video>
       </article>
     </section>

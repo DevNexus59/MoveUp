@@ -1,20 +1,19 @@
 import Avis from "../components/Avis";
+import CallToAction from "../components/CallToAction";
 import CardTarifs from "../components/CardTarifs";
+import CookiePopUp from "../components/CookiePopUp";
 import ExerciceVideo from "../components/ExerciceVideo";
-import Footer from "../components/Footer";
 import Hero from "../components/Hero";
-import Toggle from "../components/Toggle";
-
 
 function Accueil() {
   return (
     <>
+      <CookiePopUp />
       <Hero />
       <ExerciceVideo />
       <CardTarifs />
       <Avis />
-      <Toggle />
-      <Footer />
+      <CallToAction />
     </>
   );
 }

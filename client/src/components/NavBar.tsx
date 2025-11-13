@@ -19,7 +19,11 @@ function NavBar() {
     <header className="NavBar-header">
       <div className="NavBar-header-container">
         <NavLink to="/" className="NavBar-header-link-logo">
-          <img src="" alt="logo" className="NavBar-header-logo" />
+          <img
+            src="../src/assets/logo.png"
+            alt="logo"
+            className="NavBar-header-logo"
+          />
         </NavLink>
 
         <nav className={`NavBar-links ${menuOpen ? "active" : ""}`}>
