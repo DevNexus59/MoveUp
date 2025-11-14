@@ -30,11 +30,9 @@ function Entrainements() {
       <Search />
 
       <div className="exercice-list">
-        {context.data?.map((exercice) => {
-          console.log("MAP ENVOIE:", exercice);
-
-          return <ExerciceCard key={exercice.exerciseId} exoData={exercice} />;
-        })}
+        {context.data?.map((exercice) => (
+        <ExerciceCard key={exercice.id} exoData={exercice} />
+        ))}
       </div>
     </div>
   );
