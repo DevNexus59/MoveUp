@@ -31,7 +31,7 @@ function Entrainements() {
 
       <div className="exercice-list">
         {context.data?.map((exercice) => (
-        <ExerciceCard key={exercice.id} exoData={exercice} />
+          <ExerciceCard key={exercice.id} exoData={exercice} />
         ))}
       </div>
     </div>
