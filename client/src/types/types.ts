@@ -11,7 +11,8 @@ export interface User {
   timerequired: string;
   diet: string;
   subscription: string;
-};
+  favoriteExercises: string;
+}
 
 export interface Exercice {
   id: number;
@@ -26,19 +27,18 @@ export interface Exercice {
   duree: string;
   difficulte: string;
   activite: string;
-};
-
+}
 
 export interface Donnees {
   data: {
-    results: Exercice []; // ou unknown si tu veux éviter any
+    results: Exercice[]; // ou unknown si tu veux éviter any
   };
   isLoading: boolean;
 }
 
 export interface ExercicesContextState {
-  data: Exercice [] | null;
-  setData: (data: any) => void;
+  data: Exercice[] | null;
+  setData: (data: Exercice[] | null) => void;
   isLoading: boolean;
   error: Error | null;
-};
+}
