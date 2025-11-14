@@ -1,11 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./CookiePopUp.css";
 
 const CookiePopUp = () => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const Chosen = localStorage.getItem("cookieChoice");
+    if (!Chosen) {
+      setIsVisible(true);
+    }
+  }, []);
 
   const handleAccept = (choice: string) => {
     console.log(`Choix des cookies : ${choice}`);
+    localStorage.setItem("cookieChoice", choice);
     setIsVisible(false);
   };
 
@@ -19,22 +27,20 @@ const CookiePopUp = () => {
         <h3>🍪🍪🍪</h3>
         <p> Les seuls cookies qui vous feront garder la ligne.</p>
         <div className="buttons-container">
+          <button type="button" onClick={() => handleAccept("Tout accepter")}>
+            Tout accepter
+          </button>
+          <button
+            type="button"
+            onClick={() => handleAccept("Accepter les essentiels")}
+          >
+            Accepter les essentiels
+          </button>
           <button
             type="button"
             onClick={() => handleAccept("Continuer sans accepter")}
           >
             Continuer sans accepter
-          </button>
-          <button
-            type="button"
-            onClick={() =>
-              handleAccept("Accepter seulement les cookies nécessaires")
-            }
-          >
-            Accepter seulement les cookies nécessaires
-          </button>
-          <button type="button" onClick={() => handleAccept("Tout accepter")}>
-            Tout accepter
           </button>
         </div>
       </div>
