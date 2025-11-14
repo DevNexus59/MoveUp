@@ -1,16 +1,14 @@
 import type React from "react";
 import { useEffect, useState } from "react";
 import ExercicesContext from "../context/ExercicesContext";
-import type {Exercice, ExercicesContextState} from "../types/types";
-
-
+import type { Exercice, ExercicesContextState } from "../types/types";
 
 type ExercicesProviderProps = {
   children: React.ReactNode;
 };
 
 export const ExercicesProvider = ({ children }: ExercicesProviderProps) => {
-  const [data, setData] = useState<Exercice [] | null>(null);
+  const [data, setData] = useState<Exercice[] | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 

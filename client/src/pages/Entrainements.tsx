@@ -12,6 +12,7 @@ import ExercicesContext from "../context/ExercicesContext";
 function Entrainements() {
   // charge les informations de l'api dans la variable context
   const context = useContext(ExercicesContext);
+
   // permet de vérifier que les données de l'API sont chargées dans context avant de continuer l'affichage
   if (!context) {
     console.log("Exercices.json not charged yet. Please wait or retry");
@@ -25,14 +26,13 @@ function Entrainements() {
         image={entrainement}
       />
       <h1>Liste des Entraînements</h1>
+
       <Search />
+
       <div className="exercice-list">
         {context.data?.map((exercice) => (
-         <ExerciceCard 
-           key={exercice.exerciseId}
-           {...({ exoData: exercice } as any)}
-         />
-       ))}
+          <ExerciceCard key={exercice.id} exoData={exercice} />
+        ))}
       </div>
     </div>
   );
