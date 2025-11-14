@@ -1,35 +1,16 @@
 import type React from "react";
 import { useEffect, useState } from "react";
 import ExercicesContext from "../context/ExercicesContext";
+import type {Exercice, ExercicesContextState} from "../types/types";
 
-export type Exercice = {
-  id: number;
-  exerciseId: string;
-  nom: string;
-  gifUrl: string;
-  muscleCible: string;
-  partieDuCorps: string;
-  equipement: string;
-  musclesSecondaires: string;
-  instructions: string;
-  duree: string;
-  difficulte: string;
-  activite: string;
-};
 
-interface ExercicesContextState {
-  data: Exercice | null;
-  setData: (data: Exercice) => void;
-  isLoading: boolean;
-  error: Error | null;
-}
 
 type ExercicesProviderProps = {
   children: React.ReactNode;
 };
 
 export const ExercicesProvider = ({ children }: ExercicesProviderProps) => {
-  const [data, setData] = useState<Exercice | null>(null);
+  const [data, setData] = useState<Exercice [] | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
@@ -44,7 +25,7 @@ export const ExercicesProvider = ({ children }: ExercicesProviderProps) => {
         }
         const jsonData = await response.json();
         console.log("📦 Données reçues :", jsonData);
-        setData(jsonData);
+        setData(jsonData.results);
       } catch (e) {
         setError(e as Error);
       } finally {
@@ -62,7 +43,7 @@ export const ExercicesProvider = ({ children }: ExercicesProviderProps) => {
   };
 
   return (
-    <ExercicesContext.Provider value={value as unknown as Exercice}>
+    <ExercicesContext.Provider value={value}>
       {children}
     </ExercicesContext.Provider>
   );
