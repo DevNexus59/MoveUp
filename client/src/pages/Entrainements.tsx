@@ -5,15 +5,7 @@ import HeroSecondary from "../components/HeroSecondary";
 import Search from "../components/Search";
 import ExercicesContext from "../context/ExercicesContext";
 
-const exercices = [
-  "Pompes",
-  "Squats",
-  "Abdos",
-  "Fentes",
-  "Tractions",
-  "Planche",
-  "Burpees",
-];
+
 
 // const EntrainementsTypes : React.FC = () => {
 //   return null;
@@ -35,7 +27,7 @@ function Entrainements() {
         image={entrainement}
       />
       <h1>Liste des Entraînements</h1>
-      <Search data={exercices} />
+      <Search />
       <ExerciceCard />
     </div>
   );

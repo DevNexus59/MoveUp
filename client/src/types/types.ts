@@ -11,4 +11,34 @@ export interface User {
   timerequired: string;
   diet: string;
   subscription: string;
+};
+
+export interface Exercice {
+  id: number;
+  exerciseId: string;
+  nom: string;
+  gifUrl: string;
+  muscleCible: string;
+  partieDuCorps: string;
+  equipement: string;
+  musclesSecondaires: string;
+  instructions: string;
+  duree: string;
+  difficulte: string;
+  activite: string;
+};
+
+
+export interface Donnees {
+  data: {
+    results: Exercice []; // ou unknown si tu veux éviter any
+  };
+  isLoading: boolean;
 }
+
+export interface ExercicesContextState {
+  data: Exercice [] | null;
+  setData: (data: any) => void;
+  isLoading: boolean;
+  error: Error | null;
+};
