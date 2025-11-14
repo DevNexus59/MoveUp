@@ -1,4 +1,10 @@
-import { type ReactNode, createContext, useContext, useState } from "react";
+import {
+  type ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { useNavigate } from "react-router";
 import type { User } from "../types/types";
 
@@ -25,6 +31,37 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [userFirstName, setuserFirstName] = useState<string | null>(() => {
     return localStorage.getItem("userFirstName");
   });
+  useEffect(() => {
+    if (userId) {
+      console.log("AuthProvider: Tentative de fetch pour l'ID:", userId);
+
+      const fetchUtilisateur = async () => {
+        try {
+          const reponse = await fetch(
+            `http://localhost:4000/api/users/${userId}`,
+          );
+
+          if (!reponse.ok) {
+            console.error("Erreur HTTP:", reponse.status, reponse.statusText);
+            throw new Error("La requête pour l'utilisateur a échoué");
+          }
+
+          const data: User = await reponse.json();
+
+          setUser(data);
+        } catch (erreur) {
+          console.error(
+            "Erreur lors de la récupération de l'utilisateur:",
+            erreur,
+          );
+        }
+      };
+
+      fetchUtilisateur();
+    } else {
+      setUser(null);
+    }
+  }, [userId]);
 
   const login = (
     token: string,
