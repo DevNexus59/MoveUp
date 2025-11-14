@@ -1,43 +1,61 @@
 import "./ExerciceCard.css";
-import { useState } from "react";
+// import { useState } from "react";
 import etoilePleine from "../assets/etoile-pleine.png";
 import etoileVide from "../assets/etoile-vide.png";
+import { useAuth } from "../context/AuthContext";
+import type { Exercice } from "../types/types";
 
-//INTERFACE pour TYPER LES PROPS
-// interface ExercicesI {
-//   gifUrl: string;
-//   nom: string;
-// }
+interface exercices {
+  exoData: Exercice;
+}
 
-//INTERFACE pour TYPER LES PROPS
-// interface Exercice {
-//   exercice: ExercicesI;
-// }
+function ExerciceCard({ exoData }: exercices) {
+  console.log("CARTE REÇOIT:", exoData);
+  const { isAuthenticated, user, userId, setUser } = useAuth();
+  const IsFavorite =
+    user?.favoriteExercises?.includes(String(exoData.id)) || false;
+  const handleToggleFavorite = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/api/users/${userId}/favorites`,
+        {
+          method: "PATCH",
+          headers: {
+            "content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            exerciseId: exoData.id,
+          }),
+        },
+      );
+      if (!response.ok) {
+        console.error("Echec de la mise à jour");
+        return;
+      }
+      const updateUser = await response.json();
 
-const test = {
-  nom: "Haussement d'épaules avec bande",
-  gifUrl: "https://static.exercisedb.dev/media/trmte8s.gif",
-};
-
-function ExerciceCard() {
-  // permet l'affichage ou non  du button, et du favoris TEMPORAIRE en attendant de voir comment on fait avec le groupe
-  const [exerciceCardIsConnecting] = useState(false);
-  const [exerciceCardIsFavorite] = useState(false);
+      setUser(updateUser);
+    } catch (error) {
+      console.error("Erreur réseau:", error);
+    }
+  };
   // Il faudra modifier le test en dessous lorsque le props sera validé
-  const { gifUrl, nom } = test;
+  const { gifUrl, nom } = exoData;
+  console.log("img", gifUrl);
+  console.log("nom", nom);
   return (
     <article className="ExerciceCardArticle">
       <div className="ExerciceCardImageContainer">
         <img
-          className={`ExerciceCardEtoileVide ${exerciceCardIsConnecting ? "exerciceCardIsConnecting" : ""}`}
-          src={exerciceCardIsFavorite ? etoilePleine : etoileVide}
+          className={`ExerciceCardEtoileVide ${isAuthenticated ? "exerciceCardIsConnecting" : ""}`}
+          src={IsFavorite ? etoilePleine : etoileVide}
           alt="étoile"
         />
         <img className="ExerciceCardImage" src={gifUrl} alt={nom} />
       </div>
       <h5 className="ExerciceCardH5">{nom}</h5>
       <button
-        className={`ExerciceCardButton ${exerciceCardIsConnecting ? "exerciceCardIsConnecting" : ""}`}
+        className={`ExerciceCardButton ${isAuthenticated ? "exerciceCardIsConnecting" : ""}`}
         type="button"
       >
         Commencer
