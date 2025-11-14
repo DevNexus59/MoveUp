@@ -1,18 +1,72 @@
-import type React from "react";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import ExercicesContext from "../context/ExercicesContext";
 import "./Search.css";
+import type {Exercice} from "../types/types";
 
-interface SearchProps {
-  data: string[];
-}
-
-const Search: React.FC<SearchProps> = ({ data }) => {
+function Search() {
   const [query, setQuery] = useState("");
-
+const [filterData, setFilterData] = useState<Exercice []>([]);
+const Donnees = useContext(ExercicesContext);  
+// const Donnees:Donnees | null = useContext(ExercicesContext);
+  
   // Filtrage des données en ignorant la casse et les espaces
-  const filteredData = data.filter((item) =>
-    item.toLowerCase().trim().includes(query.toLowerCase().trim()),
-  );
+  
+// useEffect (()=>{ setFilterData (data.isLoading ? null:  data.data.results.filter((item) =>
+// item.toLowerCase().trim().includes(query.toLowerCase().trim()),
+//  ))
+//   },[]);
+// code Abdou
+// useEffect(() => {
+//   if(Donnees.isLoading ){
+//   } else {
+//     setFilterData(Donnees.data.results.filter((item) => { 
+//       console.log(item.nom.toLowerCase().trim().includes(query.toLowerCase().trim())) 
+//        return (item.nom.toLowerCase().trim().includes(query.toLowerCase().trim()))
+//     }
+//     ))
+//   }
+// },[]);
+//fin code Abdou
+
+// code Pierre
+// useEffect(() => {
+
+//   if (!Donnees.isLoading && Donnees.data && Donnees.data.results) {
+//     const lowerCaseQuery = query.toLowerCase().trim();
+//     const filteredData = Donnees.data.results.filter((item) => {
+//       return item.nom?.toLowerCase().trim().includes(lowerCaseQuery) ?? false;
+//     });
+//     setFilterData(filteredData);
+//   } else if (!Donnees.isLoading) {
+//     setFilterData([]);
+//   }
+// }, [query, Donnees.isLoading, Donnees.data]);
+//fin code Pierre
+
+
+useEffect(() => { if (!Donnees) {
+    return;
+  } if (Donnees.isLoading) {
+    setFilterData([]);
+  } else {
+    console.log ("test", Donnees.data);
+
+    
+    const filterData = Donnees.data?.filter((item) => {
+      console.log(item.nom.toLowerCase().trim().includes(query.toLowerCase().trim()));
+     
+      if (query === "") return;
+      return item.nom.toLowerCase().trim().includes(query.toLowerCase().trim());
+     });
+     console.log (filterData, "filter");
+     setFilterData(filterData || []);
+    // setFilterData(Donnees.data?.filter((item) => {
+    //     console.log(item.nom.toLowerCase().trim().includes(query.toLowerCase().trim()));
+    //     return item.nom.toLowerCase().trim().includes(query.toLowerCase().trim());
+    //   })
+    // );
+  }
+}, [Donnees, query]);
 
   return (
     <div className="search-container">
@@ -23,17 +77,16 @@ const Search: React.FC<SearchProps> = ({ data }) => {
         onChange={(e) => setQuery(e.target.value)}
         className="search-input"
       />
-      {filteredData.length > 0 ? (
+      {filterData.length > 0 ? (
         <ul className="search-results">
-          {filteredData.map((item, id) => (
-            <li key={id} className="search-item">
-              {item}
+          {filterData.map((item) => (
+            <li key={item.id} className="search-item">
+              {item.nom}
             </li>
           ))}
         </ul>
-      ) : query ? (
-        <p className="search-no-results">Aucun résultat trouvé.</p>
-      ) : null}
+      ) : ( query && filterData.length===0 && <p className="search-no-results">Aucun résultat trouvé.</p>)
+      }
     </div>
   );
 };
