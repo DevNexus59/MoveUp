@@ -27,6 +27,7 @@ function ExerciceVideo() {
           </Link>
         </div>
         <video
+          className="ExerciceVideo-video"
           autoPlay
           muted
           loop
