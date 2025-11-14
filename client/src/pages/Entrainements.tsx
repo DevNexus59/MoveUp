@@ -5,8 +5,6 @@ import HeroSecondary from "../components/HeroSecondary";
 import Search from "../components/Search";
 import ExercicesContext from "../context/ExercicesContext";
 
-
-
 // const EntrainementsTypes : React.FC = () => {
 //   return null;
 // };
@@ -28,7 +26,14 @@ function Entrainements() {
       />
       <h1>Liste des Entraînements</h1>
       <Search />
-      <ExerciceCard />
+      <div className="exercice-list">
+       {context.data?.map((exercice) => (
+        <ExerciceCard 
+          key={exercice.exerciseId}
+          {...({ exoData: exercice } as any)}
+        />
+       ))}
+      </div>
     </div>
   );
 }
