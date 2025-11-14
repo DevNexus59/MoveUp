@@ -27,11 +27,11 @@ function Entrainements() {
       <h1>Liste des Entraînements</h1>
       <Search />
       <div className="exercice-list">
-       {context.data?.map((exercice) => (
-        <ExerciceCard 
-          key={exercice.exerciseId}
-          {...({ exoData: exercice } as any)}
-        />
+        {context.data?.map((exercice) => (
+         <ExerciceCard 
+           key={exercice.exerciseId}
+           {...({ exoData: exercice } as any)}
+         />
        ))}
       </div>
     </div>
