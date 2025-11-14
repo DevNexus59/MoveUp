@@ -45,9 +45,9 @@ function Register() {
   const [password, setPassword] = useState<string>("");
   const [checkpassword, setCheckPassword] = useState<string>("");
   const [usertype, setUserType] = useState<string>("");
-  const [levelexperiency, setLevelExperiency] = useState<string>("");
-  const [timerequired, setTimeRequired] = useState<string>("");
-  const [diet, setDiet] = useState<string>("");
+  // const [levelexperiency, setLevelExperiency] = useState<string>("");
+  // const [timerequired, setTimeRequired] = useState<string>("");
+  // const [diet, setDiet] = useState<string>("");
   const [subscription, setSubscription] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const [step, setStep] = useState<number>(1);
@@ -133,9 +133,9 @@ function Register() {
           email,
           password,
           usertype,
-          levelexperiency,
-          timerequired,
-          diet,
+          // levelexperiency,
+          // timerequired,
+          // diet,
           subscription,
           paymentMethod,
         }),
@@ -321,53 +321,6 @@ function Register() {
                 <option value="Personnel">Personnel</option>
               </select>
             </div>
-            <section>
-              <h3>Mon profil sportif</h3>
-            </section>
-            <div>
-              <label htmlFor="levelexperiency">Mon niveau d'expérience:</label>
-              <select
-                id="levelexperiency"
-                value={levelexperiency}
-                onChange={(e) => setLevelExperiency(e.target.value)}
-              >
-                <option value="">-- Veuillez choisir --</option>
-                <option value="Debutant">
-                  Débutant - Je n'ai pas l'habitude de pratiquer
-                </option>
-                <option value="Intermédiaire">
-                  Intermédiaire - Je pratique régulièrement
-                </option>
-                <option value="Expert">
-                  Expert - Je pratique intensivement ou je suis coach
-                </option>
-              </select>
-            </div>
-            <div>
-              <label htmlFor="timerequired">Mon temps libre:</label>
-              <input
-                id="timerequired"
-                type="time"
-                value={timerequired}
-                onChange={(e) => setTimeRequired(e.target.value)}
-              />
-            </div>
-            <div>
-              <label htmlFor="diet">Mon régime alimentaire:</label>
-              <select
-                id="diet"
-                value={diet}
-                onChange={(e) => setDiet(e.target.value)}
-              >
-                <option value="">-- Veuillez choisir --</option>
-                <option value="Végétarien">Végétarien</option>
-                <option value="Sans restriction">Sans restriction</option>
-                <option value="Végan">Végan</option>
-                <option value="Pescétarisme">Pescétarisme</option>
-                <option value="Flexitarisme">Flexitarisme</option>
-                <option value="Clean Eating">Clean Eating</option>
-              </select>
-            </div>
             <div>
               <label htmlFor="subscription">Mon abonnement:</label>
               <select
@@ -409,18 +362,6 @@ function Register() {
               </li>
               <li>
                 <strong>Type utilisateur :</strong> {usertype}
-              </li>
-            </ul>
-            <h3>Mon profil sportif</h3>
-            <ul>
-              <li>
-                <strong>Mon niveau d'expérience :</strong> {levelexperiency}
-              </li>
-              <li>
-                <strong>Mon temps libre :</strong> {timerequired}
-              </li>
-              <li>
-                <strong>Mon régime alimentaire :</strong> {diet}
               </li>
             </ul>
             <h3>Mon abonnement sélectionné :</h3>
