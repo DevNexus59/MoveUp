@@ -1,0 +1,7 @@
+.exercice-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1em 8em;
+  gap: 2em;
+}
