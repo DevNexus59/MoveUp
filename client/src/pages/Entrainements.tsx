@@ -5,6 +5,8 @@ import HeroSecondary from "../components/HeroSecondary";
 import Search from "../components/Search";
 import ExercicesContext from "../context/ExercicesContext";
 
+import "../pages/Entrainements.css";
+
 // const EntrainementsTypes : React.FC = () => {
 //   return null;
 // };
