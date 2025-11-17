@@ -1,5 +1,4 @@
 import "./ExerciceCard.css";
-// import { useState } from "react";
 import etoilePleine from "../assets/etoile-pleine.png";
 import etoileVide from "../assets/etoile-vide.png";
 import { useAuth } from "../context/AuthContext";
@@ -10,21 +9,20 @@ interface exercices {
 }
 
 function ExerciceCard({ exoData }: exercices) {
-  console.log("CARTE REÇOIT:", exoData);
   const { isAuthenticated, user, userId, setUser } = useAuth();
   const IsFavorite =
-    user?.favoriteExercises?.includes(String(exoData.id)) || false;
+    user?.favoriteExercises?.includes(String(exoData.exerciseId)) || false;
   const handleToggleFavorite = async () => {
     try {
       const response = await fetch(
-        `http://localhost:4000/api/users/${userId}/favorites`,
+        `http://localhost:4000/api/${userId}/favorites`,
         {
           method: "PATCH",
           headers: {
             "content-Type": "application/json",
           },
           body: JSON.stringify({
-            exerciseId: exoData.id,
+            exerciseId: exoData.exerciseId,
           }),
         },
       );
@@ -39,18 +37,25 @@ function ExerciceCard({ exoData }: exercices) {
       console.error("Erreur réseau:", error);
     }
   };
-  // Il faudra modifier le test en dessous lorsque le props sera validé
+
   const { gifUrl, nom } = exoData;
-  console.log("img", gifUrl);
-  console.log("nom", nom);
   return (
     <article className="ExerciceCardArticle">
       <div className="ExerciceCardImageContainer">
-        <img
-          className={`ExerciceCardEtoileVide ${isAuthenticated ? "exerciceCardIsConnecting" : ""}`}
-          src={IsFavorite ? etoilePleine : etoileVide}
-          alt="étoile"
-        />
+        <button
+          className="ExerciceCardButtonFavoris"
+          type="button"
+          onClick={() => {
+            handleToggleFavorite();
+            console.info("Click!");
+          }}
+        >
+          <img
+            className={`ExerciceCardEtoileVide ${isAuthenticated ? "exerciceCardIsConnecting" : ""}`}
+            src={IsFavorite ? etoilePleine : etoileVide}
+            alt="étoile"
+          />
+        </button>
         <img className="ExerciceCardImage" src={gifUrl} alt={nom} />
       </div>
       <h5 className="ExerciceCardH5">{nom}</h5>
