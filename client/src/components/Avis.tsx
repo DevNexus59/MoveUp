@@ -2,12 +2,15 @@ import avatar1 from "../assets/images/avatar1.jpg";
 import avatar2 from "../assets/images/avatar2.jpg";
 import avatar3 from "../assets/images/avatar3.jpg";
 import star from "../assets/images/star.svg";
+import { useState } from "react";
 
 import "./Avis.css";
 
 const fiveStars = ["One", "Two", "Three", "Four", "Five"];
 
 function Stars({ count }: { count: number }) {
+  const [comment, setComment] = useState("");
+  const [rating, setRating] = useState(0)
   return (
     <div className="mu-avis-note" aria-label={`${count} sur 5`}>
       {fiveStars.map((key, index) => (

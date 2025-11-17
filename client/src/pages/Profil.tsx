@@ -11,16 +11,33 @@ function Profil() {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null)
 
   // Correction : Remplacer {} par Partial<User>
   const [formData, setFormData] = useState<Partial<User>>({});
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+    const file = e.target.files[0];
+    setSelectedFile(file)
+  };
 
+  }
   const handleSubmit = async () => {
+    const bodyData = new FormData()
+    if (selectedFile) {
+    bodyData.append("photo", selectedFile); 
+    
+    }
+    for (const key in formData) {
+    if (Object.prototype.hasOwnProperty.call(formData, key)) {
+    const typedKey = key as keyof typeof formData;  
+    bodyData.append(typedKey, formData[typedKey] as string); 
+    }
+  }
     try {
       const reponse = await fetch(`http://localhost:4000/api/users/${userId}`, {
         method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: bodyData,
       });
 
       if (reponse.ok) {
@@ -137,7 +154,23 @@ function Profil() {
       <div className="Profil-main">
         <div>
           <h3>Mes données personnelles</h3>
-
+          <p>
+             Photo de profil :
+            {isEditing ? (
+              <input
+              type="file"
+              name="photo"
+              accept="image/*"
+              onChange={handleFileChange}
+              />
+              ) : (
+              displayData.photoUrl ? (
+                <img src={displayData.photoUrl} alt="Profil" style={{width: "100px", height: "100px", borderRadius: "50%"}} />
+                ) : (
+                <span> (Aucune photo)</span>
+                )
+                )}
+          </p>
           <p>
             Nom :
             {isEditing ? (
@@ -148,7 +181,6 @@ function Profil() {
                 onChange={handleChange}
               />
             ) : (
-              // Correction : Ajout d'une valeur par défaut
               ` ${displayData.name || ""}`
             )}
           </p>
