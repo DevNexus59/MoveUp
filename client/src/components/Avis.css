@@ -109,3 +109,12 @@
     height: 40px;
   }
 }
+.mu-avis-star {
+  opacity: 0.5;
+  filter: grayscale(100%);
+}
+
+.mu-avis-star.is-active {
+  opacity: 1;
+  filter: none;
+}
