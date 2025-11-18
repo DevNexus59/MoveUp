@@ -11,29 +11,30 @@ function Profil() {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
-  const [selectedFile, setSelectedFile] = useState<File | null>(null)
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-  // Correction : Remplacer {} par Partial<User>
   const [formData, setFormData] = useState<Partial<User>>({});
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-    const file = e.target.files[0];
-    setSelectedFile(file)
+    if (e.target.files?.[0]) {
+      setSelectedFile(e.target.files[0]);
+    }
   };
 
-  }
   const handleSubmit = async () => {
-    const bodyData = new FormData()
+    const bodyData = new FormData();
+
     if (selectedFile) {
-    bodyData.append("photo", selectedFile); 
-    
+      bodyData.append("photo", selectedFile);
     }
+
     for (const key in formData) {
-    if (Object.prototype.hasOwnProperty.call(formData, key)) {
-    const typedKey = key as keyof typeof formData;  
-    bodyData.append(typedKey, formData[typedKey] as string); 
+      if (Object.prototype.hasOwnProperty.call(formData, key)) {
+        const typedKey = key as keyof typeof formData;
+        bodyData.append(typedKey, formData[typedKey] as string);
+      }
     }
-  }
+
     try {
       const reponse = await fetch(`http://localhost:4000/api/users/${userId}`, {
         method: "PATCH",
@@ -96,8 +97,6 @@ function Profil() {
   };
 
   useEffect(() => {
-    console.log("Tentative de fetch pour l'ID utilisateur:", userId);
-
     const fetchUtilisateur = async () => {
       try {
         const reponse = await fetch(
@@ -136,8 +135,8 @@ function Profil() {
   if (!user) {
     return (
       <div>
-        Impossible de charger le profil. Vérifiez que vous êtes connecté et que
-        l'API est en cours d'exécution.
+                Impossible de charger le profil. Vérifiez que vous êtes connecté
+        et que         l'API est en cours d'exécution.      {" "}
       </div>
     );
   }
@@ -146,33 +145,35 @@ function Profil() {
 
   return (
     <>
-      <h1>Mon profil utilisateur</h1>
-
-      {/* Correction : Ajout d'une valeur par défaut */}
-      <h2>Bonjour {displayData.firstname || ""}</h2>
-
+            <h1>Mon profil utilisateur</h1>     {" "}
+      <h2>Bonjour {displayData.firstname || ""}</h2>     {" "}
       <div className="Profil-main">
+               {" "}
         <div>
-          <h3>Mes données personnelles</h3>
+                    <h3>Mes données personnelles</h3>         {" "}
           <p>
-             Photo de profil :
+                         Photo de profil :            {" "}
             {isEditing ? (
               <input
-              type="file"
-              name="photo"
-              accept="image/*"
-              onChange={handleFileChange}
+                type="file"
+                name="photo"
+                accept="image/*"
+                onChange={handleFileChange}
               />
-              ) : (
-              displayData.photoUrl ? (
-                <img src={displayData.photoUrl} alt="Profil" style={{width: "100px", height: "100px", borderRadius: "50%"}} />
-                ) : (
-                <span> (Aucune photo)</span>
-                )
-                )}
+            ) : displayData.photoUrl ? (
+              <img
+                src={`http://localhost:4000${displayData.photoUrl}`}
+                alt="Profil"
+                style={{ width: "100px", height: "100px", borderRadius: "50%" }}
+              />
+            ) : (
+              <span> (Aucune photo)</span>
+            )}
+                     {" "}
           </p>
+                   {" "}
           <p>
-            Nom :
+                        Nom :            {" "}
             {isEditing ? (
               <input
                 type="text"
@@ -183,10 +184,11 @@ function Profil() {
             ) : (
               ` ${displayData.name || ""}`
             )}
+                     {" "}
           </p>
-
+                   {" "}
           <p>
-            Prénom :
+                        Prénom :            {" "}
             {isEditing ? (
               <input
                 type="text"
@@ -195,14 +197,14 @@ function Profil() {
                 onChange={handleChange}
               />
             ) : (
-              // Correction : Ajout d'une valeur par défaut
               ` ${displayData.firstname || ""}`
             )}
+                     {" "}
           </p>
-
-          <p>Adresse :</p>
+                    <p>Adresse :</p>         {" "}
           {isEditing ? (
             <>
+                           {" "}
               <input
                 type="text"
                 value={formData.address || ""}
@@ -210,6 +212,7 @@ function Profil() {
                 placeholder="Adresse"
                 onChange={handleChange}
               />
+                           {" "}
               <input
                 type="text"
                 value={formData.zipcode || ""}
@@ -217,6 +220,7 @@ function Profil() {
                 placeholder="Code Postal"
                 onChange={handleChange}
               />
+                           {" "}
               <input
                 type="text"
                 value={formData.city || ""}
@@ -224,17 +228,18 @@ function Profil() {
                 placeholder="Ville"
                 onChange={handleChange}
               />
+                         {" "}
             </>
           ) : (
             <p>
-              {/* Correction : Ajout de valeurs par défaut */}
-              {displayData.address || ""}, {displayData.zipcode || ""}{" "}
-              {displayData.city || ""}
+                            {displayData.address || ""},{" "}
+              {displayData.zipcode || ""}               {displayData.city || ""}
+                         {" "}
             </p>
           )}
-
+                   {" "}
           <p>
-            Téléphone :
+                        Téléphone :            {" "}
             {isEditing ? (
               <input
                 type="tel"
@@ -243,13 +248,13 @@ function Profil() {
                 onChange={handleChange}
               />
             ) : (
-              // Correction : Ajout d'une valeur par défaut
               ` ${displayData.phone || ""}`
             )}
+                     {" "}
           </p>
-
+                   {" "}
           <p>
-            Adresse Email :
+                        Adresse Email :            {" "}
             {isEditing ? (
               <input
                 type="email"
@@ -258,13 +263,13 @@ function Profil() {
                 onChange={handleChange}
               />
             ) : (
-              // Correction : Ajout d'une valeur par défaut
               ` ${displayData.email || ""}`
             )}
+                     {" "}
           </p>
-
+                   {" "}
           <p>
-            Type utilisateur :
+                        Type utilisateur :            {" "}
             {isEditing ? (
               <select
                 id="usertype"
@@ -272,22 +277,23 @@ function Profil() {
                 value={formData.usertype || ""}
                 onChange={handleChange}
               >
-                <option value="">-- Veuillez choisir --</option>
-                <option value="Professionnel">Professionnel</option>
-                <option value="Personnel">Personnel</option>
+                                <option value="">-- Veuillez choisir --</option>
+                               {" "}
+                <option value="Professionnel">Professionnel</option>           
+                    <option value="Personnel">Personnel</option>             {" "}
               </select>
             ) : (
-              // Correction : Ajout d'une valeur par défaut
               ` ${displayData.usertype || ""}`
             )}
+                     {" "}
           </p>
+                 {" "}
         </div>
-
+               {" "}
         <div>
-          <h3>Mon profil sportif</h3>
-
+                    <h3>Mon profil sportif</h3>         {" "}
           <p>
-            Niveau d'expérience :
+                        Niveau d'expérience :            {" "}
             {isEditing ? (
               <select
                 id="levelexperiency"
@@ -295,25 +301,32 @@ function Profil() {
                 value={formData.levelexperiency || ""}
                 onChange={handleChange}
               >
-                <option value="">-- Veuillez choisir --</option>
+                                <option value="">-- Veuillez choisir --</option>
+                               {" "}
                 <option value="Debutant">
-                  Débutant - Je n'ai pas l'habitude de pratiquer
+                                    Débutant - Je n'ai pas l'habitude de
+                  pratiquer                {" "}
                 </option>
+                               {" "}
                 <option value="Intermédiaire">
-                  Intermédiaire - Je pratique régulièrement
+                                    Intermédiaire - Je pratique régulièrement  
+                               {" "}
                 </option>
+                               {" "}
                 <option value="Expert">
-                  Expert - Je pratique intensivement ou je suis coach
+                                    Expert - Je pratique intensivement ou je
+                  suis coach                {" "}
                 </option>
+                             {" "}
               </select>
             ) : (
-              // Correction : Ajout d'une valeur par défaut
               ` ${displayData.levelexperiency || ""}`
             )}
+                     {" "}
           </p>
-
+                   {" "}
           <p>
-            Temps à consacrer... :
+                        Temps à consacrer... :            {" "}
             {isEditing ? (
               <input
                 id="timerequired"
@@ -323,13 +336,13 @@ function Profil() {
                 onChange={handleChange}
               />
             ) : (
-              // Correction : Ajout d'une valeur par défaut
               ` ${displayData.timerequired || ""}`
             )}
+                     {" "}
           </p>
-
+                   {" "}
           <p>
-            Mon Régime Alimentaire :
+                        Mon Régime Alimentaire :            {" "}
             {isEditing ? (
               <select
                 id="diet"
@@ -337,24 +350,24 @@ function Profil() {
                 value={formData.diet || ""}
                 onChange={handleChange}
               >
-                <option value="">-- Veuillez choisir --</option>
-                <option value="Végétarien">Végétarien</option>
-                <option value="Sans restriction">Sans restriction</option>
-                <option value="Végan">Végan</option>
-                <option value="Pescétarisme">Pescétarisme</option>
-                <option value="Flexitarisme">Flexitarisme</option>
-                <option value="Clean Eating">Clean Eating</option>
+                                <option value="">-- Veuillez choisir --</option>
+                                <option value="Végétarien">Végétarien</option> 
+                             {" "}
+                <option value="Sans restriction">Sans restriction</option>     
+                          <option value="Végan">Végan</option>               {" "}
+                <option value="Pescétarisme">Pescétarisme</option>             
+                  <option value="Flexitarisme">Flexitarisme</option>           
+                    <option value="Clean Eating">Clean Eating</option>         
+                   {" "}
               </select>
             ) : (
-              // Correction : Ajout d'une valeur par défaut
               ` ${displayData.diet || ""}`
             )}
+                     {" "}
           </p>
-
-          <h3>Mon profil d'abonnement</h3>
-
+                    <h3>Mon profil d'abonnement</h3>         {" "}
           <p>
-            Type abonnement :
+                        Type abonnement :            {" "}
             {isEditing ? (
               <select
                 id="subscription"
@@ -362,19 +375,23 @@ function Profil() {
                 value={formData.subscription || ""}
                 onChange={handleChange}
               >
-                <option value="">-- Veuillez choisir --</option>
-                <option value="Basic">Basic - 19€ par mois</option>
-                <option value="Pro">Pro - 29€ par mois</option>
-                <option value="Premium">Premium - 49€ par mois</option>
+                                <option value="">-- Veuillez choisir --</option>
+                               {" "}
+                <option value="Basic">Basic - 19€ par mois</option>             
+                  <option value="Pro">Pro - 29€ par mois</option>               {" "}
+                <option value="Premium">Premium - 49€ par mois</option>         
+                   {" "}
               </select>
             ) : (
-              // Correction : Ajout d'une valeur par défaut
               ` ${displayData.subscription || ""}`
             )}
+                     {" "}
           </p>
+                 {" "}
         </div>
-
+               {" "}
         <div>
+                   {" "}
           <button
             type="button"
             onClick={
@@ -385,37 +402,37 @@ function Profil() {
                   }
             }
           >
-            {isEditing ? "Valider" : "Modifier"}
+                        {isEditing ? "Valider" : "Modifier"}         {" "}
           </button>
-
+                   {" "}
           {isEditing && (
             <button
               type="button"
               onClick={() => {
                 setIsEditing(false);
-                // Correction : 'user' ne peut pas être null ici
                 setFormData(user);
               }}
             >
-              Annuler
+                            Annuler            {" "}
             </button>
           )}
-
+                   {" "}
           <button type="button" onClick={handleLogout}>
-            Déconnexion
+                        Déconnexion          {" "}
           </button>
-
+                   {" "}
           <button
             type="button"
             className="button-delete"
-            onClick={() => {
-              handleDelete();
-            }}
+            onClick={handleDelete}
           >
-            Supprimer mon profil
+                        Supprimer mon profil          {" "}
           </button>
+                 {" "}
         </div>
+             {" "}
       </div>
+         {" "}
     </>
   );
 }

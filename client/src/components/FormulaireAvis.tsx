@@ -1,89 +1,107 @@
-import avatar1 from "../assets/images/avatar1.jpg";
-import avatar2 from "../assets/images/avatar2.jpg";
-import avatar3 from "../assets/images/avatar3.jpg";
-import star from "../assets/images/star.svg";
 import { useState } from "react";
-
-import "./Avis.css";
+import star from "../assets/images/star.svg";
+import { useAuth } from "../context/AuthContext";
+import "./FormulaireAvis.css";
 
 const fiveStars = ["One", "Two", "Three", "Four", "Five"];
-function Stars({ count }: { count: number }) {
-  return (
-    <div className="mu-avis-note" aria-label={`${count} sur 5`}>
-      {fiveStars.map((key, index) => (
-        <img
-          key={`star-${key}`}
-          src={star}
-          alt=""
-          className={`mu-avis-star ${index < count ? "is-active" : ""}`}
-          aria-hidden="true"
-          width={18}
-          height={18}
-        />
-      ))}
-    </div>
-  );
-}
 
 function FormulaireAvis() {
   const [comment, setComment] = useState("");
-  const [rating, setRating] = useState(0)
-  const { setUser: setContextUser, userId, logout } = useAuth();
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  const [title, setTitle] = useState("");
+  const [rating, setRating] = useState(0);
+  const { userId } = useAuth();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!userId || rating === 0) {
+      console.error(
+        "L'utilisateur n'est pas connecté ou aucune note n'a été sélectionnée.",
+      );
+      return;
+    }
+
     const dataToSend = {
-    userId: userId,
-    rating: rating,
-    comment: comment
+      userId: String(userId),
+      rating: rating,
+      comment: comment,
+      title: title,
     };
+
     try {
-      const reponse = await fetch(`http://localhost:4000/api/reviews/`, {
+      const reponse = await fetch("http://localhost:4000/api/reviews/", {
         method: "POST",
-        headers : {'Content-Type': 'application/json'},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dataToSend),
       });
 
       if (reponse.ok) {
-        setComment("")
+        console.log("Avis envoyé avec succès!");
+        setComment("");
+        setTitle("");
         setRating(0);
       } else {
-        console.error("Échec de l'enregistrement de l'avis");
+        console.error(
+          "Échec de l'enregistrement de l'avis. Statut:",
+          reponse.status,
+        );
       }
     } catch (erreur) {
-      console.error("Erreur réseau lors de l'enregistrement de l'avis:", erreur);
+      console.error(
+        "Erreur réseau lors de l'enregistrement de l'avis:",
+        erreur,
+      );
     }
   };
 
-
-  }
   return (
     <>
-    <form>
-    <textarea
-           name ="comment"
-           value={comment}
-           onChange={(e) => setComment(e.target.value)}
-           placeholder="Laissez votre avis ici..."
-    />
-    <div>
-    {[1, 2, 3, 4, 5].map((starNumber) => (
-    <span 
-      key={starNumber}
-      onClick={() => setRating(starNumber)} // <-- C'est ici que tout se joue
-      className= {(starNumber <= rating) ? 'star-gold' : 'star-grey'}
-      >★
-    </span>
-    ))}
-    </div>
-    <input type="radio"
-           name ="comment"
-           value={rating}
-           onChange={ (e)setRating}
-           placeholder="Noter votre expérience"
-    ></input>
-    </form>
+      <div className="Form-Avis">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="Titre"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Choisissez le sujet"
+            required
+          />
+          <textarea
+            name="comment"
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            placeholder="Laissez votre avis ici..."
+            required
+          />
+          <div className="mu-avis-stars-selection">
+            {fiveStars.map((key, index) => {
+              const starNumber = index + 1;
+              return (
+                <img
+                  key={`input-star-${key}`}
+                  src={star}
+                  alt={`Donner une note de ${starNumber} étoiles`}
+                  className={`mu-avis-star-input ${starNumber <= rating ? "is-active" : ""}`}
+                  onClick={() => setRating(starNumber)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      setRating(starNumber);
+                    }
+                  }}
+                  width={18}
+                  height={18}
+                />
+              );
+            })}
+          </div>
+          <button type="submit" disabled={rating === 0}>
+            Envoyer mon avis
+          </button>
+        </form>
+      </div>
     </>
-
-  )
+  );
 }
+
 export default FormulaireAvis;
