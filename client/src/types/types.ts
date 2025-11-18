@@ -12,6 +12,7 @@ export interface User {
   diet: string;
   subscription: string;
   favoriteExercises: string;
+  photoUrl: string;
 }
 
 export interface Exercice {
