@@ -11,7 +11,7 @@ interface exercices {
 function ExerciceCard({ exoData }: exercices) {
   const { isAuthenticated, user, userId, setUser } = useAuth();
   const IsFavorite =
-    user?.favoriteExercises?.includes(String(exoData.exerciseId)) || false;
+    user?.favoriteExercices?.includes(String(exoData.exerciseId)) || false;
   const handleToggleFavorite = async () => {
     try {
       const response = await fetch(
