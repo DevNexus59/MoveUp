@@ -12,6 +12,8 @@ export interface User {
   diet: string;
   subscription: string;
   favoriteExercises: string;
+  favoriteExercices: string;
+  photoUrl: string;
 }
 
 export interface Exercice {

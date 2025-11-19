@@ -28,7 +28,7 @@ export const ExercicesProvider = ({ children }: ExercicesProviderProps) => {
         }
         const jsonData = await response.json();
         console.log("📦 Données reçues :", jsonData);
-        setData(jsonData.results[0]);
+        setData(jsonData.results);
       } catch (e) {
         setError(e as Error);
       } finally {
