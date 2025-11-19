@@ -2,6 +2,14 @@
   padding-bottom: 2rem;
 }
 
+.entrainement-detail-back-btn {
+  background: var(--card);
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 2rem 1rem;
+  transition: all 0.3s ease;
+}
+
 .entrainement-detail-title {
   background: linear-gradient(to right, #c084fc, #f9a8d4, #c084fc);
   -webkit-background-clip: text;
@@ -48,7 +56,7 @@
 }
 
 .entrainement-detail-difficulte {
-  background: linear-gradient(135deg, #a8c0ff 0%, #c0a8ff 20%, #ffb3d9 100%);
+  background: linear-gradient(50deg, #7e79f2 0%, #9f6ae7, #9f6ae7 100%);
   box-shadow: 0 4px 15px rgba(255, 196, 214, 0.3);
   padding: 1rem;
   border-radius: 15px;
@@ -56,7 +64,7 @@
 }
 
 .entrainement-detail-muscle {
-  background: linear-gradient(135deg, #b7d0ff 0%, #d4baff 40%, #ffc7e6 100%);
+  background: linear-gradient(50deg, #9f6ae7 0%, #f069eb, #f069eb 100%);
   box-shadow: 0 4px 15px rgba(255, 210, 230, 0.35);
   padding: 1rem;
   border-radius: 15px;
@@ -64,7 +72,7 @@
 }
 
 .entrainement-detail-equipement {
-  background: linear-gradient(135deg, #c2d4ff 0%, #f3a6d8 35%, #c0a8ff 100%);
+  background: linear-gradient(50deg, #9f6ae7 0%, #4c72e2, #4c72e2 100%);
   box-shadow: 0 4px 15px rgba(200, 120, 255, 0.35);
   padding: 1rem;
   border-radius: 15px;
@@ -76,7 +84,7 @@
   font-size: 1em;
   text-align: start;
   font-weight: 600;
-  color: #9b4dff;
+  color: white !important;
 }
 
 .entrainement-detail-value {
@@ -144,11 +152,26 @@
   line-height: 1.8;
   color: #4a5568;
   background: #f7fafc;
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem 0.5rem 1.5rem;
   margin-top: 0;
   margin-left: 3rem;
   border-radius: 15px;
-  border-left: 8px solid #ffe5ec;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+
+.entrainement-detail-btn {
+  padding: 0 2rem 2rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.entrainement-detail-btn-action {
+  background: var(--card);
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 2rem 1rem;
+  transition: all 0.3s ease;
 }
 
 :root[data-theme="dark"] .entrainement-detail-label,

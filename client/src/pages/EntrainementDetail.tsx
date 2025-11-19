@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
+import { Link } from "react-router";
 import ExercicesContext from "../context/ExercicesContext";
 import type { Exercice } from "../types/types";
 
@@ -9,6 +10,7 @@ import "./EntrainementDetail.css";
 
 function EntrainementDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const context = useContext(ExercicesContext);
 
   if (!context) {
@@ -29,6 +31,13 @@ function EntrainementDetail() {
 
   return (
     <div className="entrainement-detail-container">
+      <button
+        type="button"
+        className="entrainement-detail-back-btn"
+        onClick={() => navigate(-1)}
+      >
+        ← Retour
+      </button>
       <h1 className="entrainement-detail-title">{exercice.nom}</h1>
       <section className="entrainement-detail-card">
         <div className="entrainement-detail-informations">
@@ -41,7 +50,7 @@ function EntrainementDetail() {
             <p className="entrainement-detail-value">{exercice.muscleCible}</p>
           </div>
           <div className="entrainement-detail-equipement">
-            <h2 className="entrainement-detail-label">Equipement(s)</h2>
+            <h2 className="entrainement-detail-label">Matériel :</h2>
             <p className="entrainement-detail-value">{exercice.equipement}</p>
           </div>
         </div>
@@ -63,8 +72,26 @@ function EntrainementDetail() {
         <div className="entrainement-detail-instructions">
           <h2 className="ed-title-instructions">Instructions :</h2>
           <p className="entrainement-detail-description">
-            {exercice.instructions}
+            {exercice.instructions[0]}
+            <br />
+            {exercice.instructions[1]}
+            <br />
+            {exercice.instructions[2]}
+            <br />
+            {exercice.instructions[3]}
+            <br />
+            {exercice.instructions[4]}
+            <br />
+            {exercice.instructions[5]}
+            <br />
           </p>
+        </div>
+        <div className="entrainement-detail-btn">
+          <Link to="./components/EventModal">
+            <button type="button" className="entrainement-detail-btn-action">
+              Ajouter à mon planning
+            </button>
+          </Link>
         </div>
       </section>
     </div>
