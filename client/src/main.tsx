@@ -12,6 +12,7 @@ import { AuthProvider } from "./context/AuthContext";
 import About from "./pages/About";
 import Accueil from "./pages/Accueil";
 import Connexion from "./pages/Connexion";
+import Contact from "./pages/Contact";
 import EntrainementDetail from "./pages/EntrainementDetail";
 import Entrainements from "./pages/Entrainements";
 import Inscription from "./pages/Inscription";
@@ -88,6 +89,10 @@ const router = createBrowserRouter([
       {
         path: "*",
         element: <NotFound />,
+      },
+      {
+        path: "/pages/Contact", // The root path
+        element: <Contact />,
       },
     ],
   },

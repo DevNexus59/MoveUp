@@ -13,16 +13,16 @@ function ExerciceVideo() {
             Position de départ : debout, dos droit, bras le long du corps.
           </p>
           <p className="ExerciceVideo-p">
-            Mouvement : alterne la montée rapide de chaque genou jusqu’à la
+            Mouvement : alternez la montée rapide de chaque genou jusqu’à la
             hauteur des hanches (ou plus haut), en synchronisant les bras comme
-            si tu courais sur place.
+            si vous couriez sur place.
           </p>
           <p className="ExerciceVideo-p">
             Cible : travail du cardio, des abdominaux et des jambes.
           </p>
           <Link className="ExerciceVideo-link" to="/Pages/Entrainements">
             <button className="ExerciceVideo-button" type="button">
-              Nos entrainements
+              Nos entraînements
             </button>
           </Link>
         </div>
