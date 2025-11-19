@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import cookieImg from "../assets/images/boite-a-cookies.png";
 import "./CookiePopUp.css";
 
 const CookiePopUp = () => {
@@ -24,8 +25,10 @@ const CookiePopUp = () => {
   return (
     <div className="cookie-popup">
       <div className="popup-content">
-        <h3>🍪🍪🍪</h3>
-        <p> Les seuls cookies qui vous feront garder la ligne.</p>
+        <h3>
+          <img src={cookieImg} alt="Cookies" className="cookie-icon" />
+        </h3>
+        <p>Les seuls cookies qui vous feront garder la ligne.</p>
         <div className="buttons-container">
           <button type="button" onClick={() => handleAccept("Tout accepter")}>
             Tout accepter
@@ -38,6 +41,7 @@ const CookiePopUp = () => {
           </button>
           <button
             type="button"
+            className="nothanks-link"
             onClick={() => handleAccept("Continuer sans accepter")}
           >
             Continuer sans accepter

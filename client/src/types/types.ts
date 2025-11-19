@@ -43,4 +43,19 @@ export interface ExercicesContextState {
   setData: (data: Exercice[] | null) => void;
   isLoading: boolean;
   error: Error | null;
+
+  //Ajout Leah pour planning
+  events: PlanningEvent[]; //liste de seances
+  addEvent: (event: Omit<PlanningEvent, "id">) => void; //bouton de creation de seance on omet l'id pur (ligne 54 car genere dans le provider) et pas le reste
+  updateEvent: (id: string, updates: Partial<PlanningEvent>) => void; // maj la seance avec l'id qu'on donne. Partial permet de modifier juste les champs qu'on modifie on n'envoie pas tout l'event.
+  deleteEvent: (id: string) => void; // supp la seance
+}
+
+//Planning Leah
+export interface PlanningEvent {
+  id: string;
+  exerciseId: string;
+  title: string;
+  start: string;
+  end: string;
 }

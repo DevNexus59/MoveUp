@@ -1,4 +1,5 @@
 import Avis from "../components/Avis";
+import Badges from "../components/Badges";
 import CallToAction from "../components/CallToAction";
 import CardTarifs from "../components/CardTarifs";
 import CookiePopUp from "../components/CookiePopUp";
@@ -14,6 +15,7 @@ function Accueil() {
       <CardTarifs />
       <Avis limit={3} />
       <CallToAction />
+      <Badges />
     </>
   );
 }

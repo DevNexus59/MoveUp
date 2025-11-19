@@ -8,6 +8,7 @@ import { RouterProvider, createBrowserRouter } from "react-router";
 
 // Import the main app component
 import App from "./App";
+import { ExercicesProvider } from "./components/ExercicesProvider";
 import { AuthProvider } from "./context/AuthContext";
 import About from "./pages/About";
 import Accueil from "./pages/Accueil";
@@ -35,7 +36,9 @@ const router = createBrowserRouter([
   {
     element: (
       <AuthProvider>
-        <App />
+        <ExercicesProvider>
+          <App />
+        </ExercicesProvider>
       </AuthProvider>
     ),
     children: [
