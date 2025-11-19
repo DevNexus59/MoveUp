@@ -8,16 +8,20 @@ import { RouterProvider, createBrowserRouter } from "react-router";
 
 // Import the main app component
 import App from "./App";
+import { ExercicesProvider } from "./components/ExercicesProvider";
 import { AuthProvider } from "./context/AuthContext";
 import About from "./pages/About";
 import Accueil from "./pages/Accueil";
 import Connexion from "./pages/Connexion";
+import Contact from "./pages/Contact";
 import Entrainements from "./pages/Entrainements";
 import Inscription from "./pages/Inscription";
 import Register from "./pages/Inscription";
 import MentionsLegales from "./pages/MentionsLegales";
+import NotFound from "./pages/NotFound";
 import Profil from "./pages/Profil";
 import Tarifs from "./pages/Tarifs";
+
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
 
@@ -32,7 +36,9 @@ const router = createBrowserRouter([
   {
     element: (
       <AuthProvider>
-        <App />
+        <ExercicesProvider>
+          <App />
+        </ExercicesProvider>
       </AuthProvider>
     ),
     children: [
@@ -77,6 +83,14 @@ const router = createBrowserRouter([
       {
         path: "/pages/Profil", // The root path
         element: <Profil />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
+      },
+      {
+        path: "/pages/Contact", // The root path
+        element: <Contact />,
       },
     ],
   },

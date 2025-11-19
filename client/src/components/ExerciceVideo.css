@@ -37,8 +37,23 @@
   margin-left: 30px;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1200px) {
   .ExerciceVideo-article {
     flex-direction: column-reverse;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ExerciceVideo-video {
+    width: 150%;
+    height: auto;
+  }
+  .ExerciceVideo-encart {
+    width: 140%;
+    height: auto;
+  }
+  .ExerciceVideo-p {
+    width: 85%;
+    padding: 0 2rem;
   }
 }

@@ -13,7 +13,7 @@ function Accueil() {
       <Hero />
       <ExerciceVideo />
       <CardTarifs />
-      <Avis />
+      <Avis limit={3} />
       <CallToAction />
       <Badges />
     </>
