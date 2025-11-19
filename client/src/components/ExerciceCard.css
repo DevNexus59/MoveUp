@@ -5,9 +5,10 @@
   padding: 1rem;
   margin: 1rem;
   width: 250px;
-  border-style: solid;
-  border-color: var(--bg-font);
+  border-radius: 1.5rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
 }
+
 .ExerciceCardImageContainer {
   position: relative;
   width: 200px;

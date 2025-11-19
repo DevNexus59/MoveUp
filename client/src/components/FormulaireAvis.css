@@ -1,0 +1,17 @@
+/* Styles pour rendre les étoiles cliquables */
+.mu-avis-star-input {
+  cursor: pointer;
+  /* Laissez l'étoile non sélectionnée en couleur par défaut (souvent noir ou gris) */
+  opacity: 0.5; /* Rendre l'étoile non active légèrement transparente */
+  transition: opacity 0.2s, filter 0.2s;
+}
+
+/* Styles pour l'état ACTIF (sélectionné) */
+.mu-avis-star-input.is-active {
+  opacity: 1; /* Pleine visibilité */
+
+  /* Ce filtre convertit une image noire/grise en couleur jaune/or. */
+  /* C'est la méthode standard pour coloriser un SVG en ligne. */
+  filter: invert(73%) sepia(97%) saturate(542%) hue-rotate(359deg)
+    brightness(108%) contrast(97%);
+}
