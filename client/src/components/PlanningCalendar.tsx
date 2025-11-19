@@ -1,4 +1,5 @@
 //recup des import normal, mais aussi ceux du calendar
+import French from "@fullcalendar/core/locales/fr";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import FullCalendar from "@fullcalendar/react";
@@ -110,9 +111,12 @@ function PlanningCalendar() {
             center: "title",
             right: "dayGridMonth,timeGridWeek",
           }}
+          locales={[French]}
+          locale="fr"
           selectable
           selectMirror
           editable
+          allDaySlot={false}
           droppable={false}
           events={calendarEvents}
           select={handleSelect}
@@ -123,6 +127,23 @@ function PlanningCalendar() {
           slotMinTime="06:00:00"
           slotMaxTime="22:00:00"
         />
+        <p
+          className="planning-help"
+          aria-label="Consignes d'utilisation du planning"
+        >
+          <strong>Construis ton planning comme tu veux!</strong>
+          <ul>
+            <li>Clique sur n'importe quel créneau pour ajouter une séance.</li>
+            <li>
+              Déplace une séance pour adapter ton entraînement à ton agenda.
+            </li>
+            <li>Étire une séance pour la rendre plus longue ou plus courte.</li>
+            <li>
+              Clique sur la séance pour changer l'exercice ou la supprimer.
+            </li>
+            <li>Navigue dans ton planning avec mois ou semaine.</li>
+          </ul>
+        </p>
       </div>
       {/* on appelle le composant eventmodal isOpen pour protection / onclose pour la fermer/ editing pour edition ou crea/ plage de date a afficher */}
       {isModalOpen && (
