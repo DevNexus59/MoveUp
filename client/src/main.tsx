@@ -12,8 +12,8 @@ import { AuthProvider } from "./context/AuthContext";
 import About from "./pages/About";
 import Accueil from "./pages/Accueil";
 import Connexion from "./pages/Connexion";
+import EntrainementDetail from "./pages/EntrainementDetail";
 import Entrainements from "./pages/Entrainements";
-import ExerciceCardDetail from "./pages/ExerciceCardDetail";
 import Inscription from "./pages/Inscription";
 import Register from "./pages/Inscription";
 import MentionsLegales from "./pages/MentionsLegales";
@@ -62,8 +62,8 @@ const router = createBrowserRouter([
         element: <Entrainements />, // Renders the App component for the home page
       },
       {
-        path: "/pages/ExerciceCardDetail/:id",
-        element: <ExerciceCardDetail />,
+        path: "/pages/EntrainementDetail/:id",
+        element: <EntrainementDetail />,
       },
       {
         path: "/pages/Inscription", // The root path

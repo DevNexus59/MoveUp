@@ -3,9 +3,11 @@ import { useParams } from "react-router";
 import ExercicesContext from "../context/ExercicesContext";
 import type { Exercice } from "../types/types";
 
-import "./ExerciceCardDetail.css";
+import chronometre from "../assets/images/entrainementdetail_time.png";
 
-function ExerciceCardDetail() {
+import "./EntrainementDetail.css";
+
+function EntrainementDetail() {
   const { id } = useParams();
   const context = useContext(ExercicesContext);
 
@@ -26,15 +28,46 @@ function ExerciceCardDetail() {
   }
 
   return (
-    <section>
-      <h1>{exercice.nom}</h1>
-      <h2>Muscle ciblé : {exercice.muscleCible}</h2>
-      <h3>Difficulté : {exercice.difficulte}</h3>
-      <h4>Durée de l'exercice : {exercice.duree}</h4>
-      <img src={exercice.gifUrl} alt={exercice.nom} />
-      <p>Description : {exercice.instructions}</p>
-      <p>Equipement(s) : {exercice.equipement}</p>
-    </section>
+    <div className="entrainement-detail-container">
+      <h1 className="entrainement-detail-title">{exercice.nom}</h1>
+      <section className="entrainement-detail-card">
+        <div className="entrainement-detail-informations">
+          <div className="entrainement-detail-difficulte">
+            <h2 className="entrainement-detail-label">Difficulté :</h2>
+            <p className="entrainement-detail-value">{exercice.difficulte}</p>
+          </div>
+          <div className="entrainement-detail-muscle">
+            <h2 className="entrainement-detail-label">Muscle ciblé :</h2>
+            <p className="entrainement-detail-value">{exercice.muscleCible}</p>
+          </div>
+          <div className="entrainement-detail-equipement">
+            <h2 className="entrainement-detail-label">Equipement(s)</h2>
+            <p className="entrainement-detail-value">{exercice.equipement}</p>
+          </div>
+        </div>
+        <div className="entrainement-detail-action">
+          <img
+            src={exercice.gifUrl}
+            alt={exercice.nom}
+            className="entrainement-detail-gif"
+          />
+          <div className="entrainement-detail-duration">
+            <img
+              src={chronometre}
+              alt="durée de l'exercice"
+              className="entrainement-detail-chrono"
+            />
+            <p className="entrainement-detail-duration">{exercice.duree}</p>
+          </div>
+        </div>
+        <div className="entrainement-detail-instructions">
+          <h2 className="ed-title-instructions">Instructions :</h2>
+          <p className="entrainement-detail-description">
+            {exercice.instructions}
+          </p>
+        </div>
+      </section>
+    </div>
   );
 }
-export default ExerciceCardDetail;
+export default EntrainementDetail;
