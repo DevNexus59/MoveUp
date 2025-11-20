@@ -1,10 +1,14 @@
+import Badges from "../components/Badges";
+import { useAuth } from "../context/AuthContext";
+
 function Dashboard() {
-  const data = { firstname: "John" };
+  const { userFirstName } = useAuth();
 
   return (
     <>
       <h1>Dashboard</h1>
-      <h2>Bonjour {data.firstname}</h2>
+      <h2>Bonjour {userFirstName}</h2>
+      <Badges />
     </>
   );
 }

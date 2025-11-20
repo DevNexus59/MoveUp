@@ -21,6 +21,7 @@ import MentionsLegales from "./pages/MentionsLegales";
 import NotFound from "./pages/NotFound";
 import Profil from "./pages/Profil";
 import Tarifs from "./pages/Tarifs";
+import Dashboard from "./pages/Dashboard";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
       {
         path: "/pages/Contact", // The root path
         element: <Contact />,
+      },
+      {
+        path: "/pages/Dashboard", // The root path
+        element: <Dashboard />,
       },
     ],
   },

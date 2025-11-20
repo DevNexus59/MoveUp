@@ -15,7 +15,6 @@ function Accueil() {
       <CardTarifs />
       <Avis limit={3} />
       <CallToAction />
-      <Badges />
     </>
   );
 }
