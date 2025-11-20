@@ -1,22 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router";
 import "./NavBar.css";
 
 function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
-    // Activation du menu avec Enter ou Space
     if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault(); // empêche le scroll avec Space
+      e.preventDefault();
       toggleMenu();
     }
   };
 
+useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
-    <header className="NavBar-header">
+    <header className={`NavBar-header ${isScrolled ? "scrolled" : ""}`}>
       <div className="NavBar-header-container">
         <NavLink to="/" className="NavBar-header-link-logo">
           <img
