@@ -18,7 +18,7 @@
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   font-size: 3.5rem;
   font-weight: 800;
-  padding: 6rem 0;
+  padding: 4rem 0;
   margin: 0;
   text-align: center;
 }
@@ -34,25 +34,28 @@
 }
 
 .entrainement-detail-card {
-  margin: 2rem 20rem;
+  margin: 2rem 10rem;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  justify-content: center;
   color: var(--bg-font);
   border-radius: 10px;
-  padding: 2em 3em;
+  padding: 2em 1em;
   gap: 2.5em;
-  overflow: hidden;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
 }
 
 .entrainement-detail-informations {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   align-items: center;
-  height: 120px;
   gap: 1.5rem;
   padding: 2rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .entrainement-detail-difficulte {
@@ -60,7 +63,7 @@
   box-shadow: 0 4px 15px rgba(255, 196, 214, 0.3);
   padding: 1rem;
   border-radius: 15px;
-  height: 50%;
+  height: 55%;
 }
 
 .entrainement-detail-muscle {
@@ -68,7 +71,7 @@
   box-shadow: 0 4px 15px rgba(255, 210, 230, 0.35);
   padding: 1rem;
   border-radius: 15px;
-  height: 50%;
+  height: 55%;
 }
 
 .entrainement-detail-equipement {
@@ -76,7 +79,7 @@
   box-shadow: 0 4px 15px rgba(200, 120, 255, 0.35);
   padding: 1rem;
   border-radius: 15px;
-  height: 50%;
+  height: 55%;
 }
 
 .entrainement-detail-label {
@@ -98,10 +101,10 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: end;
   gap: 8rem;
-  padding-right: 8rem;
+  width: 100%;
 }
 
 .entrainement-detail-duration {
@@ -124,39 +127,47 @@
 }
 
 .entrainement-detail-gif {
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   height: auto;
-  max-width: 100%;
   overflow: hidden;
+  display: block;
 }
 
 .entrainement-detail-instructions {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  padding-left: 6rem;
+  align-items: center;
+  padding: 0 1rem;
   margin: 3rem 0 1rem 0;
   gap: 3rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .ed-title-instructions {
   margin: 0;
   font-size: 2rem;
+  align-self: center;
+  width: auto;
+  max-width: calc(600px - 3rem);
+  padding-left: 1.5rem;
+  box-sizing: border-box;
 }
 
 .entrainement-detail-description {
-  width: 70%;
+  width: calc(100% - 2rem);
+  max-width: 1200px;
   font-size: 1.125rem;
   line-height: 1.8;
   color: #4a5568;
   background: #f7fafc;
   padding: 1.5rem 1.5rem 0.5rem 1.5rem;
-  margin-top: 0;
-  margin-left: 3rem;
+  margin: 0 auto;
   border-radius: 15px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
 }
 
 .entrainement-detail-btn {
@@ -204,7 +215,7 @@
   }
 
   .entrainement-detail-card {
-    margin: 1rem;
+    margin: 1rem !important;
     padding: 1.5rem;
     gap: 1.5rem;
   }
@@ -225,11 +236,10 @@
 
   .entrainement-detail-action {
     justify-content: center;
-    gap: 1.5rem;
+    gap: 1rem;
     padding-right: 0;
     flex-direction: column;
     align-items: center;
-    height: 380px;
   }
 
   .entrainement-detail-duration {
@@ -248,11 +258,12 @@
     height: auto;
     margin: 0 auto;
     display: block;
+    margin: 0 auto;
   }
 
   .entrainement-detail-instructions {
     padding-left: 0;
-    margin: 0 0 1rem 0;
+    margin-right: 0;
     gap: 1.5rem;
     align-items: start;
   }
@@ -260,14 +271,23 @@
   .ed-title-instructions {
     font-size: 1.5rem;
     text-align: center;
-    padding-left: 0.5rem;
+    padding-left: 1rem;
   }
 
   .entrainement-detail-description {
     width: 100%;
-    margin-left: 0;
+    margin: 0;
     font-size: 1rem;
     padding: 1rem;
     border-left-width: 4px;
+  }
+}
+
+@media (min-width: 768px) {
+  .entrainement-detail-description {
+    margin: 0 3rem;
+  }
+  .entrainement-detail-instructions {
+    padding: 0 3rem;
   }
 }

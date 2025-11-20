@@ -16,6 +16,7 @@ import Connexion from "./pages/Connexion";
 import Contact from "./pages/Contact";
 import EntrainementDetail from "./pages/EntrainementDetail";
 import Entrainements from "./pages/Entrainements";
+import Favoris from "./pages/Favoris";
 import Inscription from "./pages/Inscription";
 import Register from "./pages/Inscription";
 import MentionsLegales from "./pages/MentionsLegales";
@@ -101,6 +102,10 @@ const router = createBrowserRouter([
       {
         path: "/pages/Contact", // The root path
         element: <Contact />,
+      },
+      {
+        path: "/pages/Favoris", // The root path
+        element: <Favoris />,
       },
     ],
   },

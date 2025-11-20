@@ -39,6 +39,31 @@ function ExerciceCard({ exoData }: exercices) {
     }
   };
 
+  const handleToggleExCounter = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:4000/api/achievements/track",
+        {
+          method: "POST",
+          headers: {
+            "content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            exerciseId: exoData.exerciseId,
+            userId,
+          }),
+        },
+      );
+      if (!response.ok) {
+        console.error(
+          "Echec de l'envoi de l'incrémentation du compteur de l'exercice",
+        );
+        return;
+      }
+    } catch (error) {
+      console.error("Erreur réseau:", error);
+    }
+  };
   const { gifUrl, nom, id } = exoData;
   return (
     <article className="ExerciceCardArticle">
@@ -64,6 +89,10 @@ function ExerciceCard({ exoData }: exercices) {
         <button
           className={`ExerciceCardButton ${isAuthenticated ? "exerciceCardIsConnecting" : ""}`}
           type="button"
+          onClick={() => {
+            handleToggleExCounter();
+            console.info("Click count");
+          }}
         >
           Commencer
         </button>
