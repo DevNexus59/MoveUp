@@ -27,7 +27,7 @@ function NavBarLogged() {
         </NavLink>
 
         <nav className={`NavBar-links ${menuOpen ? "active" : ""}`}>
-          <NavLink to="/">Accueil</NavLink>
+          <NavLink to="/pages/Dashboard">Accueil</NavLink>
           <NavLink to="/pages/Planning">Planning</NavLink>
           <NavLink to="/pages/Entrainements">Entraînements</NavLink>
           <NavLink to="/pages/Favoris">Favoris</NavLink>

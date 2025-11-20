@@ -36,8 +36,7 @@ function Badges() {
               key={b.id}
               className={`badge-item ${isUnlocked ? "badge-unlocked" : "badge-locked"}`}
             >
-              {b.name}
-              {b.icon}
+              <img src={b.icon} alt={b.name} />
             </div>
           );
         })}

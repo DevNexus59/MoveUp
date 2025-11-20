@@ -10,21 +10,17 @@
 }
 
 .badge-item {
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.badge-unlocked {
+.badge-unlocked img {
   background: whitesmoke;
-  border-radius: 50%;
 }
 
-.badge-locked {
-  background: grey;
-  border-radius: 50%;
+.badge-locked img {
+  filter: grayscale(100%) opacity(O 0.4);
 }
 
 @media (max-width: 768px) {
