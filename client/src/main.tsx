@@ -19,6 +19,7 @@ import Inscription from "./pages/Inscription";
 import Register from "./pages/Inscription";
 import MentionsLegales from "./pages/MentionsLegales";
 import NotFound from "./pages/NotFound";
+import Planning from "./pages/Planning";
 import Profil from "./pages/Profil";
 import Tarifs from "./pages/Tarifs";
 
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: "/pages/MentionsLegales", // The root path
         element: <MentionsLegales />, // Renders the App component for the home page
+      },
+      {
+        path: "/pages/Planning", // The root path
+        element: <Planning />,
       },
       {
         path: "/pages/Tarifs", // The root path
