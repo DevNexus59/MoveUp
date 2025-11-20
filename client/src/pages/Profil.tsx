@@ -150,213 +150,240 @@ function Profil() {
 
   return (
     <>
-      <h1>Mon profil utilisateur</h1>
-      <h2>Bonjour {displayData.firstname || ""}</h2>
-      <div className="Profil-main">
-        <div>
+      <header className="profile-header">
+        <h1>Mon profil utilisateur</h1>
+        <h2>Bonjour {displayData.firstname || ""}</h2>
+      </header>
+
+      <main className="profile-page">
+        <section className="profile-card profile-personal">
           <h3>Mes données personnelles</h3>
-          <p>
-            Photo de profil :
-            {isEditing ? (
-              <input
-                type="file"
-                name="photo"
-                accept="image/*"
-                onChange={handleFileChange}
-              />
-            ) : displayData.photoUrl ? (
-              <img
-                src={`http://localhost:4000${displayData.photoUrl}`}
-                alt="Profil"
-                style={{ width: "100px", height: "100px", borderRadius: "50%" }}
-              />
-            ) : (
-              <span> (Aucune photo)</span>
-            )}
-          </p>
-          <p>
-            Nom :
-            {isEditing ? (
-              <input
-                type="text"
-                value={formData.name || ""}
-                name="name"
-                onChange={handleChange}
-              />
-            ) : (
-              ` ${displayData.name || ""}`
-            )}
-          </p>
-          <p>
-            Prénom :
-            {isEditing ? (
-              <input
-                type="text"
-                value={formData.firstname || ""}
-                name="firstname"
-                onChange={handleChange}
-              />
-            ) : (
-              ` ${displayData.firstname || ""}`
-            )}
-          </p>
-          <p>Adresse :</p>
-          {isEditing ? (
-            <>
-              <input
-                type="text"
-                value={formData.address || ""}
-                name="address"
-                placeholder="Adresse"
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                value={formData.zipcode || ""}
-                name="zipcode"
-                placeholder="Code Postal"
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                value={formData.city || ""}
-                name="city"
-                placeholder="Ville"
-                onChange={handleChange}
-              />
-            </>
-          ) : (
-            <p>
-              {displayData.address || ""}, {displayData.zipcode || ""}{" "}
-              {displayData.city || ""}
-            </p>
-          )}
-          <p>
-            Téléphone :
-            {isEditing ? (
-              <input
-                type="tel"
-                value={formData.phone || ""}
-                name="phone"
-                onChange={handleChange}
-              />
-            ) : (
-              ` ${displayData.phone || ""}`
-            )}
-          </p>
-          <p>
-            Adresse Email :
-            {isEditing ? (
-              <input
-                type="email"
-                value={formData.email || ""}
-                name="email"
-                onChange={handleChange}
-              />
-            ) : (
-              ` ${displayData.email || ""}`
-            )}
-          </p>
-          <p>
-            Type utilisateur :
-            {isEditing ? (
-              <select
-                id="usertype"
-                name="usertype"
-                value={formData.usertype || ""}
-                onChange={handleChange}
-              >
-                <option value="">-- Veuillez choisir --</option>
-                <option value="Professionnel">Professionnel</option>
-                <option value="Personnel">Personnel</option>
-              </select>
-            ) : (
-              ` ${displayData.usertype || ""}`
-            )}
-          </p>
-        </div>
-        <div>
+
+          <div className="profile-personal-content">
+            <div className="profile-avatar-block">
+              <p>Photo de profil :</p>
+              {isEditing ? (
+                <input
+                  type="file"
+                  name="photo"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                />
+              ) : displayData.photoUrl ? (
+                <img
+                  src={`http://localhost:4000${displayData.photoUrl}`}
+                  alt="profil user"
+                  className="profile-avatar"
+                />
+              ) : (
+                <span className="profile-avatar-empty">(Aucune photo)</span>
+              )}
+            </div>
+
+            <div className="profile-fields">
+              <p>
+                <span className="label">Nom :</span>
+                {isEditing ? (
+                  <input
+                    type="text"
+                    value={formData.name || ""}
+                    name="name"
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <span className="value">{displayData.name || ""}</span>
+                )}
+              </p>
+
+              <p>
+                <span className="label">Prénom :</span>
+                {isEditing ? (
+                  <input
+                    type="text"
+                    value={formData.firstname || ""}
+                    name="firstname"
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <span className="value">{displayData.firstname || ""}</span>
+                )}
+              </p>
+
+              <div className="profile-address">
+                <span className="label">Adresse :</span>
+                {isEditing ? (
+                  <div className="address-inputs">
+                    <input
+                      type="text"
+                      value={formData.address || ""}
+                      name="address"
+                      placeholder="Adresse"
+                      onChange={handleChange}
+                    />
+                    <input
+                      type="text"
+                      value={formData.zipcode || ""}
+                      name="zipcode"
+                      placeholder="Code Postal"
+                      onChange={handleChange}
+                    />
+                    <input
+                      type="text"
+                      value={formData.city || ""}
+                      name="city"
+                      placeholder="Ville"
+                      onChange={handleChange}
+                    />
+                  </div>
+                ) : (
+                  <p className="value">
+                    {displayData.address || ""}, {displayData.zipcode || ""}{" "}
+                    {displayData.city || ""}
+                  </p>
+                )}
+              </div>
+
+              <p>
+                <span className="label">Téléphone :</span>
+                {isEditing ? (
+                  <input
+                    type="tel"
+                    value={formData.phone || ""}
+                    name="phone"
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <span className="value">{displayData.phone || ""}</span>
+                )}
+              </p>
+
+              <p>
+                <span className="label">Adresse Email :</span>
+                {isEditing ? (
+                  <input
+                    type="email"
+                    value={formData.email || ""}
+                    name="email"
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <span className="value">{displayData.email || ""}</span>
+                )}
+              </p>
+
+              <p>
+                <span className="label">Type utilisateur :</span>
+                {isEditing ? (
+                  <select
+                    id="usertype"
+                    name="usertype"
+                    value={formData.usertype || ""}
+                    onChange={handleChange}
+                  >
+                    <option value="">-- Veuillez choisir --</option>
+                    <option value="Professionnel">Professionnel</option>
+                    <option value="Personnel">Personnel</option>
+                  </select>
+                ) : (
+                  <span className="value">{displayData.usertype || ""}</span>
+                )}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="profile-card profile-sport">
           <h3>Mon profil sportif</h3>
-          <p>
-            Niveau d'expérience :
-            {isEditing ? (
-              <select
-                id="levelexperiency"
-                name="levelexperiency"
-                value={formData.levelexperiency || ""}
-                onChange={handleChange}
-              >
-                <option value="">-- Veuillez choisir --</option>
-                <option value="Debutant">
-                  Débutant - Je n'ai pas l'habitude de pratiquer
-                </option>
-                <option value="Intermédiaire">
-                  Intermédiaire - Je pratique régulièrement
-                </option>
-                <option value="Expert">
-                  Expert - Je pratique intensivement ou je suis coach
-                </option>
-              </select>
-            ) : (
-              ` ${displayData.levelexperiency || ""}`
-            )}
-          </p>
-          <p>
-            Temps à consacrer... :
-            {isEditing ? (
-              <input
-                id="timerequired"
-                type="time"
-                name="timerequired"
-                value={formData.timerequired || ""}
-                onChange={handleChange}
-              />
-            ) : (
-              ` ${displayData.timerequired || ""}`
-            )}
-          </p>
-          <p>
-            Mon Régime Alimentaire :
-            {isEditing ? (
-              <select
-                id="diet"
-                name="diet"
-                value={formData.diet || ""}
-                onChange={handleChange}
-              >
-                <option value="">-- Veuillez choisir --</option>
-                <option value="Végétarien">Végétarien</option>
-                <option value="Sans restriction">Sans restriction</option>
-                <option value="Végan">Végan</option>
-                <option value="Pescétarisme">Pescétarisme</option>
-                <option value="Flexitarisme">Flexitarisme</option>
-                <option value="Clean Eating">Clean Eating</option>
-              </select>
-            ) : (
-              ` ${displayData.diet || ""}`
-            )}
-          </p>
-          <h3>Mon profil d'abonnement</h3>
-          <p>
-            Type abonnement :
-            {isEditing ? (
-              <select
-                id="subscription"
-                name="subscription"
-                value={formData.subscription || ""}
-                onChange={handleChange}
-              >
-                <option value="">-- Veuillez choisir --</option>
-                <option value="Basic">Basic - 19€ par mois</option>
-                <option value="Pro">Pro - 29€ par mois</option>
-                <option value="Premium">Premium - 49€ par mois</option>
-              </select>
-            ) : (
-              ` ${displayData.subscription || ""}`
-            )}
-          </p>
-        </div>
-        <div>
+          <div className="profile-fields">
+            <p>
+              <span className="label">Niveau d'expérience :</span>
+              {isEditing ? (
+                <select
+                  id="levelexperiency"
+                  name="levelexperiency"
+                  value={formData.levelexperiency || ""}
+                  onChange={handleChange}
+                >
+                  <option value="">-- Veuillez choisir --</option>
+                  <option value="Debutant">
+                    Débutant - Je n'ai pas l'habitude de pratiquer
+                  </option>
+                  <option value="Intermédiaire">
+                    Intermédiaire - Je pratique régulièrement
+                  </option>
+                  <option value="Expert">
+                    Expert - Je pratique intensivement ou je suis coach
+                  </option>
+                </select>
+              ) : (
+                <span className="value">
+                  {displayData.levelexperiency || ""}
+                </span>
+              )}
+            </p>
+
+            <p>
+              <span className="label">Temps à consacrer :</span>
+              {isEditing ? (
+                <input
+                  id="timerequired"
+                  type="time"
+                  name="timerequired"
+                  value={formData.timerequired || ""}
+                  onChange={handleChange}
+                />
+              ) : (
+                <span className="value">{displayData.timerequired || ""}</span>
+              )}
+            </p>
+
+            <p>
+              <span className="label">Mon régime alimentaire :</span>
+              {isEditing ? (
+                <select
+                  id="diet"
+                  name="diet"
+                  value={formData.diet || ""}
+                  onChange={handleChange}
+                >
+                  <option value="">-- Veuillez choisir --</option>
+                  <option value="Végétarien">Végétarien</option>
+                  <option value="Sans restriction">Sans restriction</option>
+                  <option value="Végan">Végan</option>
+                  <option value="Pescétarisme">Pescétarisme</option>
+                  <option value="Flexitarisme">Flexitarisme</option>
+                  <option value="Clean Eating">Clean Eating</option>
+                </select>
+              ) : (
+                <span className="value">{displayData.diet || ""}</span>
+              )}
+            </p>
+          </div>
+
+          <h3 className="profile-subtitle">Mon profil d'abonnement</h3>
+          <div className="profile-fields">
+            <p>
+              <span className="label">Type abonnement :</span>
+              {isEditing ? (
+                <select
+                  id="subscription"
+                  name="subscription"
+                  value={formData.subscription || ""}
+                  onChange={handleChange}
+                >
+                  <option value="">-- Veuillez choisir --</option>
+                  <option value="Basic">Basic - 19€ par mois</option>
+                  <option value="Pro">Pro - 29€ par mois</option>
+                  <option value="Premium">Premium - 49€ par mois</option>
+                </select>
+              ) : (
+                <span className="value">{displayData.subscription || ""}</span>
+              )}
+            </p>
+          </div>
+        </section>
+
+        <section className="profile-actions">
           <button
             type="button"
             onClick={
@@ -369,6 +396,7 @@ function Profil() {
           >
             {isEditing ? "Valider" : "Modifier"}
           </button>
+
           {isEditing && (
             <button
               type="button"
@@ -380,9 +408,11 @@ function Profil() {
               Annuler
             </button>
           )}
+
           <button type="button" onClick={handleLogout}>
             Déconnexion
           </button>
+
           <button
             type="button"
             className="button-delete"
@@ -390,8 +420,8 @@ function Profil() {
           >
             Supprimer mon profil
           </button>
-        </div>
-      </div>
+        </section>
+      </main>
     </>
   );
 }
