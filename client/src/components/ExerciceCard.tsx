@@ -1,4 +1,5 @@
 import "./ExerciceCard.css";
+import { Link } from "react-router";
 import etoilePleine from "../assets/etoile-pleine.png";
 import etoileVide from "../assets/etoile-vide.png";
 import { useAuth } from "../context/AuthContext";
@@ -38,7 +39,7 @@ function ExerciceCard({ exoData }: exercices) {
     }
   };
 
-  const { gifUrl, nom } = exoData;
+  const { gifUrl, nom, id } = exoData;
   return (
     <article className="ExerciceCardArticle">
       <div className="ExerciceCardImageContainer">
@@ -59,12 +60,14 @@ function ExerciceCard({ exoData }: exercices) {
         <img className="ExerciceCardImage" src={gifUrl} alt={nom} />
       </div>
       <h5 className="ExerciceCardH5">{nom}</h5>
-      <button
-        className={`ExerciceCardButton ${isAuthenticated ? "exerciceCardIsConnecting" : ""}`}
-        type="button"
-      >
-        Commencer
-      </button>
+      <Link to={`/pages/EntrainementDetail/${id}`}>
+        <button
+          className={`ExerciceCardButton ${isAuthenticated ? "exerciceCardIsConnecting" : ""}`}
+          type="button"
+        >
+          Commencer
+        </button>
+      </Link>
     </article>
   );
 }

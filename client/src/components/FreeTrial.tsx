@@ -16,7 +16,7 @@ function FreeTrial() {
         </p>
         <Link to="/pages/Inscription">
           <button type="button" className="free-trial-button">
-            Essayez gratuitement
+            Essait offert
           </button>
         </Link>
       </div>

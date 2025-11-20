@@ -12,10 +12,10 @@ interface HeroProps {
 
 function Hero({
   title = "",
-  subtitle = "L'entrainement où tu veux, quand tu veux, comme tu veux !",
+  subtitle = "L'entraînement où vous voulez, quand vous voulez, comme vous voulez !",
 }: HeroProps) {
   const images = [
-    { name: "etirement", src: etirement },
+    { name: "étirement", src: etirement },
     { name: "runner", src: runner },
     { name: "yoga", src: yoga },
     { name: "abdos", src: abdos },
