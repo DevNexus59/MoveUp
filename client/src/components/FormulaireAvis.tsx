@@ -56,45 +56,86 @@ function FormulaireAvis() {
 
   return (
     <>
-      <div className="Form-Avis">
+      <h2>Laissez nous votre avis !</h2>
+      <div className="form-avis">
         <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="Titre"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Choisissez le sujet"
-            required
-          />
-          <textarea
-            name="comment"
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-            placeholder="Laissez votre avis ici..."
-            required
-          />
-          <div className="mu-avis-stars-selection">
-            {fiveStars.map((key, index) => {
-              const starNumber = index + 1;
-              return (
-                <img
-                  key={`input-star-${key}`}
-                  src={star}
-                  alt={`Donner une note de ${starNumber} étoiles`}
-                  className={`mu-avis-star-input ${starNumber <= rating ? "is-active" : ""}`}
-                  onClick={() => setRating(starNumber)}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter" || event.key === " ") {
-                      event.preventDefault();
-                      setRating(starNumber);
-                    }
-                  }}
-                  width={18}
-                  height={18}
-                />
-              );
-            })}
+          {/* --- 1. Section Étoiles (Déplacée en premier) --- */}
+          <div style={{ marginBottom: "1rem" }}>
+            <span style={{ marginRight: "10px", fontWeight: "bold" }}>
+              Note :
+            </span>
+            <div
+              className="mu-avis-stars-selection"
+              style={{ display: "inline-block" }}
+            >
+              {fiveStars.map((key, index) => {
+                const starNumber = index + 1;
+                return (
+                  <img
+                    key={`input-star-${key}`}
+                    src={star}
+                    alt={`Donner une note de ${starNumber} étoiles`}
+                    className={`mu-avis-star-input ${starNumber <= rating ? "is-active" : ""}`}
+                    onClick={() => setRating(starNumber)}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        setRating(starNumber);
+                      }
+                    }}
+                    width={18}
+                    height={18}
+                    style={{ cursor: "pointer" }} // Ajout pour l'UX
+                  />
+                );
+              })}
+            </div>
           </div>
+
+          {/* --- 2. Champ Titre --- */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              marginBottom: "1rem",
+            }}
+          >
+            <label htmlFor="titre-avis" style={{ marginBottom: "5px" }}>
+              Titre de l'avis
+            </label>
+            <input
+              id="titre-avis"
+              aria-label="Titre de l'avis"
+              type="text"
+              name="Titre"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Titre de l'avis"
+              required
+            />
+          </div>
+
+          {/* --- 3. Champ Commentaire (Textarea) --- */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              marginBottom: "1rem",
+            }}
+          >
+            <label htmlFor="details-avis" style={{ marginBottom: "5px" }}>
+              Détails de l'avis
+            </label>
+            <textarea
+              id="details-avis"
+              name="comment"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              placeholder="Détails de l'avis"
+              required
+            />
+          </div>
+
           <button type="submit" disabled={rating === 0}>
             Envoyer mon avis
           </button>
