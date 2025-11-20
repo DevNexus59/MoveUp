@@ -16,10 +16,12 @@ import Connexion from "./pages/Connexion";
 import Contact from "./pages/Contact";
 import EntrainementDetail from "./pages/EntrainementDetail";
 import Entrainements from "./pages/Entrainements";
+import Favoris from "./pages/Favoris";
 import Inscription from "./pages/Inscription";
 import Register from "./pages/Inscription";
 import MentionsLegales from "./pages/MentionsLegales";
 import NotFound from "./pages/NotFound";
+import Planning from "./pages/Planning";
 import Profil from "./pages/Profil";
 import Tarifs from "./pages/Tarifs";
 
@@ -78,6 +80,10 @@ const router = createBrowserRouter([
         element: <MentionsLegales />, // Renders the App component for the home page
       },
       {
+        path: "/pages/Planning", // The root path
+        element: <Planning />,
+      },
+      {
         path: "/pages/Tarifs", // The root path
         element: <Tarifs />, // Renders the App component for the home page
       },
@@ -96,6 +102,10 @@ const router = createBrowserRouter([
       {
         path: "/pages/Contact", // The root path
         element: <Contact />,
+      },
+      {
+        path: "/pages/Favoris", // The root path
+        element: <Favoris />,
       },
     ],
   },

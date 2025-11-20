@@ -8,11 +8,10 @@ type Badge = {
   icon: string;
 };
 
-
 function Badges() {
   const [allBadges, setAllBadges] = useState<Badge[]>([]);
   const [unlockedBadges, setUnlockedBadges] = useState<string[]>([]);
-  const {userId} = useAuth();
+  const { userId } = useAuth();
 
   useEffect(() => {
     fetch("http://localhost:4000/api/badges")
