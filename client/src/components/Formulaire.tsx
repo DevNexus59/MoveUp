@@ -31,6 +31,7 @@ export default function Formulaire() {
     "idle",
   );
   const [serverMsg, setServerMsg] = useState(""); //text visible pour utilisateur
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // MAJ des champs
   const onChange = (
@@ -42,6 +43,11 @@ export default function Formulaire() {
         ? (e.target as HTMLInputElement).checked
         : e.target.value;
     setValues((prev) => ({ ...prev, [name]: value }));
+  };
+
+  //modale
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   // Submission du formulaire
@@ -70,9 +76,11 @@ export default function Formulaire() {
       setServerMsg("Merci ! Votre message a bien été envoyé.");
       setValues(initData);
       form.reset(); //remise du state
+      setIsModalOpen(true);
     } catch {
       setStatus("error");
       setServerMsg("Une erreur est survenue. Réessayez plus tard.");
+      setIsModalOpen(true);
     }
   };
 
@@ -222,15 +230,27 @@ export default function Formulaire() {
             Réinitialiser
           </button>
         </div>
-
-        <p
-          className={`form-status ${status}`}
-          aria-live="polite"
-          aria-atomic="true"
-        >
-          {serverMsg}
-        </p>
       </form>
+
+      {isModalOpen && (
+        <dialog
+          className="form-modal-backdrop"
+          aria-modal="true"
+          aria-labelledby="form-modal-title"
+        >
+          <div className="form-modal">
+            <h3 id="form-modal-title">
+              {status === "success"
+                ? "Message envoyé!"
+                : "Une erreur est survenue, veuillez réessayer."}
+            </h3>
+            <p>{serverMsg}</p>
+            <button type="button" onClick={closeModal}>
+              Fermer
+            </button>
+          </div>
+        </dialog>
+      )}
     </section>
   );
 }
