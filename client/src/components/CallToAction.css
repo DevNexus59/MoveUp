@@ -22,3 +22,11 @@
   background: linear-gradient(135deg, #a8c0ff 0%, #c0a8ff 20%, #ffb3d9 100%);
   font-size: var(--font-p);
 }
+
+.cta-icon {
+  width: 36px;
+  height: 36px;
+  display: inline-block;
+  vertical-align: baseline;
+  margin-left: 0.25rem;
+}

@@ -1,4 +1,5 @@
 import "./ExerciceCard.css";
+import { Link } from "react-router";
 import etoilePleine from "../assets/etoile-pleine.png";
 import etoileVide from "../assets/etoile-vide.png";
 import { useAuth } from "../context/AuthContext";
@@ -38,7 +39,32 @@ function ExerciceCard({ exoData }: exercices) {
     }
   };
 
-  const { gifUrl, nom } = exoData;
+  const handleToggleExCounter = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:4000/api/achievements/track",
+        {
+          method: "POST",
+          headers: {
+            "content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            exerciseId: exoData.exerciseId,
+            userId,
+          }),
+        },
+      );
+      if (!response.ok) {
+        console.error(
+          "Echec de l'envoi de l'incrémentation du compteur de l'exercice",
+        );
+        return;
+      }
+    } catch (error) {
+      console.error("Erreur réseau:", error);
+    }
+  };
+  const { gifUrl, nom, id } = exoData;
   return (
     <article className="ExerciceCardArticle">
       <div className="ExerciceCardImageContainer">
@@ -59,12 +85,18 @@ function ExerciceCard({ exoData }: exercices) {
         <img className="ExerciceCardImage" src={gifUrl} alt={nom} />
       </div>
       <h5 className="ExerciceCardH5">{nom}</h5>
-      <button
-        className={`ExerciceCardButton ${isAuthenticated ? "exerciceCardIsConnecting" : ""}`}
-        type="button"
-      >
-        Commencer
-      </button>
+      <Link to={`/pages/EntrainementDetail/${id}`}>
+        <button
+          className={`ExerciceCardButton ${isAuthenticated ? "exerciceCardIsConnecting" : ""}`}
+          type="button"
+          onClick={() => {
+            handleToggleExCounter();
+            console.info("Click count");
+          }}
+        >
+          Commencer
+        </button>
+      </Link>
     </article>
   );
 }

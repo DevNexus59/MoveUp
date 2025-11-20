@@ -1,17 +1,81 @@
-/* Styles pour rendre les étoiles cliquables */
-.mu-avis-star-input {
-  cursor: pointer;
-  /* Laissez l'étoile non sélectionnée en couleur par défaut (souvent noir ou gris) */
-  opacity: 0.5; /* Rendre l'étoile non active légèrement transparente */
-  transition: opacity 0.2s, filter 0.2s;
+/* --- Style du Formulaire Avis --- */
+
+.form-avis {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
-/* Styles pour l'état ACTIF (sélectionné) */
-.mu-avis-star-input.is-active {
-  opacity: 1; /* Pleine visibilité */
+/* Le conteneur du formulaire qui porte la couleur de fond (Carte) */
+.form-avis form {
+  background: var(--card);
+  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  color: var(--link);
+  width: 100%;
+  max-width: 450px;
+}
 
-  /* Ce filtre convertit une image noire/grise en couleur jaune/or. */
-  /* C'est la méthode standard pour coloriser un SVG en ligne. */
-  filter: invert(73%) sepia(97%) saturate(542%) hue-rotate(359deg)
-    brightness(108%) contrast(97%);
+/* Gestion des groupes de champs */
+.form-avis .form-group {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels : utilisent la variable --link pour changer de couleur selon le thème */
+.form-avis label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--link);
+}
+
+/* Inputs et Textarea */
+.form-avis input,
+.form-avis textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 1rem;
+  color: #333; /* Texte intérieur toujours sombre */
+  background-color: #fff;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.form-avis textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-avis input:focus,
+.form-avis textarea:focus {
+  outline: 2px solid var(--linkv);
+}
+
+.form-avis .stars-container {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.form-avis .stars-label {
+  margin-right: 10px;
+  font-weight: bold;
+  color: var(--link);
+}
+
+.mu-avis-star-input {
+  cursor: pointer;
+  margin-right: 2px;
+}
+
+.form-avis button {
+  width: 100%;
+  margin: auto;
 }

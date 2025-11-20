@@ -131,17 +131,20 @@ function PlanningCalendar() {
           className="planning-help"
           aria-label="Consignes d'utilisation du planning"
         >
-          <strong>Construis ton planning comme tu veux!</strong>
+          <strong>Construisez votre planning comme vous voulez!</strong>
           <ul>
-            <li>Clique sur n'importe quel créneau pour ajouter une séance.</li>
+            <li>Cliquez sur n'importe quel créneau pour ajouter une séance.</li>
             <li>
-              Déplace une séance pour adapter ton entraînement à ton agenda.
+              Déplacez une séance pour adapter votre entraînement à votre
+              agenda.
             </li>
-            <li>Étire une séance pour la rendre plus longue ou plus courte.</li>
             <li>
-              Clique sur la séance pour changer l'exercice ou la supprimer.
+              Étirez une séance pour la rendre plus longue ou plus courte.
             </li>
-            <li>Navigue dans ton planning avec mois ou semaine.</li>
+            <li>
+              Cliquez sur la séance pour changer l'exercice ou la supprimer.
+            </li>
+            <li>Naviguez dans votre planning avec mois ou semaine.</li>
           </ul>
         </p>
       </div>

@@ -13,11 +13,11 @@
 }
 
 .connexion-board form {
-  background: var(--card); /* Déjà correct */
+  background: var(--card);
   padding: 2.5rem;
   border-radius: 1rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  color: var(--link); /* CHANGÉ: Utilise la variable pour le texte blanc */
+  color: var(--link);
   width: 100%;
   max-width: 450px;
 }

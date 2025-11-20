@@ -1,28 +1,160 @@
-h1 {
+.profile-header {
   text-align: center;
+  padding: 3rem 1rem 2rem;
 }
 
-.Profil-main {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: var(--card);
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+.profile-header h1 {
+  margin-bottom: 0.5rem;
+}
+
+.profile-header h2 {
+  margin: 0;
   color: var(--link);
 }
 
-a {
-  text-align: center;
+.profile-page {
+  max-width: 1100px;
+  margin: 0 auto 4rem;
+  padding: 2rem 1.5rem 3rem;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 2fr);
+  gap: 2rem;
 }
 
-.button-delete {
-  background: none;
+.profile-page h3 {
+  color: var(--link);
+}
+
+.profile-card {
+  background: var(--card);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+  color: #fff;
+}
+
+.profile-personal-content {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.profile-avatar-block p {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.profile-avatar {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.15);
+}
+
+.profile-avatar-empty {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.profile-fields p,
+.profile-address {
+  margin: 0.75rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.profile-fields .label {
+  font-weight: 600;
+  color: #fff;
+}
+
+.profile-fields .value {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.profile-card input,
+.profile-card select {
+  border-radius: 999px;
   border: none;
-  padding: 0;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.9rem;
+  outline: none;
+  min-width: 0;
+}
+
+.address-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.profile-subtitle {
+  margin-top: 2rem;
+}
+
+.profile-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 0.5rem 0;
+}
+
+.profile-actions button {
   margin: 0;
-  font: inherit;
-  color: inherit;
-  cursor: pointer;
+}
+
+.profile-actions .button-delete {
+  background: transparent;
+  color: hsl(0, 94%, 43%);
+  border: 1px solid rgba(212, 7, 7, 0.7);
+}
+
+.profile-actions .button-delete:hover {
+  background: rgba(255, 179, 217, 0.15);
+}
+
+@media (max-width: 900px) {
+  .profile-page {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-personal-content {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-avatar-block {
+    text-align: center;
+  }
+
+  .profile-avatar {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-card {
+    padding: 1.5rem;
+  }
+
+  .profile-header {
+    padding: 2.2rem 1rem 1.5rem;
+  }
+
+  .profile-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .profile-actions button {
+    width: 100%;
+    text-align: center;
+  }
 }

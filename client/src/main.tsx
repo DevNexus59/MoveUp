@@ -14,11 +14,14 @@ import About from "./pages/About";
 import Accueil from "./pages/Accueil";
 import Connexion from "./pages/Connexion";
 import Contact from "./pages/Contact";
+import EntrainementDetail from "./pages/EntrainementDetail";
 import Entrainements from "./pages/Entrainements";
+import Favoris from "./pages/Favoris";
 import Inscription from "./pages/Inscription";
 import Register from "./pages/Inscription";
 import MentionsLegales from "./pages/MentionsLegales";
 import NotFound from "./pages/NotFound";
+import Planning from "./pages/Planning";
 import Profil from "./pages/Profil";
 import Tarifs from "./pages/Tarifs";
 import Dashboard from "./pages/Dashboard";
@@ -66,12 +69,20 @@ const router = createBrowserRouter([
         element: <Entrainements />, // Renders the App component for the home page
       },
       {
+        path: "/pages/EntrainementDetail/:id",
+        element: <EntrainementDetail />,
+      },
+      {
         path: "/pages/Inscription", // The root path
         element: <Inscription />, // Renders the App component for the home page
       },
       {
         path: "/pages/MentionsLegales", // The root path
         element: <MentionsLegales />, // Renders the App component for the home page
+      },
+      {
+        path: "/pages/Planning", // The root path
+        element: <Planning />,
       },
       {
         path: "/pages/Tarifs", // The root path
@@ -96,6 +107,10 @@ const router = createBrowserRouter([
       {
         path: "/pages/Dashboard", // The root path
         element: <Dashboard />,
+      },
+      {
+        path: "/pages/Favoris", // The root path
+        element: <Favoris />,
       },
     ],
   },

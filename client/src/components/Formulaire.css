@@ -74,26 +74,41 @@
   margin-top: .5rem;
 }
 
-.form-status {
-  min-height: 1.25rem;
-  margin-top: 0.5rem;
-  font-weight: 600;
+dialog.form-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.form-modal {
+  background: var(--bg);
   color: var(--bg-font);
-}
-:root[data-theme="light"] .form-status.success {
-  color: #05b80e;
-}
-
-:root[data-theme="dark"] .form-status.success {
-  color: #357739;
-}
-
-:root[data-theme="light"] .form-status.error {
-  color: #b11f1f;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  text-align: center;
 }
 
-:root[data-theme="dark"] .form-status.error {
-  color: #f86b6b;
+.form-modal h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: calc(var(--font-h) * 1.1);
+}
+
+.form-modal p {
+  margin-bottom: 1.5rem;
+  font-size: var(--font-p);
+}
+
+.form-modal button {
+  margin: 0;
 }
 
 /* Honeypot caché */
