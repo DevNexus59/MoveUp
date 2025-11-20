@@ -4,7 +4,7 @@ import "./CallToAction.css";
 function CallToAction() {
   return (
     <section className="cta-section">
-      <h2 className="cta-title">Prêt à passer à l'action ? 🏋️‍♀️</h2>
+      <h2 className="cta-title">Prêt-e à passer à l'action ? 🏋️‍♀️</h2>
       <p className="cta-comment">
         Rejoignez-nous dès aujourd'hui et profitez d'un essai gratuit pour
         découvrir nos entraînements !
@@ -12,12 +12,12 @@ function CallToAction() {
       <div>
         <Link to="/pages/Inscription">
           <button type="button" className="cta-button">
-            M'inscrire
+            Je m'inscris
           </button>
         </Link>
         <Link to="/pages/Inscription">
           <button type="button" className="cta-button">
-            Essai gratuit
+            Essai offert
           </button>
         </Link>
       </div>

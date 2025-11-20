@@ -9,7 +9,7 @@ function FAQ() {
       id: 1,
       question: "Comment fonctionne l'abonnement ?",
       comment:
-        "Nous proposons trois formules : Basic, Pro et Premium, chacune proposant un accompagnement personalisé. La formule premium vous donne un accès à l'intégralité des vidéos d’entraînement et à un coach dédié.",
+        "Nous proposons trois formules : Basic, Pro et Premium, chacune avec un accompagnement personalisé. La formule premium vous donne un accès à l'intégralité des vidéos d’entraînement et à un coach personnel.",
     },
     {
       id: 2,
