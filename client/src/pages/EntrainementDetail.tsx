@@ -87,7 +87,7 @@ function EntrainementDetail() {
           </p>
         </div>
         <div className="entrainement-detail-btn">
-          <Link to="./components/EventModal">
+          <Link to="/pages/Planning">
             <button type="button" className="entrainement-detail-btn-action">
               Ajouter à mon planning
             </button>
