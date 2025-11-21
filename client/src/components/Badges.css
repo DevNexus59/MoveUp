@@ -16,11 +16,11 @@
 }
 
 .badge-unlocked img {
-  background: whitesmoke;
+  filter: none;
 }
 
 .badge-locked img {
-  filter: grayscale(100%) opacity(O 0.4);
+  filter: grayscale(100%) opacity(0.4);
 }
 
 @media (max-width: 768px) {

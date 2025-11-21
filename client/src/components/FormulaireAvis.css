@@ -73,8 +73,13 @@
 .mu-avis-star-input {
   cursor: pointer;
   margin-right: 2px;
+  filter: grayscale(100%);
 }
 
+.mu-avis-star-input.is-active {
+  opacity: 1;
+  filter: none;
+}
 .form-avis button {
   width: 100%;
   margin: auto;
