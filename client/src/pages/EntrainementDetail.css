@@ -1,5 +1,6 @@
 .entrainement-detail-container {
   padding-bottom: 2rem;
+  margin-top: 3em;
 }
 
 .entrainement-detail-back-btn {
@@ -209,6 +210,9 @@
 }
 
 @media (max-width: 768px) {
+  .entrainement-detail-container {
+    margin-top: 6em;
+  }
   .entrainement-detail-title {
     font-size: 2rem;
     padding: 3rem 1rem;

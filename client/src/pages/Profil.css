@@ -112,13 +112,12 @@
 }
 
 .profile-actions .button-delete {
-  background: transparent;
-  color: hsl(0, 94%, 43%);
-  border: 1px solid rgba(212, 7, 7, 0.7);
-}
-
-.profile-actions .button-delete:hover {
-  background: rgba(255, 179, 217, 0.15);
+  border: none;
+  text-decoration: none;
+  color: var(--bg);
+  background-color: var(--bg);
+  box-shadow: none;
+  text-shadow: none;
 }
 
 @media (max-width: 900px) {

@@ -10,11 +10,13 @@ function Favoris(): ReactElement {
 
   return (
     <>
-      <h2>Vos exercices favoris</h2>
-      <h3>
-        {userFirstName}, retrouvez ci-dessous la liste de vos exercices favoris
-        :{" "}
-      </h3>
+      <div className="favorite-title">
+        <h2>Vos exercices favoris</h2>
+        <h3>
+          {userFirstName}, retrouvez ci-dessous la liste de vos exercices
+          favoris :{" "}
+        </h3>
+      </div>
       <div className="favorites-container">
         <FavoritesCard />
       </div>

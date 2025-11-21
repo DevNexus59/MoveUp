@@ -2,7 +2,6 @@
 import type React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-import Hero from "../components/Hero";
 import "../App.css";
 import "./Connexion.css";
 import { useAuth } from "../context/AuthContext";
@@ -55,7 +54,7 @@ function Login() {
       if (response.ok) {
         const data = await response.json();
         login(data.token, data.userId, data.userFirstName);
-        navigate("/");
+        navigate("/pages/Dashboard");
       } else {
         const errorText = await response.text();
         setMessage(`Erreur: ${errorText}`);
@@ -68,10 +67,7 @@ function Login() {
 
   return (
     <>
-      <div>
-        <Hero />
-      </div>
-      <h2>Connexion:</h2>
+      <h2 className="connexion-h2">Connexion:</h2>
       <div className="connexion-board">
         <form onSubmit={handleSubmit}>
           <div>
