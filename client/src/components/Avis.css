@@ -68,6 +68,15 @@
   font-size: 1em;
   color: #ffe5ec;
 }
+.mu-avis-star {
+  opacity: 0.5;
+  filter: grayscale(100%);
+}
+
+.mu-avis-star.is-active {
+  opacity: 1;
+  filter: none;
+}
 
 /*Tablette (≤1024px) */
 @media (max-width: 1024px) {
