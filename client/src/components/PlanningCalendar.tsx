@@ -24,7 +24,10 @@ type PlanningCalendarProps = {
   height?: "auto" | number;
 };
 
-function PlanningCalendar({size = "md", height = "auto"}: PlanningCalendarProps) {
+function PlanningCalendar({
+  size = "md",
+  height = "auto",
+}: PlanningCalendarProps) {
   const ctx = useContext(ExercicesContext);
   if (!ctx) {
     throw new Error(

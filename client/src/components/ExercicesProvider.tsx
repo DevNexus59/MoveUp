@@ -68,7 +68,7 @@ export const ExercicesProvider = ({ children }: ExercicesProviderProps) => {
   }, [userId]); //execution de la fonction
 
   //envoie le planning au back
-  const savePlanningToBackend = async (updatedEvents: PlanningEvent[]) => { 
+  const savePlanningToBackend = async (updatedEvents: PlanningEvent[]) => {
     if (!userId) {
       console.warn("Aucun userId, impossible de sauvegarder le planning.");
       return;
@@ -95,7 +95,7 @@ export const ExercicesProvider = ({ children }: ExercicesProviderProps) => {
       //envoie la version finale save.
       const data = await res.json();
       // console.log("Planning sauvegardé côté back, tout est ok:", data);
-      setEvents(data.events || []); 
+      setEvents(data.events || []);
     } catch (err) {
       console.error("Erreur de sauvegarde:", err);
     }
