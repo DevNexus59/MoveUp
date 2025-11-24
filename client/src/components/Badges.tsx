@@ -19,19 +19,16 @@ function Badges() {
     fetch("http://localhost:4000/api/badges")
       .then((res) => res.json())
       .then((data: Badge[]) => setAllBadges(data))
-      .catch((err) => console.error("Erreur chargement badges:", err));
+      .catch((err) => console.error("Erreur lors dur chargement:", err));
 
-    // 2. Charger les badges de l'user
     if (userId) {
       fetch(`http://localhost:4000/api/users/${userId}/badges`)
         .then((res) => {
-            if (!res.ok) throw new Error("Erreur fetch user badges");
-            return res.json();
+          if (!res.ok) throw new Error("Erreur fetch user badges");
+          return res.json();
         })
         .then((data: Badge[]) => {
-          // Sécurité : on s'assure que c'est bien un tableau
           if (Array.isArray(data)) {
-            // On extrait juste les IDs pour la comparaison
             setUnlockedBadges(data.map((b) => b.id));
           }
         })
@@ -41,9 +38,7 @@ function Badges() {
 
   return (
     <div>
-      <h2>Badges</h2>
-      {/* Debugging temporaire pour voir ce qui se passe */}
-      {/* <pre>{JSON.stringify(unlockedBadges, null, 2)}</pre> */}
+      <h3>Badges</h3>
 
       <div className="badges-container">
         {allBadges.map((b) => {

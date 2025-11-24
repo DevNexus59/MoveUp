@@ -12,7 +12,7 @@ function Planning() {
         image={planning}
       />
       <PlanningSection />
-      <PlanningCalendar />
+      <PlanningCalendar size="lg" height="auto" />
     </>
   );
 }
