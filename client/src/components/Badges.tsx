@@ -36,7 +36,7 @@ function Badges() {
 
   return (
     <div>
-      <h2>Badges</h2>
+      <h3>Badges</h3>
 
       <div className="badges-container">
         {allBadges.map((b) => {

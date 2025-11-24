@@ -16,6 +16,8 @@ export const ExercicesProvider = ({ children }: ExercicesProviderProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
   const [events, setEvents] = useState<PlanningEvent[]>([]);
+  const innerUserId = localStorage.getItem("userId");
+  const userId = innerUserId ? Number(innerUserId) : null;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,24 +40,98 @@ export const ExercicesProvider = ({ children }: ExercicesProviderProps) => {
     fetchData();
   }, []);
 
+  //pour le planning qui permet la connexion avec le back
+  useEffect(() => {
+    if (!userId) {
+      console.warn("ID introuvable pour le planning."); //permet de chercher l'user par id
+      return;
+    }
+
+    const fetchPlanning = async () => {
+      try {
+        const res = await fetch(
+          `http://localhost:4000/api/users/${userId}/planning`,
+        );
+        if (!res.ok) {
+          console.error("get ne marche pas:", res.status);
+          return;
+        }
+        const data = await res.json(); // requete get pour avoir { events: [...] }
+        // console.log("connexion du planning from back est ok:", data);
+        setEvents(data.events || []);
+      } catch (err) {
+        console.error("planning fetch ne marche pas:", err);
+      }
+    };
+
+    fetchPlanning();
+  }, [userId]); //execution de la fonction
+
+  //envoie le planning au back
+  const savePlanningToBackend = async (updatedEvents: PlanningEvent[]) => {
+    if (!userId) {
+      console.warn("Aucun userId, impossible de sauvegarder le planning.");
+      return;
+    }
+
+    //envoyer des donnees
+    try {
+      const res = await fetch(
+        `http://localhost:4000/api/users/${userId}/planning`,
+        {
+          method: "PUT", //requete put
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ events: updatedEvents }),
+        },
+      );
+
+      if (!res.ok) {
+        console.error("Erreur HTTP PUT planning:", res.status);
+        return;
+      }
+
+      //envoie la version finale save.
+      const data = await res.json();
+      // console.log("Planning sauvegardé côté back, tout est ok:", data);
+      setEvents(data.events || []);
+    } catch (err) {
+      console.error("Erreur de sauvegarde:", err);
+    }
+  };
+
   //add seance et le event contient tout sauf id
   const addEvent: ExercicesContextState["addEvent"] = (event) => {
-    setEvents((prev) => [
-      ...prev, //permet de copier toutes les seances existantes
-      { ...event, id: crypto.randomUUID() }, //car le bebe id est la, il est unique
-    ]);
+    setEvents((prev) => {
+      const newEvent: PlanningEvent = {
+        ...event,
+        id: crypto.randomUUID(), //car le bebe id est la, il est unique
+      };
+      const updated = [...prev, newEvent];
+      void savePlanningToBackend(updated); // synchro back
+      return updated;
+    });
   };
 
   //maj seance, on selectionne une seance pas tout le tableau
   const updateEvent: ExercicesContextState["updateEvent"] = (id, updates) => {
-    setEvents((prev) =>
-      prev.map((evt) => (evt.id === id ? { ...evt, ...updates } : evt)),
-    );
+    setEvents((prev) => {
+      const updated = prev.map((evt) =>
+        evt.id === id ? { ...evt, ...updates } : evt,
+      );
+      void savePlanningToBackend(updated); // synchro back
+      return updated;
+    });
   };
 
   //delete seance
   const deleteEvent: ExercicesContextState["deleteEvent"] = (id) => {
-    setEvents((prev) => prev.filter((evt) => evt.id !== id)); // le filter renvoie un nouveau tableau et on garde toutes les seances sauf celle qui a cet id.
+    setEvents((prev) => {
+      const updated = prev.filter((evt) => evt.id !== id); // le filter renvoie un nouveau tableau et on garde toutes les seances sauf celle qui a cet id.
+      void savePlanningToBackend(updated); // synchro back
+      return updated;
+    });
   };
 
   const value: ExercicesContextState = {
