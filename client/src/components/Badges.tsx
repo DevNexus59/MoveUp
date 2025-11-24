@@ -16,11 +16,22 @@ function Badges() {
   useEffect(() => {
     fetch("http://localhost:4000/api/badges")
       .then((res) => res.json())
-      .then((data: Badge[]) => setAllBadges(data));
+      .then((data: Badge[]) => setAllBadges(data))
+      .catch((err) => console.error("Erreur lors dur chargement:", err));
 
-    fetch(`http://localhost:4000/api/users/${userId}/badges`)
-      .then((res) => res.json())
-      .then((data: Badge[]) => setUnlockedBadges(data.map((b) => b.id)));
+    if (userId) {
+      fetch(`http://localhost:4000/api/users/${userId}/badges`)
+        .then((res) => {
+          if (!res.ok) throw new Error("Erreur fetch user badges");
+          return res.json();
+        })
+        .then((data: Badge[]) => {
+          if (Array.isArray(data)) {
+            setUnlockedBadges(data.map((b) => b.id));
+          }
+        })
+        .catch((err) => console.error(err));
+    }
   }, [userId]);
 
   return (
