@@ -7,6 +7,7 @@ import type { Exercice } from "../types/types";
 
 import etoilePleine from "../assets/etoile-pleine.png";
 import etoileVide from "../assets/etoile-vide.png";
+import muscleLogo from "../assets/images/entrainementDetail_picto_niveau.png";
 import chronometre from "../assets/images/entrainementdetail_time.png";
 
 import "./EntrainementDetail.css";
@@ -64,6 +65,21 @@ function EntrainementDetail() {
     }
   };
 
+  const getDifficultyLevel = (difficulte: string) => {
+    switch (difficulte.toLowerCase()) {
+      case "débutant":
+        return 1;
+      case "facile":
+        return 2;
+      case "intermédiaire":
+        return 3;
+      case "difficile":
+        return 4;
+    }
+  };
+
+  const difficultyLevel = getDifficultyLevel(exercice.difficulte);
+
   return (
     <div className="entrainement-detail-container">
       <button
@@ -90,8 +106,22 @@ function EntrainementDetail() {
       <section className="entrainement-detail-card">
         <div className="entrainement-detail-informations">
           <div className="entrainement-detail-difficulte">
-            <h2 className="entrainement-detail-label">Difficulté :</h2>
-            <p className="entrainement-detail-value">{exercice.difficulte}</p>
+            <div className="entrainement-detail-difficulte-detail">
+              <h2 className="entrainement-detail-label">Difficulté :</h2>
+              <p className="entrainement-detail-value">{exercice.difficulte}</p>
+            </div>
+            <div className="difficulty-icons">
+              {Array(difficultyLevel)
+                .fill(null)
+                .map((_, index) => (
+                  <img
+                    key={`muscle-${exercice.id}-${index}`}
+                    src={muscleLogo}
+                    alt="muscle"
+                    className="muscle-icon"
+                  />
+                ))}
+            </div>
           </div>
           <div className="entrainement-detail-muscle">
             <h2 className="entrainement-detail-label">Muscle ciblé :</h2>
