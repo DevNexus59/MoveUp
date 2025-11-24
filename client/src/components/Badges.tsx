@@ -35,9 +35,8 @@ function Badges() {
   }, [userId]);
 
   return (
-    <div>
-      <h2>Badges</h2>
-
+    <div className="badges-main">
+      <h2 className="badges-title">Badges</h2>
       <div className="badges-container">
         {allBadges.map((b) => {
           const isUnlocked = unlockedBadges.includes(b.id);
@@ -48,6 +47,7 @@ function Badges() {
               className={`badge-item ${isUnlocked ? "badge-unlocked" : "badge-locked"}`}
             >
               <img src={b.icon} alt={b.name} />
+              <span className="badge-name">{b.name}</span>
             </div>
           );
         })}

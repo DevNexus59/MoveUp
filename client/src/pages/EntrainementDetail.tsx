@@ -7,6 +7,7 @@ import type { Exercice } from "../types/types";
 import chronometre from "../assets/images/entrainementdetail_time.png";
 
 import "./EntrainementDetail.css";
+import Timer from "../components/Timer";
 
 function EntrainementDetail() {
   const { id } = useParams();
@@ -28,6 +29,22 @@ function EntrainementDetail() {
   if (!exercice) {
     return <p>Exercice non trouvé</p>;
   }
+
+  const parseDuree = (duree: string) => {
+    const match = duree.match(/(\d+)/);
+    if (match) {
+      const valeur = Number.parseInt(match[1]);
+      if (duree.toLocaleLowerCase().includes("min")) {
+        return { minutes: valeur, secondes: 0 };
+      }
+      return { minutes: 0, secondes: valeur };
+    }
+    return { minutes: 1, secondes: 0 };
+  };
+  // attempt to read a stored userId, fallback to 0 if not present
+  const userId = Number(localStorage.getItem("userId")) || 0;
+
+  const { minutes, secondes } = parseDuree(exercice.duree);
 
   return (
     <div className="entrainement-detail-container">
@@ -68,6 +85,13 @@ function EntrainementDetail() {
             />
             <p className="entrainement-detail-duration">{exercice.duree}</p>
           </div>
+          <Timer
+            heures={0}
+            minutes={minutes}
+            secondes={secondes}
+            userId={userId}
+            exerciceId={exercice.exerciseId || exercice.id?.toString() || "1"}
+          />
         </div>
         <div className="entrainement-detail-instructions">
           <h2 className="ed-title-instructions">Instructions :</h2>
