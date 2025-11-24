@@ -17,8 +17,8 @@ function Login() {
     const credential = credentialResponse.credential;
 
     if (!credential) {
-        console.error("Token Google vide !");
-        return;
+      console.error("Token Google vide !");
+      return;
     }
 
     try {
@@ -39,18 +39,17 @@ function Login() {
 
       console.log("Succès Backend:", data); // 🔍 Debug 3
       localStorage.setItem("TokenAuthGoogle", data.token);
-      
-      // Utilisation correcte du contexte (si ta fonction login attend ces arguments)
-      login(data.token, data.userId, data.userFirstName); 
-      
-      navigate("/pages/Dashboard");
 
+      // Utilisation correcte du contexte (si ta fonction login attend ces arguments)
+      login(data.token, data.userId, data.userFirstName);
+
+      navigate("/pages/Dashboard");
     } catch (error) {
       console.error("Erreur Catch:", error);
       setMessage("Erreur lors de la connexion Google.");
     }
   };
-  
+
   const navigate = useNavigate();
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -112,10 +111,7 @@ function Login() {
           </div>
           <button type="submit">Se connecter</button>
         </form>
-        <GoogleLogin
-          onSuccess={handleSuccess}
-          useOneTap
-        />
+        <GoogleLogin onSuccess={handleSuccess} useOneTap />
 
         {message && <p>{message}</p>}
       </div>

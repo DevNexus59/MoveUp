@@ -9,11 +9,13 @@ import { RouterProvider, createBrowserRouter } from "react-router";
 // Import the main app component
 import App from "./App";
 import { ExercicesProvider } from "./components/ExercicesProvider";
+import ResetPassword from "./components/ResetPassword";
 import { AuthProvider } from "./context/AuthContext";
 import About from "./pages/About";
 import Accueil from "./pages/Accueil";
 import Connexion from "./pages/Connexion";
 import Contact from "./pages/Contact";
+import Dashboard from "./pages/Dashboard";
 import EntrainementDetail from "./pages/EntrainementDetail";
 import Entrainements from "./pages/Entrainements";
 import Favoris from "./pages/Favoris";
@@ -21,12 +23,10 @@ import Inscription from "./pages/Inscription";
 import Register from "./pages/Inscription";
 import MentionsLegales from "./pages/MentionsLegales";
 import MotDePasseOublie from "./pages/Motdepasseoublie";
-import ResetPassword from "./components/ResetPassword";
 import NotFound from "./pages/NotFound";
 import Planning from "./pages/Planning";
 import Profil from "./pages/Profil";
 import Tarifs from "./pages/Tarifs";
-import Dashboard from "./pages/Dashboard";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -139,7 +139,7 @@ if (rootElement == null) {
 createRoot(rootElement).render(
   <StrictMode>
     <GoogleOAuthProvider clientId="576518412561-g6gv2t0m3jqc15k4st98eu6i3m06jc3f.apps.googleusercontent.com">
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </GoogleOAuthProvider>
   </StrictMode>,
 );
