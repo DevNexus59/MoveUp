@@ -1,9 +1,17 @@
 import { Link } from "react-router";
+import { useAuth } from "../context/AuthContext";
+
 import haltère from "../assets/images/404-image.png";
 
 import "../pages/NotFound.css";
 
 function NotFound() {
+  // On Récupère l'état d'authentification
+  const { isAuthenticated } = useAuth();
+
+  // On détermine la page d'accueil en fonction de l'authentification
+  const homeUrl = isAuthenticated ? "/pages/Dashboard" : "/";
+
   return (
     <div className="not-found">
       <img
@@ -20,7 +28,7 @@ function NotFound() {
       <p className="not-found-comment">
         Nous redoublons d'efforts afin que votre site soit remis en service.
       </p>
-      <Link className="not-found-link" to="/">
+      <Link className="not-found-link" to={homeUrl}>
         Retour à l'accueil
       </Link>
     </div>

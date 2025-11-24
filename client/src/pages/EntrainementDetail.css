@@ -11,6 +11,13 @@
   transition: all 0.3s ease;
 }
 
+.entrainement-detail-section-title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
 .entrainement-detail-title {
   background: linear-gradient(to right, #c084fc, #f9a8d4, #c084fc);
   -webkit-background-clip: text;
@@ -32,6 +39,14 @@
   50% {
     opacity: 0.5;
   }
+}
+
+.entrainement-detail-favoris-btn {
+  background: none;
+}
+
+.entrainement-detail-favoris-btn:hover {
+  background: none;
 }
 
 .entrainement-detail-card {
@@ -64,7 +79,30 @@
   box-shadow: 0 4px 15px rgba(255, 196, 214, 0.3);
   padding: 1rem;
   border-radius: 15px;
-  height: 55%;
+  height: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+.entrainement-detail-difficulte-detail {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.difficulty-icons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.muscle-icon {
+  width: 40px;
+  height: 40px;
 }
 
 .entrainement-detail-muscle {
@@ -72,7 +110,7 @@
   box-shadow: 0 4px 15px rgba(255, 210, 230, 0.35);
   padding: 1rem;
   border-radius: 15px;
-  height: 55%;
+  height: 60%;
 }
 
 .entrainement-detail-equipement {
@@ -80,7 +118,7 @@
   box-shadow: 0 4px 15px rgba(200, 120, 255, 0.35);
   padding: 1rem;
   border-radius: 15px;
-  height: 55%;
+  height: 60%;
 }
 
 .entrainement-detail-label {

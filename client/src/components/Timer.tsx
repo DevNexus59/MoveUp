@@ -5,7 +5,7 @@ interface TimerProps {
   heures?: number;
   minutes?: number;
   secondes?: number;
-  userId: number;
+  nameOfUser: number;
   exerciceId: string;
 }
 
@@ -13,7 +13,7 @@ const Timer = ({
   heures = 0,
   minutes = 0,
   secondes = 0,
-  userId,
+  nameOfUser: userId,
   exerciceId,
 }: TimerProps) => {
   const [pause, setPause] = useState(true);
