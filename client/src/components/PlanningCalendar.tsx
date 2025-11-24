@@ -18,8 +18,14 @@ import type { EventResizeDoneArg } from "@fullcalendar/interaction";
 import ExercicesContext from "../context/ExercicesContext";
 import EventModal from "./EventModal";
 
-function PlanningCalendar() {
-  const ctx = useContext(ExercicesContext); //recup le ExercisesProvider
+//declaration de props pour changement de taille
+type PlanningCalendarProps = {
+  size?: "sm" | "md" | "lg";
+  height?: "auto" | number;
+};
+
+function PlanningCalendar({size = "md", height = "auto"}: PlanningCalendarProps) {
+  const ctx = useContext(ExercicesContext);
   if (!ctx) {
     throw new Error(
       "PlanningCalendar doit etre utilise avec ExercisesProvider",
@@ -27,7 +33,6 @@ function PlanningCalendar() {
   }
 
   const { events, updateEvent } = ctx; //recup les seances planifiees, les modifs avec le drag/drop/resize
-
   const [isModalOpen, setIsModalOpen] = useState(false); //controle le modale
   const [editingEventId, setEditingEventId] = useState<string | null>(null); // null = creer la seance / string = on edite via l'id
   const [initialRange, setInitialRange] = useState<{
@@ -35,6 +40,9 @@ function PlanningCalendar() {
     start: Date;
     end: Date;
   } | null>(null);
+
+  //permet de changer la taille via les props
+  const wrapperClassName = `planning-wrapper planning-wrapper--${size}`;
 
   //permet de faire la conversion en fullcalendar car ce ***** attendait les objets typiques du EventInput
   const calendarEvents: EventInput[] = events.map((evt) => ({
@@ -101,8 +109,9 @@ function PlanningCalendar() {
       eventDrop={handleEventDrop}: callback drag & drop
       eventResize={handleEventResize}{" "}: callback resize 
       nowIndicator: ligne rouge "heure actuelle"
-      slotMinTime / slotMaxTime bornes de la journee*/}
-      <div className="planning-wrapper">
+      slotMinTime / slotMaxTime bornes de la journee
+      */}
+      <div className={wrapperClassName}>
         <FullCalendar
           plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
           initialView="timeGridWeek"
@@ -124,10 +133,11 @@ function PlanningCalendar() {
           eventDrop={handleEventDrop}
           eventResize={handleEventResize}
           nowIndicator
-          slotMinTime="06:00:00"
-          slotMaxTime="22:00:00"
+          slotMinTime="00:00:00"
+          slotMaxTime="24:00:00"
+          height={height}
         />
-        <p
+        <div
           className="planning-help"
           aria-label="Consignes d'utilisation du planning"
         >
@@ -144,9 +154,9 @@ function PlanningCalendar() {
             <li>
               Cliquez sur la séance pour changer l'exercice ou la supprimer.
             </li>
-            <li>Naviguez dans votre planning avec mois ou semaine.</li>
+            <li>Naviguez dans votre planning au mois ou à la semaine.</li>
           </ul>
-        </p>
+        </div>
       </div>
       {/* on appelle le composant eventmodal isOpen pour protection / onclose pour la fermer/ editing pour edition ou crea/ plage de date a afficher */}
       {isModalOpen && (

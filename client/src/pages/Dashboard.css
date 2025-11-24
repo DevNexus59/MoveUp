@@ -6,8 +6,19 @@ h2 {
   text-align: center;
 }
 
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: start;
+}
+
 @media (max-width: 800px) {
   .title-dashboard {
     margin-top: 9em;
+  }
+  .dashboard-grid {
+    grid-template-columns: 1fr;
   }
 }
