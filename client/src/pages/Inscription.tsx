@@ -118,7 +118,7 @@ function Register() {
     }
     setMessage("");
     try {
-      const response = await fetch("http://localhost:4000/subscription", {
+      const response = await fetch("http://localhost:4000/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
