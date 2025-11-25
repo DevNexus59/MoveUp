@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import { Link } from "react-router";
+import EventModal from "../components/EventModal";
+// import { Link } from "react-router";
 import { useAuth } from "../context/AuthContext";
 import ExercicesContext from "../context/ExercicesContext";
 import type { Exercice } from "../types/types";
@@ -79,6 +80,13 @@ function EntrainementDetail() {
   };
 
   const difficultyLevel = getDifficultyLevel(exercice.difficulte);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [initialRange] = useState(() => {
+    const start = new Date();
+    const end = new Date(start.getTime());
+    return { start, end };
+  });
 
   return (
     <div className="entrainement-detail-container">
@@ -165,12 +173,25 @@ function EntrainementDetail() {
           </p>
         </div>
         <div className="entrainement-detail-btn">
-          <Link to="/pages/Planning">
-            <button type="button" className="entrainement-detail-btn-action">
-              Ajouter à mon planning
-            </button>
-          </Link>
+          {/* <Link to="/pages/Planning"> */}
+          <button
+            type="button"
+            className="entrainement-detail-btn-action"
+            onClick={() => setIsModalOpen(true)}
+          >
+            Ajouter à mon planning
+          </button>
+          {/* </Link> */}
         </div>
+        {isModalOpen && (
+          <EventModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            editingEventId={null}
+            initialRange={initialRange}
+            defaultExerciseId={exercice.exerciseId}
+          />
+        )}
       </section>
     </div>
   );

@@ -31,11 +31,7 @@
   --link: hsl(0, 0%, 100%);
   --linkv: hsl(264, 86%, 68%);
   --black: hsl(0, 0%, 0%);
-  --card: linear-gradient(
-    90deg,
-    rgba(240, 105, 235, 1) 0%,
-    rgba(159, 106, 231, 1) 100%
-  );
+  --card: linear-gradient(90deg, #f069eb 0%, rgba(159, 106, 231, 1) 100%);
 }
 
 /* ===== RESET LIGHT ===== */

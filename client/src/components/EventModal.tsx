@@ -10,6 +10,7 @@ type Props = {
   onClose: () => void; // permet de fermer la modale
   editingEventId: string | null; // permet d'editer le id au lieu de creer
   initialRange: { start: Date; end: Date } | null; // plage de date pdt la creation de seance
+  defaultExerciseId?: string; // ceci appelle l'exo depuis entrainementdetail et qui est optionnel pour le composant PlanningCalendar
 };
 
 //transformation en iso la date
@@ -17,7 +18,13 @@ function toInputValue(date: Date) {
   return date.toISOString().slice(0, 16); // "YYYY-MM-DDTHH:mm"
 }
 
-function EventModal({ isOpen, onClose, editingEventId, initialRange }: Props) {
+function EventModal({
+  isOpen,
+  onClose,
+  editingEventId,
+  initialRange,
+  defaultExerciseId,
+}: Props) {
   const ctx = useContext(ExercicesContext); //on recup le context, on connait la chanson.
   if (!ctx || !isOpen || !initialRange) return null; // si pas de provider/modale fermee/ pas de date: on rend rien,
 
@@ -62,9 +69,24 @@ function EventModal({ isOpen, onClose, editingEventId, initialRange }: Props) {
   );
 
   //si on edite une seance on selectionne l'exo deja associe sinon on prend le 1er exo de la liste
-  const [exerciseId, setExerciseId] = useState(
-    editingEvent?.exerciseId ?? exercises[0]?.exerciseId ?? "",
-  );
+  // const [exerciseId, setExerciseId] = useState(
+  //   editingEvent?.exerciseId ?? exercises[0]?.exerciseId ?? "",
+  // );
+
+  const [exerciseId, setExerciseId] = useState("");
+
+  useEffect(() => {
+    if (editingEvent) {
+      // edition d'un event existant
+      setExerciseId(editingEvent.exerciseId);
+    } else if (defaultExerciseId) {
+      //exo impose par la page entrainementdetail
+      setExerciseId(defaultExerciseId);
+    } else if (!exerciseId && exercises.length > 0) {
+      // crea classique calendrier
+      setExerciseId(exercises[0].exerciseId);
+    }
+  }, [editingEvent, exercises, defaultExerciseId, exerciseId]);
 
   //si on edite on prend les dates deja enregistreesm sinon on prend les plages selectionnee dans le calendrier
   const [start, setStart] = useState(
