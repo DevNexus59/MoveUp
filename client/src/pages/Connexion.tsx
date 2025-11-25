@@ -82,7 +82,7 @@ function Login() {
 
   return (
     <>
-      <h2 className="connexion-h2">Connexion:</h2>
+      <h1 className="connexion-h1">Connexion:</h1>
       <div className="connexion-board">
         <form onSubmit={handleSubmit}>
           <div>

@@ -52,11 +52,17 @@
   text-align: left;
   padding: 0 1rem;
 }
+
+.hero-h1 {
+  text-shadow: 0 2px 10px rgb(25, 5, 53, 0.5), 0 4px 40px rgb(115, 53, 136, 0.3);
+  text-align: left;
+  max-width: 25ch;
+}
+
 .hero-h2 {
   color: #fff;
   text-shadow: 0 2px 10px rgb(25, 5, 53, 0.5), 0 4px 40px rgb(115, 53, 136, 0.3);
   margin-left: 1.5rem;
-  position: left;
   text-align: left;
   max-width: 25ch;
 }
@@ -74,6 +80,7 @@
 @media (max-width: 768px) {
   .hero {
     height: 40svh;
+    margin-top: 4rem;
   }
 
   .hero-image {
@@ -84,7 +91,7 @@
     text-align: center;
   }
 
-  .hero-h2 {
+  .hero-h1 {
     font-size: 1.1rem;
     margin: 0 auto 1rem auto;
     text-align: center;

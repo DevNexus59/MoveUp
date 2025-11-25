@@ -1,13 +1,16 @@
 import { useContext, useEffect, useState } from "react";
-import ExerciceCard from "./ExerciceCard";
 import ExercicesContext from "../context/ExercicesContext";
+import ExerciceCard from "./ExerciceCard";
 import "./Search.css";
 import type { Exercice } from "../types/types";
 
 function Search() {
   const [query, setQuery] = useState("");
   const [filterData, setFilterData] = useState<Exercice[]>([]);
-  const [selectedExercice, setSelectedExercice] = useState<Exercice | null>(null);
+  const [selectedExercice, setSelectedExercice] = useState<Exercice | null>(
+    null,
+  );
+  const [navigateKeyboard, setNavigateKeyboard] = useState(-1); // navigation par clavier
 
   const Donnees = useContext(ExercicesContext);
 
@@ -26,8 +29,40 @@ function Search() {
 
     setFilterData(filtered || []);
   }, [Donnees, query]);
-  
-{console.log(selectedExercice)}
+
+  // console.log(selectedExercice)
+
+  //navigation par clavier
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (filterData.length === 0) return;
+
+    switch (e.key) {
+      case "ArrowDown":
+        setNavigateKeyboard((prev) =>
+          prev < filterData.length - 1 ? prev + 1 : 0,
+        );
+        break;
+
+      case "ArrowUp":
+        setNavigateKeyboard((prev) =>
+          prev > 0 ? prev - 1 : filterData.length - 1,
+        );
+        break;
+
+      case "Enter":
+        if (navigateKeyboard >= 0) {
+          const item = filterData[navigateKeyboard];
+          setSelectedExercice(item);
+          setFilterData([]);
+          setQuery(item.nom);
+        }
+        break;
+
+      default:
+        break;
+    }
+  };
 
   return (
     <div className="search-container">
@@ -39,19 +74,28 @@ function Search() {
           setQuery(e.target.value);
           setSelectedExercice(null);
         }}
+        onKeyDown={(e) => handleKeyDown(e)}
         className="search-input"
       />
 
       {filterData.length > 0 ? (
         <ul className="search-results">
-          {filterData.map((item) => (
+          {filterData.map((item, index) => (
             <li
               key={item.id}
-              className="search-item"
+              className={`search-item ${index === navigateKeyboard ? "highlighted" : ""}`}
+              onMouseEnter={() => setNavigateKeyboard(index)}
               onClick={() => {
                 setSelectedExercice(item);
                 setFilterData([]);
                 setQuery(item.nom);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  setSelectedExercice(item);
+                  setFilterData([]);
+                  setQuery(item.nom);
+                }
               }}
             >
               {item.nom}
@@ -59,13 +103,12 @@ function Search() {
           ))}
         </ul>
       ) : (
-
         query &&
         !selectedExercice && (
           <p className="search-no-results">Aucun résultat trouvé.</p>
         )
       )}
-          
+
       {selectedExercice && (
         <div className="exercice-card-container">
           <ExerciceCard exoData={selectedExercice} />
@@ -77,43 +120,41 @@ function Search() {
 
 export default Search;
 
-
-
 // const Donnees:Donnees | null = useContext(ExercicesContext);
-  
-  // Filtrage des données en ignorant la casse et les espaces
 
-  // useEffect (()=>{ setFilterData (data.isLoading ? null:  data.data.results.filter((item) =>
-  // item.toLowerCase().trim().includes(query.toLowerCase().trim()),
-  //  ))
-  //   },[]);
-  // code Abdou
-  // useEffect(() => {
-  //   if(Donnees.isLoading ){
-  //   } else {
-  //     setFilterData(Donnees.data.results.filter((item) => {
-  //       console.log(item.nom.toLowerCase().trim().includes(query.toLowerCase().trim()))
-  //        return (item.nom.toLowerCase().trim().includes(query.toLowerCase().trim()))
-  //     }
-  //     ))
-  //   }
-  // },[]);
-  //fin code Abdou
+// Filtrage des données en ignorant la casse et les espaces
 
-  // code Pierre
-  // useEffect(() => {
+// useEffect (()=>{ setFilterData (data.isLoading ? null:  data.data.results.filter((item) =>
+// item.toLowerCase().trim().includes(query.toLowerCase().trim()),
+//  ))
+//   },[]);
+// code Abdou
+// useEffect(() => {
+//   if(Donnees.isLoading ){
+//   } else {
+//     setFilterData(Donnees.data.results.filter((item) => {
+//       console.log(item.nom.toLowerCase().trim().includes(query.toLowerCase().trim()))
+//        return (item.nom.toLowerCase().trim().includes(query.toLowerCase().trim()))
+//     }
+//     ))
+//   }
+// },[]);
+//fin code Abdou
 
-  //   if (!Donnees.isLoading && Donnees.data && Donnees.data.results) {
-  //     const lowerCaseQuery = query.toLowerCase().trim();
-  //     const filteredData = Donnees.data.results.filter((item) => {
-  //       return item.nom?.toLowerCase().trim().includes(lowerCaseQuery) ?? false;
-  //     });
-  //     setFilterData(filteredData);
-  //   } else if (!Donnees.isLoading) {
-  //     setFilterData([]);
-  //   }
-  // }, [query, Donnees.isLoading, Donnees.data]);
-  //fin code Pierre
+// code Pierre
+// useEffect(() => {
+
+//   if (!Donnees.isLoading && Donnees.data && Donnees.data.results) {
+//     const lowerCaseQuery = query.toLowerCase().trim();
+//     const filteredData = Donnees.data.results.filter((item) => {
+//       return item.nom?.toLowerCase().trim().includes(lowerCaseQuery) ?? false;
+//     });
+//     setFilterData(filteredData);
+//   } else if (!Donnees.isLoading) {
+//     setFilterData([]);
+//   }
+// }, [query, Donnees.isLoading, Donnees.data]);
+//fin code Pierre
 
 //   useEffect(() => {
 //     if (!Donnees) {
