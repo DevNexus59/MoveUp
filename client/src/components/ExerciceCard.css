@@ -21,7 +21,6 @@
   object-fit: contain;
 }
 .ExerciceCardEtoileVide {
-  display: none;
   position: absolute;
   top: 0;
   right: 0;
@@ -40,6 +39,9 @@
   padding: 0;
 }
 
+.ExerciceCardButtonFavoris {
+  display: none;
+}
 .ExerciceCardButtonFavoris:hover {
   background: none;
 }
