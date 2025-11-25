@@ -12,8 +12,10 @@ import { ExercicesProvider } from "./components/ExercicesProvider";
 import { AuthProvider } from "./context/AuthContext";
 import About from "./pages/About";
 import Accueil from "./pages/Accueil";
+import Coach from "./pages/Coach";
 import Connexion from "./pages/Connexion";
 import Contact from "./pages/Contact";
+import Dashboard from "./pages/Dashboard";
 import EntrainementDetail from "./pages/EntrainementDetail";
 import Entrainements from "./pages/Entrainements";
 import Favoris from "./pages/Favoris";
@@ -24,7 +26,6 @@ import NotFound from "./pages/NotFound";
 import Planning from "./pages/Planning";
 import Profil from "./pages/Profil";
 import Tarifs from "./pages/Tarifs";
-import Dashboard from "./pages/Dashboard";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -111,6 +112,10 @@ const router = createBrowserRouter([
       {
         path: "/pages/Favoris", // The root path
         element: <Favoris />,
+      },
+      {
+        path: "/pages/Coach", // The root path
+        element: <Coach />,
       },
     ],
   },
