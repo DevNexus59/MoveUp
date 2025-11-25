@@ -276,6 +276,10 @@
     padding: 1.5rem;
   }
 
+  .entrainement-detail-difficulte {
+    gap: 0.75rem;
+  }
+
   .entrainement-detail-action {
     justify-content: center;
     gap: 1rem;
