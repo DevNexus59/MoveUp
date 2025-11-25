@@ -6,6 +6,7 @@ type Badge = {
   id: string;
   name: string;
   icon: string;
+  description?: string;
 };
 
 function Badges() {
@@ -14,29 +15,44 @@ function Badges() {
   const { userId } = useAuth();
 
   useEffect(() => {
+    // 1. Charger tous les badges
     fetch("http://localhost:4000/api/badges")
       .then((res) => res.json())
-      .then((data: Badge[]) => setAllBadges(data));
+      .then((data: Badge[]) => setAllBadges(data))
+      .catch((err) => console.error("Erreur lors dur chargement:", err));
 
-    fetch(`http://localhost:4000/api/users/${userId}/badges`)
-      .then((res) => res.json())
-      .then((data: Badge[]) => setUnlockedBadges(data.map((b) => b.id)));
+    if (userId) {
+      fetch(`http://localhost:4000/api/users/${userId}/badges`)
+        .then((res) => {
+          if (!res.ok) throw new Error("Erreur fetch user badges");
+          return res.json();
+        })
+        .then((data: Badge[]) => {
+          if (Array.isArray(data)) {
+            setUnlockedBadges(data.map((b) => b.id));
+          }
+        })
+        .catch((err) => console.error(err));
+    }
   }, [userId]);
 
   return (
     <div>
-      <h2>Badges</h2>
+      <h3>Badges</h3>
 
       <div className="badges-container">
         {allBadges.map((b) => {
+          // Comparaison stricte
           const isUnlocked = unlockedBadges.includes(b.id);
 
           return (
             <div
               key={b.id}
               className={`badge-item ${isUnlocked ? "badge-unlocked" : "badge-locked"}`}
+              title={b.description || b.name}
             >
               <img src={b.icon} alt={b.name} />
+              {/* <p>{b.name}</p> */}
             </div>
           );
         })}
