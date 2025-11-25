@@ -84,7 +84,7 @@ function ExerciceCard({ exoData }: exercices) {
         </button>
         <img className="ExerciceCardImage" src={gifUrl} alt={nom} />
       </div>
-      <h4 className="ExerciceCardH5">{nom}</h4>
+      <h4 className="ExerciceCardH4">{nom}</h4>
       <Link to={`/pages/EntrainementDetail/${id}`}>
         <button
           className={`ExerciceCardButton ${isAuthenticated ? "exerciceCardIsConnecting" : ""}`}
