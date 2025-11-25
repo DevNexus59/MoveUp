@@ -84,7 +84,7 @@ function ExerciceCard({ exoData }: exercices) {
         </button>
         <img className="ExerciceCardImage" src={gifUrl} alt={nom} />
       </div>
-      <h5 className="ExerciceCardH5">{nom}</h5>
+      <h4 className="ExerciceCardH4">{nom}</h4>
       <Link to={`/pages/EntrainementDetail/${id}`}>
         <button
           className={`ExerciceCardButton ${isAuthenticated ? "exerciceCardIsConnecting" : ""}`}
@@ -94,7 +94,7 @@ function ExerciceCard({ exoData }: exercices) {
             console.info("Click count");
           }}
         >
-          Commencer
+          Voir le détails
         </button>
       </Link>
     </article>

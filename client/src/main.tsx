@@ -13,6 +13,7 @@ import ResetPassword from "./components/ResetPassword";
 import { AuthProvider } from "./context/AuthContext";
 import About from "./pages/About";
 import Accueil from "./pages/Accueil";
+import Coach from "./pages/Coach";
 import Connexion from "./pages/Connexion";
 import Contact from "./pages/Contact";
 import Dashboard from "./pages/Dashboard";
@@ -113,6 +114,10 @@ const router = createBrowserRouter([
       {
         path: "/pages/Favoris", // The root path
         element: <Favoris />,
+      },
+      {
+        path: "/pages/Coach", // The root path
+        element: <Coach />,
       },
       {
         path: "/pages/Mot-de-passe-oublie", // The root path
