@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./Timer.css";
 
 interface TimerProps {
@@ -21,49 +21,52 @@ const Timer = ({
   const [[h, m, s], setTemps] = useState([heures, minutes, secondes]);
   const [demarre, setDemarre] = useState(false);
 
-  const [badgesMessage, setBadgesMessage] = useState<string | null>(null);
-
-  const handleExerciceComplete = useCallback(async () => {
-    try {
-      const response = await fetch(
-        "http://localhost:4000/api/achievements/track",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
+  const handleExerciceComplete = useCallback(
+    async (tempsFinal: number[]) => {
+      const [hFinal, mFinal, sFinal] = tempsFinal;
+      const tempsInitialEnSecondes = heures * 3600 + minutes * 60 + secondes;
+      const tempsRestantEnSecondes = hFinal * 3600 + mFinal * 60 + sFinal;
+      const dureeEcoulee = tempsInitialEnSecondes - tempsRestantEnSecondes;
+      try {
+        const response = await fetch(
+          "http://localhost:4000/api/achievements/track",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              userId: Number(userId),
+              exerciseId: exerciceId,
+              duration: dureeEcoulee,
+            }),
           },
-          body: JSON.stringify({
-            userId: Number(userId),
-            exerciceId: exerciceId,
-          }),
-        },
-      );
+        );
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Exercice complété avec succès :", data);
+        if (response.ok) {
+          const data = await response.json();
+          console.log("Exercice complété avec succès :", data);
 
-        if (data.newlyUnlockedBadges && data.newlyUnlockedBadges.length > 0) {
-          const badgeNames = data.newlyUnlockedBadges
-            .map((b: { name: string }) => b.name)
-            .join(",");
-          setBadgesMessage(
-            `Félicitations ! Vous avez débloqué le badge : ${badgeNames}`,
-          );
+          if (data.newlyUnlockedBadges && data.newlyUnlockedBadges.length > 0) {
+            console.log(
+              "Nouveaux badges débloqués :",
+              data.newlyUnlockedBadges,
+            );
+          }
+        } else {
+          console.error("Erreur lors de l'enregistrement de l'exercice.");
         }
-      } else {
-        console.error("Erreur lors de l'enregistrement de l'exercice.");
+      } catch (error) {
+        console.error("Erreur réseau :", error);
       }
-    } catch (error) {
-      console.error("Erreur réseau :", error);
-    }
-  }, [userId, exerciceId]);
+    },
+    [heures, minutes, secondes, userId, exerciceId],
+  );
   const remiseAZero = () => {
     setTemps([heures, minutes, secondes]);
     setPause(true);
     setTermine(false);
     setDemarre(false);
-    setBadgesMessage(null);
   };
 
   const handleDemarrer = () => {
@@ -73,6 +76,45 @@ const Timer = ({
 
   const handlePauseReprise = () => {
     setPause(!pause);
+    setDemarre(true);
+  };
+
+  const handleToggleExCounter = async (tempsFinal: number[]) => {
+    const [hFinal, mFinal, sFinal] = tempsFinal;
+    const tempsInitialEnSecondes = heures * 3600 + minutes * 60 + secondes;
+    const tempsRestantEnSecondes = hFinal * 3600 + mFinal * 60 + sFinal;
+    const dureeEcoulee = tempsInitialEnSecondes - tempsRestantEnSecondes;
+    try {
+      const response = await fetch(
+        "http://localhost:4000/api/achievements/track",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            exerciseId: exerciceId,
+            userId: Number(userId),
+            duration: dureeEcoulee,
+          }),
+        },
+      );
+
+      if (!response.ok) {
+        console.error(
+          "Echec de l'envoi de l'incrémentation du compteur de l'exercice",
+        );
+        return;
+      }
+    } catch (error) {
+      console.error("Erreur réseau:", error);
+    }
+    if (termine) {
+      remiseAZero();
+    } else {
+      setTermine(true);
+      setPause(true);
+    }
   };
 
   useEffect(() => {
@@ -90,28 +132,22 @@ const Timer = ({
         });
       }, 1000);
     }
-    return () => clearInterval(timerId);
-  }, [pause, termine]);
-
-  useEffect(() => {
     if (termine) {
-      handleExerciceComplete();
+      handleExerciceComplete([h, m, s]);
     }
-  }, [termine, handleExerciceComplete]);
+
+    return () => {
+      if (timerId) {
+        clearInterval(timerId);
+      }
+    };
+  }, [pause, termine, handleExerciceComplete, h, s]);
 
   return (
     <div className="timer-container">
       <div className="timer-display">
         {`${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`}
       </div>
-      {termine && (
-        <div className="timer-complete-message">
-          Exercice terminé !
-          {badgesMessage && (
-            <div className="badges-message">{badgesMessage}</div>
-          )}
-        </div>
-      )}
       <div className="timer-buttons">
         {!demarre ? (
           <button
@@ -125,7 +161,6 @@ const Timer = ({
           <button
             type="button"
             onClick={handlePauseReprise}
-            disabled={termine}
             className="timer-btn-pause"
           >
             {pause ? "Reprendre" : "Pause"}
@@ -133,6 +168,16 @@ const Timer = ({
         )}
         <button type="button" onClick={remiseAZero} className="timer-btn-reset">
           Redémarrer
+        </button>
+        <button
+          className="timer-btn-termine"
+          type="button"
+          onClick={() => {
+            handleToggleExCounter([h, m, s]);
+            setTermine(true);
+          }}
+        >
+          Terminer
         </button>
       </div>
     </div>
