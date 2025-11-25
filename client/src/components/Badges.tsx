@@ -6,6 +6,7 @@ type Badge = {
   id: string;
   name: string;
   icon: string;
+  description?: string;
 };
 
 function Badges() {
@@ -14,6 +15,7 @@ function Badges() {
   const { userId } = useAuth();
 
   useEffect(() => {
+    // 1. Charger tous les badges
     fetch("http://localhost:4000/api/badges")
       .then((res) => res.json())
       .then((data: Badge[]) => setAllBadges(data))
@@ -39,12 +41,14 @@ function Badges() {
       <h2 className="badges-title">Badges</h2>
       <div className="badges-container">
         {allBadges.map((b) => {
+          // Comparaison stricte
           const isUnlocked = unlockedBadges.includes(b.id);
 
           return (
             <div
               key={b.id}
               className={`badge-item ${isUnlocked ? "badge-unlocked" : "badge-locked"}`}
+              title={b.description || b.name}
             >
               <img src={b.icon} alt={b.name} />
               <span className="badge-name">{b.name}</span>

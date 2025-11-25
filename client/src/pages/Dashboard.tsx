@@ -4,6 +4,7 @@ import Search from "../components/Search";
 import { useAuth } from "../context/AuthContext";
 import "../pages/Dashboard.css";
 import ActivitePrez from "../components/ActivitePrez";
+import PlanningCalendar from "../components/PlanningCalendar";
 
 function Dashboard() {
   const { userFirstName } = useAuth();
@@ -15,10 +16,18 @@ function Dashboard() {
         <h2>Bienvenue sur votre dashboard</h2>
       </div>
       <div>
+        <div className="dashboard-grid">
+          <div className="dashboard-grid-item">
+            <h3>Votre planning:</h3>
+            <PlanningCalendar size="sm" height={500} />
+          </div>
+          <div className="dashboard-grid-item">
+            <Badges />
+          </div>
+        </div>
         <h3>Vos exercices favoris :</h3>
         <FavoritesCard />
       </div>
-      <Badges />
       <Search />
       <ActivitePrez activitePrez="musculation" />
       <ActivitePrez activitePrez="cardio" />
