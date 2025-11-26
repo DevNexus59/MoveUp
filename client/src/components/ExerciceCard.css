@@ -46,9 +46,11 @@
 .ExerciceCardButton {
   display: none;
   background: var(--card);
+  color: var(--bg-font);
 }
 .ExerciceCardButton:hover {
   background: var(--linkv);
+  color: #fff;
 }
 
 .exerciceCardIsConnecting {

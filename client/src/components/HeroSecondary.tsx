@@ -10,7 +10,7 @@ function HeroSecondary({ title, subtitle, image }: HeroSecondaryProps) {
   return (
     <section className="hero-secondary">
       <div className="hero-secondary-image">
-        <img src={image} alt={title} />
+        <img src={image} alt="" aria-hidden="true" />
       </div>
       <div className="hero-secondary-content">
         <h1 className="hero-secondary-title">{title}</h1>

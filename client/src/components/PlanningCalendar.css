@@ -36,14 +36,16 @@
 }
 
 .planning-wrapper .fc-button.fc-button-primary:hover {
-  background: var(--black);
-  color: var(--bg);
-  border-color: var(--black);
+  color: var(--bg-font);
+}
+
+.planning-wrapper .fc .fc-button-primary:disabled {
+  color: var(--bg-font);
 }
 
 .planning-wrapper .fc-button.fc-button-primary.fc-button-active {
   background: var(--card);
-  color: var(--bg);
+  color: var(--bg-font);
   border-color: var(--card);
 }
 
@@ -103,13 +105,16 @@
 .planning-wrapper .fc-event-title {
   font-weight: 600;
   font-size: 0.8rem;
-  color: var(--black);
 }
 
 .planning-wrapper .fc-event.fc-event-dragging,
 .planning-wrapper .fc-event.fc-event-resizing {
   opacity: 0.9;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.planning-wrapper .fc-v-event .fc-event-main {
+  color: var(--bg-font);
 }
 
 .planning-wrapper .fc-highlight {

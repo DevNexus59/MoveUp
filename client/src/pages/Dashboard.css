@@ -8,10 +8,15 @@ h2 {
 
 .dashboard-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  grid-template-columns: 1fr 1.5fr;
   gap: 2rem;
   margin-top: 2rem;
   align-items: start;
+}
+
+.dashboard-grid-item-scroll {
+  height: 45rem;
+  overflow: scroll;
 }
 
 @media (max-width: 800px) {

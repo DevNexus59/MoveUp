@@ -24,7 +24,7 @@
 }
 
 .theme-toggle:focus-visible {
-  outline: 3px solid var(--card);
+  outline: 1px solid var(--linkv);
   outline-offset: .5rem;
 }
 
