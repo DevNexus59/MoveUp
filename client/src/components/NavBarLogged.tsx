@@ -21,7 +21,7 @@ function NavBarLogged() {
         <NavLink to="/" className="NavBar-header-link-logo">
           <img
             src="../src/assets/logo.png"
-            alt="logo"
+            alt="move up"
             className="NavBar-header-logo"
           />
         </NavLink>

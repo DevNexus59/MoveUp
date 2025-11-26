@@ -112,12 +112,11 @@
 }
 
 .profile-actions .button-delete {
-  border: none;
-  text-decoration: none;
-  color: var(--bg);
-  background-color: var(--bg);
-  box-shadow: none;
-  text-shadow: none;
+  background: none;
+  margin: 0;
+  font: inherit;
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
 }
 
 @media (max-width: 900px) {

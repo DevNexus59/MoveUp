@@ -67,7 +67,9 @@ function Search() {
   return (
     <div className="search-container">
       <input
+        id="search-exo"
         type="text"
+        aria-label="Rechercher un exercice"
         placeholder="Rechercher un exercice"
         value={query}
         onChange={(e) => {
