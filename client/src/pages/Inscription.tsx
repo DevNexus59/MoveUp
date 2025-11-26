@@ -330,7 +330,9 @@ function Register() {
                 required
               >
                 <option value="">-- Veuillez choisir --</option>
-                <option value="Basic">Basic - 19€ par mois</option>
+                <option value="Basic">
+                  Essai gratuit de 7 jours - Basic - 19€ par mois
+                </option>
                 <option value="Pro">Pro - 29€ par mois</option>
                 <option value="Premium">Premium - 49€ par mois</option>
               </select>
