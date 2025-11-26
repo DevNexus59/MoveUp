@@ -57,23 +57,26 @@
   text-shadow: 0 2px 10px rgb(25, 5, 53, 0.5), 0 4px 40px rgb(115, 53, 136, 0.3);
   text-align: left;
   max-width: 25ch;
+  color: #fff;
 }
 
-.hero-h2 {
+/* .hero-h2 {
   color: #fff;
   text-shadow: 0 2px 10px rgb(25, 5, 53, 0.5), 0 4px 40px rgb(115, 53, 136, 0.3);
   margin-left: 1.5rem;
   text-align: left;
   max-width: 25ch;
-}
+} */
 
 .hero-btn {
   align-items: center;
   background: linear-gradient(135deg, #a8c0ff 0%, #c0a8ff 20%, #ffb3d9 100%);
+  color: var(--bg-font);
   text-shadow: 0 0 6px rgba(160, 100, 255, 0.8);
   &:hover {
     background: #3b0a85;
     text-shadow: none;
+    color: #fff;
   }
 }
 
