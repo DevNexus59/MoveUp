@@ -99,3 +99,12 @@
   flex-direction: column;
   min-height: 100vh;
 }
+.google-login-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  height: 40px;
+}
+.google-login-container svg {
+  margin-top: 0.7em;
+}

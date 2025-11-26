@@ -5,6 +5,17 @@ import type { User } from "../types/types";
 import "../App.css";
 import "./Profil.css";
 
+type AddressSuggestion = {
+  properties: {
+    id: string;
+    label?: string;
+    name?: string;
+    postcode?: string;
+    city?: string;
+    [key: string]: string | undefined;
+  };
+};
+
 function Profil() {
   const { setUser: setContextUser, userId, logout } = useAuth();
   const [user, setUser] = useState<User | null>(null);
@@ -12,7 +23,50 @@ function Profil() {
   const [isEditing, setIsEditing] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [formData, setFormData] = useState<Partial<User>>({});
+  const [addressSuggest, setAddressSuggest] = useState<AddressSuggestion[]>([]);
+  const handleSuggestionClick = (suggestion: AddressSuggestion) => {
+    setFormData((prevData) => ({
+      ...prevData, //
+      address: suggestion.properties.name,
+      zipcode: suggestion.properties.postcode,
+      city: suggestion.properties.city,
+    }));
+    setAddressSuggest([]);
+  };
+  const handleAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const nomDuChamp = e.target.name; // 'address'
+    const newValue = e.target.value;
 
+    // 1. Mise à jour de formData.address
+    setFormData((prevData) => ({
+      ...prevData,
+      [nomDuChamp]: newValue,
+    }));
+
+    // 2. Logique de suggestion d'adresse
+    if (newValue.length > 2) {
+      const url = `https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(newValue)}`;
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          setAddressSuggest(data.features || []);
+        })
+        .catch((error) => {
+          console.error("Erreur lors de la récupération des adresses:", error);
+          setAddressSuggest([]);
+        });
+    } else {
+      setAddressSuggest([]);
+    }
+  };
+  const handleSuggestionKeyDown = (
+    e: React.KeyboardEvent<HTMLLIElement>,
+    suggestion: AddressSuggestion,
+  ) => {
+    if (e.key === "Enter") {
+      handleSuggestionClick(suggestion);
+    }
+  };
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.[0]) {
       setSelectedFile(e.target.files[0]);
@@ -218,8 +272,28 @@ function Profil() {
                       value={formData.address || ""}
                       name="address"
                       placeholder="Adresse"
-                      onChange={handleChange}
+                      onChange={handleAddressChange}
                     />
+                    {addressSuggest.length > 0 && (
+                      <ul className="address-suggestions">
+                                               {" "}
+                        {addressSuggest.map((suggestion) => (
+                          <li
+                            key={suggestion.properties.id}
+                            onClick={() => handleSuggestionClick(suggestion)}
+                            onKeyDown={(e) =>
+                              handleSuggestionKeyDown(e, suggestion)
+                            }
+                            className="suggestion-item"
+                          >
+                                                       {" "}
+                            {suggestion.properties.label}                       
+                             {" "}
+                          </li>
+                        ))}
+                                             {" "}
+                      </ul>
+                    )}
                     <input
                       type="text"
                       value={formData.zipcode || ""}
