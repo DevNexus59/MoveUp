@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router";
+import "./ResetPassword.css";
 
 function ResetPassword() {
   const [newPassword, setNewPassword] = useState("");
@@ -38,9 +39,12 @@ function ResetPassword() {
     }
   }
   return (
-    <div>
-      <h1>Réinitialisation du mot de passe</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="reset-password-board">
+      <div className="head-reset-password">
+        <h2>Réinitialisation du mot de passe</h2>
+        <p>Veuillez entrer votre nouveau mot de passe ci-dessous.</p>
+      </div>
+      <form className="form-resetpassword" onSubmit={handleSubmit}>
         <input
           type="password"
           placeholder="Nouveau mot de passe"
