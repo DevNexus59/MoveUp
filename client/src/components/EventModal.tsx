@@ -88,6 +88,16 @@ function EventModal({
     }
   }, [editingEvent, exercises, defaultExerciseId, exerciseId]);
 
+  //accessibilite pour sortir de la modale en utilisant escape
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, [onClose]);
+
   //si on edite on prend les dates deja enregistreesm sinon on prend les plages selectionnee dans le calendrier
   const [start, setStart] = useState(
     toInputValue(
@@ -165,9 +175,25 @@ function EventModal({
 
   //rendu jsx avec nos belles semantiques et class a personnalizer avec le css
   return (
-    <div className="modal-backdrop">
+    <div
+      className="modal-backdrop"
+      aria-modal="true"
+      aria-labelledby="dialog-title"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          onClose();
+        }
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Escape" && e.target === e.currentTarget) {
+          onClose();
+        }
+      }}
+    >
       <div className="modal">
-        <h2>{editingEvent ? "Modifier une séance" : "Créer une séance"}</h2>
+        <h2 id="dialog-title">
+          {editingEvent ? "Modifier une séance" : "Créer une séance"}
+        </h2>
 
         <form onSubmit={handleSubmit}>
           <label>
