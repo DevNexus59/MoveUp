@@ -38,32 +38,6 @@ function ExerciceCard({ exoData }: exercices) {
       console.error("Erreur réseau:", error);
     }
   };
-
-  const handleToggleExCounter = async () => {
-    try {
-      const response = await fetch(
-        "http://localhost:4000/api/achievements/track",
-        {
-          method: "POST",
-          headers: {
-            "content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            exerciseId: exoData.exerciseId,
-            userId,
-          }),
-        },
-      );
-      if (!response.ok) {
-        console.error(
-          "Echec de l'envoi de l'incrémentation du compteur de l'exercice",
-        );
-        return;
-      }
-    } catch (error) {
-      console.error("Erreur réseau:", error);
-    }
-  };
   const { gifUrl, nom, id } = exoData;
   return (
     <article className="ExerciceCardArticle">
@@ -84,17 +58,13 @@ function ExerciceCard({ exoData }: exercices) {
         </button>
         <img className="ExerciceCardImage" src={gifUrl} alt={nom} />
       </div>
-      <h5 className="ExerciceCardH5">{nom}</h5>
+      <h4 className="ExerciceCardH4">{nom}</h4>
       <Link to={`/pages/EntrainementDetail/${id}`}>
         <button
           className={`ExerciceCardButton ${isAuthenticated ? "exerciceCardIsConnecting" : ""}`}
           type="button"
-          onClick={() => {
-            handleToggleExCounter();
-            console.info("Click count");
-          }}
         >
-          Commencer
+          Afficher les détails
         </button>
       </Link>
     </article>

@@ -12,6 +12,7 @@ import muscleLogo from "../assets/images/entrainementDetail_picto_niveau.png";
 import chronometre from "../assets/images/entrainementdetail_time.png";
 
 import "./EntrainementDetail.css";
+import Timer from "../components/Timer";
 
 function EntrainementDetail() {
   const { id } = useParams();
@@ -36,6 +37,19 @@ function EntrainementDetail() {
     return <p>Exercice non trouvé</p>;
   }
 
+  const parseDuree = (duree: string) => {
+    const match = duree.match(/(\d+)/);
+    if (match) {
+      const valeur = Number.parseInt(match[1]);
+      if (duree.toLocaleLowerCase().includes("min")) {
+        return { minutes: valeur, secondes: 0 };
+      }
+      return { minutes: 0, secondes: valeur };
+    }
+    return { minutes: 1, secondes: 0 };
+  };
+
+  const { minutes, secondes } = parseDuree(exercice.duree);
   const isFavorite =
     user?.favoriteExercices?.includes(String(exercice.exerciseId)) || false;
 
@@ -154,6 +168,13 @@ function EntrainementDetail() {
             />
             <p className="entrainement-detail-duration">{exercice.duree}</p>
           </div>
+          <Timer
+            heures={0}
+            minutes={minutes}
+            secondes={secondes}
+            nameOfUser={Number(userId) || 0}
+            exerciceId={exercice.exerciseId || exercice.id?.toString() || "1"}
+          />
         </div>
         <div className="entrainement-detail-instructions">
           <h2 className="ed-title-instructions">Instructions :</h2>

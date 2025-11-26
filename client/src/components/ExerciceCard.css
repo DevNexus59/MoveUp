@@ -55,5 +55,6 @@
   display: inline-block;
 }
 
-/* .ExerciceCardH5 {
-} */
+.ExerciceCardH4 {
+  font-size: calc(var(--font-h) * 0.5);
+}
