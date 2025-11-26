@@ -7,7 +7,7 @@ function ResetPassword() {
   const [message, setMessage] = useState("");
   const [searchParams] = useSearchParams();
   const token = searchParams.get("token");
-  const id = searchParams.get("id");
+  const id = searchParams.get("userId");
   const navigate = useNavigate();
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();

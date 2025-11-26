@@ -110,8 +110,10 @@ function Login() {
             <Link to="/pages/Mot-de-passe-oublie">Mot de passe oublié ?</Link>
           </div>
           <button type="submit">Se connecter</button>
+          <div className="google-login-container">
+            <GoogleLogin onSuccess={handleSuccess} />
+          </div>
         </form>
-        <GoogleLogin onSuccess={handleSuccess} useOneTap />
 
         {message && <p>{message}</p>}
       </div>
