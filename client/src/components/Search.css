@@ -44,3 +44,7 @@
   font-style: italic;
   color: #9e9e9e;
 }
+
+.search-item.highlighted {
+  background-color: #9f6ae7;
+}
