@@ -22,11 +22,14 @@ function Dashboard() {
             <PlanningCalendar size="sm" height={500} />
           </div>
           <div className="dashboard-grid-item">
-            <Badges />
+            {" "}
+            <h3>Vos exercices favoris :</h3>
+            <div className="dashboard-grid-item-scroll">
+              <FavoritesCard />
+            </div>
           </div>
         </div>
-        <h3>Vos exercices favoris :</h3>
-        <FavoritesCard />
+        <Badges />
       </div>
       <Search />
       <ActivitePrez activitePrez="musculation" />

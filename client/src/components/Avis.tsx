@@ -158,7 +158,9 @@ function Avis({ limit }: { limit?: number }): ReactElement {
             <div className="mu-avis-author-card">
               <img
                 src={`${API_BASE_URL}${author?.photoUrl}`}
-                alt={`${author?.firstname}`}
+                alt=""
+                // {`${author?.firstname}`} le alt est considere comme rebondant selon les normes d'accessibilite et ce sont des images purement decoratives
+                aria-hidden="true"
                 className="mu-avis-avatar"
                 loading="lazy"
                 height={100}
