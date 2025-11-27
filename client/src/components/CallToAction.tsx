@@ -23,9 +23,9 @@ function CallToAction() {
             Je m'inscris
           </button>
         </Link>
-        <Link to="/pages/Inscription">
+        <Link to="/pages/Tarifs">
           <button type="button" className="cta-button">
-            Essai offert
+            Decouvrez l'essai offert
           </button>
         </Link>
       </div>

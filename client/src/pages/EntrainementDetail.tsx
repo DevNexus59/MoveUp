@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import { Link } from "react-router";
+import EventModal from "../components/EventModal";
+// import { Link } from "react-router";
 import { useAuth } from "../context/AuthContext";
 import ExercicesContext from "../context/ExercicesContext";
 import type { Exercice } from "../types/types";
@@ -11,6 +12,7 @@ import muscleLogo from "../assets/images/entrainementDetail_picto_niveau.png";
 import chronometre from "../assets/images/entrainementdetail_time.png";
 
 import "./EntrainementDetail.css";
+import Timer from "../components/Timer";
 
 function EntrainementDetail() {
   const { id } = useParams();
@@ -35,6 +37,19 @@ function EntrainementDetail() {
     return <p>Exercice non trouvé</p>;
   }
 
+  const parseDuree = (duree: string) => {
+    const match = duree.match(/(\d+)/);
+    if (match) {
+      const valeur = Number.parseInt(match[1]);
+      if (duree.toLocaleLowerCase().includes("min")) {
+        return { minutes: valeur, secondes: 0 };
+      }
+      return { minutes: 0, secondes: valeur };
+    }
+    return { minutes: 1, secondes: 0 };
+  };
+
+  const { minutes, secondes } = parseDuree(exercice.duree);
   const isFavorite =
     user?.favoriteExercices?.includes(String(exercice.exerciseId)) || false;
 
@@ -79,6 +94,13 @@ function EntrainementDetail() {
   };
 
   const difficultyLevel = getDifficultyLevel(exercice.difficulte);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [initialRange] = useState(() => {
+    const start = new Date();
+    const end = new Date(start.getTime());
+    return { start, end };
+  });
 
   return (
     <div className="entrainement-detail-container">
@@ -146,6 +168,13 @@ function EntrainementDetail() {
             />
             <p className="entrainement-detail-duration">{exercice.duree}</p>
           </div>
+          <Timer
+            heures={0}
+            minutes={minutes}
+            secondes={secondes}
+            nameOfUser={Number(userId) || 0}
+            exerciceId={exercice.exerciseId || exercice.id?.toString() || "1"}
+          />
         </div>
         <div className="entrainement-detail-instructions">
           <h2 className="ed-title-instructions">Instructions :</h2>
@@ -165,12 +194,25 @@ function EntrainementDetail() {
           </p>
         </div>
         <div className="entrainement-detail-btn">
-          <Link to="/pages/Planning">
-            <button type="button" className="entrainement-detail-btn-action">
-              Ajouter à mon planning
-            </button>
-          </Link>
+          {/* <Link to="/pages/Planning"> */}
+          <button
+            type="button"
+            className="entrainement-detail-btn-action"
+            onClick={() => setIsModalOpen(true)}
+          >
+            Ajouter à mon planning
+          </button>
+          {/* </Link> */}
         </div>
+        {isModalOpen && (
+          <EventModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            editingEventId={null}
+            initialRange={initialRange}
+            defaultExerciseId={exercice.exerciseId}
+          />
+        )}
       </section>
     </div>
   );

@@ -37,9 +37,8 @@ function Badges() {
   }, [userId]);
 
   return (
-    <div>
-      <h3>Badges</h3>
-
+    <div className="badges-main">
+      <h2 className="badges-title">Badges</h2>
       <div className="badges-container">
         {allBadges.map((b) => {
           // Comparaison stricte
@@ -52,7 +51,7 @@ function Badges() {
               title={b.description || b.name}
             >
               <img src={b.icon} alt={b.name} />
-              {/* <p>{b.name}</p> */}
+              <span className="badge-name">{b.name}</span>
             </div>
           );
         })}
