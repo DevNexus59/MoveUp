@@ -1,5 +1,6 @@
 import { Link } from "react-router";
-import videoFile from "../assets/293085_medium.mp4";
+// import videoFile from "../assets/293085_medium.mp4";
+import videoFile from "../assets/chicken-werk-chicken-dance.mp4";
 import "./ExerciceVideo.css";
 
 function ExerciceVideo() {

@@ -43,7 +43,7 @@ function ExerciceCard({ exoData }: exercices) {
     <article className="ExerciceCardArticle">
       <div className="ExerciceCardImageContainer">
         <button
-          className="ExerciceCardButtonFavoris"
+          className={`ExerciceCardButtonFavoris ${isAuthenticated ? "exerciceCardIsConnecting" : ""}`}
           type="button"
           onClick={() => {
             handleToggleFavorite();
@@ -51,7 +51,7 @@ function ExerciceCard({ exoData }: exercices) {
           }}
         >
           <img
-            className={`ExerciceCardEtoileVide ${isAuthenticated ? "exerciceCardIsConnecting" : ""}`}
+            className="ExerciceCardEtoileVide"
             src={IsFavorite ? etoilePleine : etoileVide}
             alt="étoile"
           />
