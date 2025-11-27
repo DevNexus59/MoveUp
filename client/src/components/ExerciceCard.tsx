@@ -11,8 +11,6 @@ interface exercices {
 
 function ExerciceCard({ exoData }: exercices) {
   const { isAuthenticated, user, userId, setUser } = useAuth();
-  console.log("ID cherché :", exoData.exerciseId);
-  console.log("Liste favoris user :", user?.favoriteExercices);
   const IsFavorite =
     user?.favoriteExercices?.includes(String(exoData.exerciseId)) || false;
   const handleToggleFavorite = async () => {

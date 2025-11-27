@@ -19,12 +19,9 @@ function FavoritesCard(): ReactElement {
       return;
     }
 
-    console.log("UserId utilisé pour le fetch :", userId); // CHECK 1
-
     const fetchData = async () => {
       try {
         const url = `${API_BASE_URL}/api/users/${userId}/favorites`;
-        console.log("URL appelée :", url); // CHECK 2
 
         const response = await fetch(url);
 
@@ -33,7 +30,6 @@ function FavoritesCard(): ReactElement {
         }
 
         const favoritesData = await response.json();
-        console.log("Données brutes reçues de l'API :", favoritesData); // CHECK 3
 
         // Vérification de sécurité avant le setFavorites
         if (Array.isArray(favoritesData)) {

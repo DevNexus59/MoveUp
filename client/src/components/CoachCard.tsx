@@ -1,7 +1,6 @@
 // import etoilePleine from "../assets/etoile-pleine.png";
 // import etoileVide from "../assets/etoile-vide.png";
 // import { useAuth } from "../context/AuthContext";
-import "./CoachCard.css";
 
 function CoachCard() {
   // const { isAuthenticated, user, userId, setUser } = useAuth();
