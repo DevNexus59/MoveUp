@@ -4,13 +4,13 @@ import CardTarifs from "../components/CardTarifs";
 import CookiePopUp from "../components/CookiePopUp";
 import ExerciceVideo from "../components/ExerciceVideo";
 import Hero from "../components/Hero";
-import Training from "../components/Training";
+// import Training from "../components/Training";
 
 
 function Accueil() {
   return (
     <>
-    <Training/>
+    {/* <Training/> */}
       <CookiePopUp />
       <Hero />
       <ExerciceVideo />
