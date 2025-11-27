@@ -79,12 +79,12 @@
   box-shadow: 0 4px 15px rgba(255, 196, 214, 0.3);
   padding: 1rem;
   border-radius: 15px;
-  height: 60%;
+  height: 70%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
-  gap: 2.5rem;
+  gap: 1rem;
 }
 
 .entrainement-detail-difficulte-detail {
@@ -98,6 +98,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .muscle-icon {
@@ -110,7 +111,7 @@
   box-shadow: 0 4px 15px rgba(255, 210, 230, 0.35);
   padding: 1rem;
   border-radius: 15px;
-  height: 60%;
+  height: 70%;
 }
 
 .entrainement-detail-equipement {
@@ -118,7 +119,7 @@
   box-shadow: 0 4px 15px rgba(200, 120, 255, 0.35);
   padding: 1rem;
   border-radius: 15px;
-  height: 60%;
+  height: 70%;
 }
 
 .entrainement-detail-label {
