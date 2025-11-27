@@ -8,7 +8,7 @@ function Coach() {
     <div>
       <HeroSecondary
         title="Mon Coach"
-        subtitle="Découvrez l'espace Entraînements, conçu pour vous aider a progresser à votre rythme et selon vos objectifs. Vous y trouverez des exercices variés, illustrés et détaillés, adaptés a tous les nivaux. Grâce à des explications claires et des démonstrations précises, vous pouvez vous entraîner en toute autonomie. Cet espace vous guide pas à pas vers de meilleurs résultats."
+        subtitle="Avec MoveUp, trouvez facilement un coach de fitness ou de musculation près de chez vous. Recherchez par localité, explorez les profils disponibles et contactez directement le coach qui correspond le mieux à vos objectifs. Simple, rapide et efficace pour vous accompagner dans votre progression."
         image={heroCoach}
       />
       <h2>Mon Coach</h2>

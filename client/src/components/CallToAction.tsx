@@ -18,11 +18,6 @@ function CallToAction() {
         découvrir nos entraînements !
       </p>
       <div>
-        <Link to="/pages/Inscription">
-          <button type="button" className="cta-button">
-            Je m'inscris
-          </button>
-        </Link>
         <Link to="/pages/Tarifs">
           <button type="button" className="cta-button">
             Decouvrez l'essai offert
