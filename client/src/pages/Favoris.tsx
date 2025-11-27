@@ -14,7 +14,7 @@ function Favoris(): ReactElement {
     <>
       <HeroSecondary
         title="Les meilleurs exercices"
-        subtitle="Ici vous pouvez retrouver vos exercices favoris, que vous aimez faire et refaire. Qui vous semble etre interessant. N'hesitez pas a refaire autant de fois que vous voulez, amusez-vous bien!"
+        subtitle="Ici vous pouvez retrouver vos exercices favoris, que vous aimez faire et refaire. Ceux qui vous semblent être intéressants. N'hésitez pas à les refaire autant de fois que vous voulez, amusez-vous bien!"
         image={favorites}
       />
       <div className="favorite-title">
