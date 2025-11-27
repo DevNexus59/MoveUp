@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import "./Timer.css";
 
 interface TimerProps {
@@ -16,6 +17,8 @@ const Timer = ({
   nameOfUser: userId,
   exerciceId,
 }: TimerProps) => {
+  const navigate = useNavigate();
+
   const [pause, setPause] = useState(true);
   const [termine, setTermine] = useState(false);
   const [[h, m, s], setTemps] = useState([heures, minutes, secondes]);
@@ -134,6 +137,7 @@ const Timer = ({
     }
     if (termine) {
       handleExerciceComplete([h, m, s]);
+      navigate("/pages/Entrainements");
     }
 
     return () => {
@@ -141,12 +145,12 @@ const Timer = ({
         clearInterval(timerId);
       }
     };
-  }, [pause, termine, handleExerciceComplete, h, s]);
+  }, [pause, termine, handleExerciceComplete, h, s, navigate]);
 
   return (
     <div className="timer-container">
       <div className="timer-display">
-        {`${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`}
+        {`${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`}
       </div>
       <div className="timer-buttons">
         {!demarre ? (

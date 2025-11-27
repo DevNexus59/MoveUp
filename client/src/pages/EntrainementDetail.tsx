@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import EventModal from "../components/EventModal";
 // import { Link } from "react-router";
+import { Navigate } from "react-router";
+import EventModal from "../components/EventModal";
 import { useAuth } from "../context/AuthContext";
 import ExercicesContext from "../context/ExercicesContext";
 import type { Exercice } from "../types/types";
@@ -19,7 +20,11 @@ function EntrainementDetail() {
   const navigate = useNavigate();
   const context = useContext(ExercicesContext);
 
-  const { user, userId, setUser } = useAuth();
+  const { user, userId, setUser, isAuthenticated } = useAuth();
+
+  if (!isAuthenticated) {
+    return <Navigate to="/pages/Connexion" replace />;
+  }
 
   if (!context) {
     return <p>Erreur : contexte non disponible</p>;

@@ -9,9 +9,17 @@
   position: relative;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .badges-main {
     width: fit-content;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .badges-main {
+    width: fit-content;
+    flex-wrap: wrap;
   }
 }
 
@@ -26,10 +34,15 @@
   box-sizing: border-box;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .badges-container {
     gap: 10px;
     padding: 15px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .badges-container {
+    padding: 10px;
   }
 }
 
