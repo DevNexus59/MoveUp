@@ -5,7 +5,14 @@ import PersonLifting from "../assets/images/CallToAction-person-lifting-weights.
 function CallToAction() {
   return (
     <section className="cta-section">
-      <h2 className="cta-title">Prêt-e à passer à l'action ? <img src={PersonLifting} alt="Person lifting weights" className="cta-icon" /> </h2>
+      <h2 className="cta-title">
+        Prêt-e à passer à l'action ?{" "}
+        <img
+          src={PersonLifting}
+          alt="Person lifting weights"
+          className="cta-icon"
+        />{" "}
+      </h2>
       <p className="cta-comment">
         Rejoignez-nous dès aujourd'hui et profitez d'un essai gratuit pour
         découvrir nos entraînements !
@@ -28,4 +35,4 @@ function CallToAction() {
 
 export default CallToAction;
 
-{/* <img src={weight-lifting} alt="person lifting weights"></img> */}
+/* <img src={weight-lifting} alt="person lifting weights"></img> */
