@@ -8,7 +8,7 @@ function Contact() {
     <>
       <HeroSecondary
         title="Interragissez avec nous"
-        subtitle="La sastifaction client est tres importante pour nous. C'est pour cela que nous avons mis a disposition les avis en plus du formulaire de contact pour nous signaler tout probleme ou au contraire votre joie de faire du sport avec nous!"
+        subtitle="La satifaction client est très importante pour nous. Pour cela, nous vous laissons la possibilité de partager vos avis et bien sûr de nous envoyer vos messages via un formulaire de contact, afin de nous signaler tout problème ou au contraire votre joie de faire du sport avec nous !"
         image={people}
       />
       <Formulaire />

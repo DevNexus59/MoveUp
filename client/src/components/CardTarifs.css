@@ -50,6 +50,10 @@
   color: #fff;
 }
 
+:root[data-theme="dark"] .card_popular {
+  color: var(--black);
+}
+
 .card_price {
   display: flex;
   align-items: baseline;
@@ -100,7 +104,7 @@
   color: var(--link);
 }
 .card-highlight .card_feature {
-  color: rgba(0, 0, 0, 0.95);
+  color: var(--link);
 }
 
 /* pastille */
