@@ -8,7 +8,7 @@ function About() {
     <>
       <HeroSecondary
         title="About Us"
-        subtitle="Notre Histoire
+        subtitle="Notre Histoire.
 En 2020 Move UP est né d'une conviction simple : chacun mérite de se sentir fort, confiant et vivant.
 Pas de jugement, pas de pression. Juste vous, vos objectifs, et une équipe passionnée pour vous accompagner.
 Aujourd'hui, Move UP c'est plus de 5000 membres.
