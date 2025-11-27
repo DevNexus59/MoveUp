@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 // import CoachCard from "./CoachCard";
-import "./CoachFavoris.css";
 
 const API_BASE_URL = "http://localhost:4000";
 

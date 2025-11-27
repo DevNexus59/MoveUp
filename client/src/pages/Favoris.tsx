@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import favorites from "../assets/images/favorites.jpeg";
+import favorites from "../assets/images/HeroCoach.jpg";
 import FavoritesCard from "../components/FavoritesCard";
 import HeroSecondary from "../components/HeroSecondary";
 import { useAuth } from "../context/AuthContext";

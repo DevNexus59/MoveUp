@@ -1,8 +1,6 @@
-import HeroSecondary from "../components/HeroSecondary";
-import "./Coach.css";
 import heroCoach from "../assets/images/HeroCoach.jpg";
 import CoachFavoris from "../components/CoachFavoris";
-
+import HeroSecondary from "../components/HeroSecondary";
 function Coach() {
   return (
     <div>

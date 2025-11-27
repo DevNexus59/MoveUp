@@ -27,7 +27,7 @@
   --font-p: clamp(0.5rem, 0.7rem + 0.3vw, 1rem); /* ~14–16px */
   --font-h: clamp(1rem, -0.25rem + 4vw, 2rem); /* ~1-2rem */
   --font-sub: clamp(1rem, 0.9rem + 0.4vw, 1.125rem); /* ~3-4 rem */
-  --font-title: clamp(3rem, 0.5rem + 8vw, 4rem); /* ~3-5rem */
+  --font-title: clamp(2rem, 1.8rem + 4vw, 3rem); /* ~3-5rem */
 }
 
 :root[data-theme="dark"] {

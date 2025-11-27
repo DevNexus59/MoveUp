@@ -18,6 +18,10 @@ h2 {
   height: 45rem;
   overflow: scroll;
 }
+.dashboard-grid-item-scroll::-webkit-scrollbar {
+  display: none;
+  height: 45rem;
+}
 
 @media (max-width: 800px) {
   .title-dashboard {

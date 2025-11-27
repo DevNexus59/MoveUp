@@ -96,11 +96,6 @@ function Avis({ limit }: { limit?: number }): ReactElement {
   const displayedReviews = useMemo(() => {
     const list = limit ? reviews.slice(0, limit) : reviews;
 
-    // --- DEBUG ---
-    console.log("Reviews brutes reçues:", list);
-    console.log("Contenu de la Map Users:", Array.from(usersMap.entries()));
-    // -------------
-
     return list
       .map((review): ReviewWithAuthor | null => {
         // On tente la conversion en nombre pour sécuriser
