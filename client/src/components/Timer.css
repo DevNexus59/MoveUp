@@ -8,7 +8,7 @@
 .timer-display {
   font-size: 200px;
   font-weight: bold;
-  background: linear-gradient(#c084fc, #f9a8d4, #c084fc);
+  background: linear-gradient(#8494fc, #d658f6, #c084fc);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -16,10 +16,24 @@
 
 @media screen and (max-width: 768px) {
   .timer-display {
-    display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 70px;
+    font-size: 100px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .timer-display {
+    font-size: 80px;
+  }
+
+  .timer-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .timer-buttons button {
+    width: 100%;
+    flex-grow: 0;
   }
 }
