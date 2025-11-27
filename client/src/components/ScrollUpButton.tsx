@@ -20,6 +20,11 @@ function ScrollUpButton() {
     <button
       type="button"
       onClick={scrollToTop}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          scrollToTop();
+        }
+      }}
       className={`scroll-up ${isVisible ? "visible" : "hidden"}`}
       aria-label="Remonter en haut"
     >

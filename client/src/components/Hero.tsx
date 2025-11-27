@@ -11,7 +11,7 @@ interface HeroProps {
 }
 
 function Hero({
-  title = "",
+  // title = "",
   subtitle = "L'entraînement où vous voulez, quand vous voulez, comme vous voulez !",
 }: HeroProps) {
   const images = [
@@ -38,8 +38,8 @@ function Hero({
       <div className="hero-overlay" />
 
       <div className="hero-content">
-        <h1 className="hero-h1">{title}</h1>
-        <h2 className="hero-h2">{subtitle}</h2>
+        <h1 className="hero-h1">{subtitle}</h1>
+        {/* <h2 className="hero-h2">{subtitle}</h2> */}
         <div className="hero-buttons">
           <Link to="/Pages/Entrainements">
             <button type="button" className="hero-btn">

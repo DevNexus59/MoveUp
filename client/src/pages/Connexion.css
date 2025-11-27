@@ -6,12 +6,12 @@
   padding: 2rem;
   width: 100%;
 }
-.connexion-h2 {
+.connexion-h1 {
   margin-top: 2em;
+  text-align: center;
 }
-.connexion-board h2 {
+.connexion-board h1 {
   margin-bottom: 2rem;
-  /* La couleur est déjà gérée par le style global h2 { color: var(--bg-font); } */
 }
 
 .connexion-board form {
@@ -32,7 +32,7 @@
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  color: var(--link); /* CHANGÉ: Utilise la variable pour le texte blanc */
+  color: var(--link);
 }
 
 .connexion-board input {
@@ -41,39 +41,34 @@
   border-radius: 0.5rem;
   border: none;
   font-size: 1rem;
-  color: #333; /* NOTE: Gardé en dur, car les variables root ne gèrent pas le style des inputs (texte intérieur) */
+  color: #333;
   box-sizing: border-box;
 }
 
 .connexion-board input:focus {
-  outline: 2px solid var(--linkv); /* Déjà correct */
+  outline: 2px solid var(--linkv);
 }
 
 .connexion-board form a {
-  color: var(--link); /* CHANGÉ: Utilise la variable pour le texte blanc */
+  color: var(--link);
   text-decoration: underline;
 }
 
 .connexion-board form a:hover {
-  color: #eee; /* NOTE: Gardé, car c'est un effet spécifique (blanc -> blanc cassé) non défini dans :root */
+  color: #eee;
 }
 
 .connexion-board button {
   width: 100%;
   margin: 1rem 0 0 0;
-  /* Le style (couleur, hover) est déjà géré par le style global 'button' */
 }
 
 .connexion-board p {
   margin-top: 1.5rem;
   font-weight: 500;
-  color: var(--bg-font); /* Déjà correct */
+  color: var(--bg-font);
   text-align: center;
 }
-
-/* --- Placeholders --- */
-/* NOTE: Je n'ai pas modifié les placeholders, car ils semblent être des blocs temporaires 
-   et ne font pas directement partie du design "formulaire" à thématiser. */
 
 .hero-placeholder {
   background: #f4f4f4;
@@ -93,9 +88,54 @@
   margin-top: auto;
 }
 
-/* Conteneur global pour le layout */
 .app-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+.google-login-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  height: 40px;
+}
+.google-login-container svg {
+  margin-top: 0.7em;
+}
+
+@media (max-width: 768px) {
+  .connexion-board form {
+    max-width: 320px;
+    padding: 1.2rem;
+    border-radius: 0.75rem;
+  }
+
+  .connexion-h1 {
+    font-size: 1.8rem;
+    margin-top: 8rem;
+  }
+
+  .connexion-board label {
+    font-size: 1rem;
+  }
+
+  .connexion-board input {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+
+  .connexion-board button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 1rem;
+  }
+
+  .connexion-board form a {
+    font-size: 1rem;
+  }
+
+  .connexion-board p {
+    font-size: 1rem;
+  }
 }

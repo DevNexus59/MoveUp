@@ -27,6 +27,7 @@ function Login() {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify({ credential }), // On envoie l'objet exact
       });
 
@@ -38,10 +39,9 @@ function Login() {
       }
 
       console.log("Succès Backend:", data); // 🔍 Debug 3
-      localStorage.setItem("TokenAuthGoogle", data.token);
 
       // Utilisation correcte du contexte (si ta fonction login attend ces arguments)
-      login(data.token, data.userId, data.userFirstName);
+      login(data.userId, data.userFirstName);
 
       navigate("/pages/Dashboard");
     } catch (error) {
@@ -60,6 +60,7 @@ function Login() {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify({
           email: email,
           password: password,
@@ -68,7 +69,7 @@ function Login() {
 
       if (response.ok) {
         const data = await response.json();
-        login(data.token, data.userId, data.userFirstName);
+        login(data.userId, data.userFirstName);
         navigate("/pages/Dashboard");
       } else {
         const errorText = await response.text();
@@ -82,7 +83,7 @@ function Login() {
 
   return (
     <>
-      <h2 className="connexion-h2">Connexion:</h2>
+      <h1 className="connexion-h1">Connexion:</h1>
       <div className="connexion-board">
         <form onSubmit={handleSubmit}>
           <div>
@@ -110,8 +111,10 @@ function Login() {
             <Link to="/pages/Mot-de-passe-oublie">Mot de passe oublié ?</Link>
           </div>
           <button type="submit">Se connecter</button>
+          <div className="google-login-container">
+            <GoogleLogin onSuccess={handleSuccess} />
+          </div>
         </form>
-        <GoogleLogin onSuccess={handleSuccess} useOneTap />
 
         {message && <p>{message}</p>}
       </div>
