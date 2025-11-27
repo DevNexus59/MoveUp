@@ -25,7 +25,7 @@ function Entrainements() {
     <div>
       <HeroSecondary
         title="Entraînements"
-        subtitle="Découvrez l'espace Entraînements, conçu pour vous aider a progresser à votre rythme et selon vos objectifs. Vous y trouverez des exercices variés, illustrés et détaillés, adaptés a tous les nivaux. Grâce à des explications claires et des démonstrations précises, vous pouvez vous entraîner en toute autonomie. Cet espace vous guide pas à pas vers de meilleurs résultats."
+        subtitle="Découvrez l'espace Entraînements, conçu pour vous aider a progresser à votre rythme et selon vos objectifs. Vous y trouverez des exercices variés, illustrés et détaillés, adaptés a tous les niveaux. Grâce à des explications claires et des démonstrations précises, vous pouvez vous entraîner en toute autonomie. Cet espace vous guide pas à pas vers de meilleurs résultats."
         image={entrainement}
       />
       <h2>Liste des Entraînements</h2>

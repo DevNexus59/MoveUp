@@ -1,5 +1,6 @@
 .entrainement-detail-container {
   padding-bottom: 2rem;
+  margin-top: 3em;
 }
 
 .entrainement-detail-back-btn {
@@ -8,6 +9,13 @@
   font-size: 1rem;
   margin: 2rem 1rem;
   transition: all 0.3s ease;
+}
+
+.entrainement-detail-section-title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .entrainement-detail-title {
@@ -31,6 +39,14 @@
   50% {
     opacity: 0.5;
   }
+}
+
+.entrainement-detail-favoris-btn {
+  background: none;
+}
+
+.entrainement-detail-favoris-btn:hover {
+  background: none;
 }
 
 .entrainement-detail-card {
@@ -63,7 +79,31 @@
   box-shadow: 0 4px 15px rgba(255, 196, 214, 0.3);
   padding: 1rem;
   border-radius: 15px;
-  height: 55%;
+  height: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.entrainement-detail-difficulte-detail {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.difficulty-icons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.muscle-icon {
+  width: 40px;
+  height: 40px;
 }
 
 .entrainement-detail-muscle {
@@ -71,7 +111,7 @@
   box-shadow: 0 4px 15px rgba(255, 210, 230, 0.35);
   padding: 1rem;
   border-radius: 15px;
-  height: 55%;
+  height: 70%;
 }
 
 .entrainement-detail-equipement {
@@ -79,7 +119,7 @@
   box-shadow: 0 4px 15px rgba(200, 120, 255, 0.35);
   padding: 1rem;
   border-radius: 15px;
-  height: 55%;
+  height: 70%;
 }
 
 .entrainement-detail-label {
@@ -209,6 +249,9 @@
 }
 
 @media (max-width: 768px) {
+  .entrainement-detail-container {
+    margin-top: 6em;
+  }
   .entrainement-detail-title {
     font-size: 2rem;
     padding: 3rem 1rem;
@@ -232,6 +275,10 @@
   .entrainement-detail-equipement {
     height: auto;
     padding: 1.5rem;
+  }
+
+  .entrainement-detail-difficulte {
+    gap: 0.75rem;
   }
 
   .entrainement-detail-action {

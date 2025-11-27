@@ -28,7 +28,7 @@
 
 .card-highlight {
   background: var(--card);
-  color: #fff;
+  color: var(--bg-font);
   transform: translateY(-25px);
 }
 
@@ -47,7 +47,11 @@
   padding: .5rem;
   border-radius: 5px;
   background: var(--link);
-  color: #000;
+  color: #fff;
+}
+
+:root[data-theme="dark"] .card_popular {
+  color: var(--black);
 }
 
 .card_price {
@@ -73,7 +77,7 @@
   line-height: 1.5;
 }
 .card-highlight .card_note {
-  color: var(--link);
+  color: var(--bg-font);
 }
 
 .card_divider {
@@ -100,7 +104,7 @@
   color: var(--link);
 }
 .card-highlight .card_feature {
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--link);
 }
 
 /* pastille */
@@ -116,7 +120,7 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #e7e4f4;
+  color: var(--bg-font);
 }
 .card_feature::after {
   left: 6px;
@@ -130,7 +134,7 @@
   background: rgba(255, 255, 255, 0.25);
 }
 .card-highlight .card_feature::after {
-  border-color: #fff;
+  color: var(--bg-font);
 }
 
 .card_footer {

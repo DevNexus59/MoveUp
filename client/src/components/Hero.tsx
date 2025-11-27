@@ -1,5 +1,5 @@
 import "./Hero.css";
-
+import { Link } from "react-router";
 import abdos from "../assets/images/abdos2.jpg";
 import etirement from "../assets/images/etirement4.jpg";
 import runner from "../assets/images/runner3.jpg";
@@ -11,7 +11,7 @@ interface HeroProps {
 }
 
 function Hero({
-  title = "",
+  // title = "",
   subtitle = "L'entraînement où vous voulez, quand vous voulez, comme vous voulez !",
 }: HeroProps) {
   const images = [
@@ -38,15 +38,19 @@ function Hero({
       <div className="hero-overlay" />
 
       <div className="hero-content">
-        <h1 className="hero-h1">{title}</h1>
-        <h2 className="hero-h2">{subtitle}</h2>
+        <h1 className="hero-h1">{subtitle}</h1>
+        {/* <h2 className="hero-h2">{subtitle}</h2> */}
         <div className="hero-buttons">
-          <button type="button" className="hero-btn">
-            Découvrir les exercices
-          </button>
-          <button type="button" className="hero-btn">
-            Voir nos offres
-          </button>
+          <Link to="/Pages/Entrainements">
+            <button type="button" className="hero-btn">
+              Découvrir les exercices
+            </button>
+          </Link>
+          <Link to="/Pages/Tarifs">
+            <button type="button" className="hero-btn">
+              Voir nos offres
+            </button>
+          </Link>
         </div>
       </div>
     </section>

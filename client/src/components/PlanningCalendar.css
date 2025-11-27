@@ -36,14 +36,16 @@
 }
 
 .planning-wrapper .fc-button.fc-button-primary:hover {
-  background: var(--black);
-  color: var(--bg);
-  border-color: var(--black);
+  color: var(--bg-font);
+}
+
+.planning-wrapper .fc .fc-button-primary:disabled {
+  color: var(--bg-font);
 }
 
 .planning-wrapper .fc-button.fc-button-primary.fc-button-active {
   background: var(--card);
-  color: var(--bg);
+  color: var(--bg-font);
   border-color: var(--card);
 }
 
@@ -103,13 +105,16 @@
 .planning-wrapper .fc-event-title {
   font-weight: 600;
   font-size: 0.8rem;
-  color: var(--black);
 }
 
 .planning-wrapper .fc-event.fc-event-dragging,
 .planning-wrapper .fc-event.fc-event-resizing {
   opacity: 0.9;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.planning-wrapper .fc-v-event .fc-event-main {
+  color: var(--bg-font);
 }
 
 .planning-wrapper .fc-highlight {
@@ -123,18 +128,6 @@
   opacity: 0.8;
 }
 
-@media (max-width: 768px) {
-  .planning-wrapper {
-    padding: 1rem;
-    border-radius: 1rem;
-  }
-
-  .planning-wrapper .fc-toolbar {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-}
-
 :root[data-theme="dark"] .planning-wrapper {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
   border-color: rgba(148, 163, 184, 0.25);
@@ -145,7 +138,13 @@
 }
 
 :root[data-theme="dark"] .planning-wrapper .fc-col-header-cell {
-  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+  background: #1b1928;
+  border: none;
+}
+
+:root[data-theme="dark"] .planning-wrapper .fc-col-header-cell-cushion {
+  background: #1b1928;
+  border: none;
 }
 
 :root[data-theme="dark"] .planning-wrapper .fc-timegrid-slot-label {
@@ -153,7 +152,7 @@
 }
 
 :root[data-theme="dark"] .planning-wrapper .fc-timegrid-axis {
-  border-right: 1px solid rgba(148, 163, 184, 0.2);
+  border: 1px solid rgba(148, 163, 184, 0.2);
 }
 
 :root[data-theme="dark"] .planning-wrapper .fc-daygrid-day {
@@ -166,6 +165,10 @@
   border-bottom: 0;
 }
 
+:root[data-theme="dark"] .planning-wrapper .fc-timegrid-axis {
+  background: #1b1928;
+}
+
 :root[data-theme="dark"] .planning-wrapper .fc-scrollgrid,
 :root[data-theme="dark"] .planning-wrapper .fc-scrollgrid td,
 :root[data-theme="dark"] .planning-wrapper .fc-scrollgrid th {
@@ -173,7 +176,7 @@
 }
 
 :root[data-theme="dark"] .planning-wrapper .fc-day-today {
-  background: rgba(255, 255, 153, 0.04);
+  background: #1b1928;
 }
 
 :root[data-theme="dark"] .planning-wrapper .fc-highlight {
@@ -207,4 +210,28 @@
   tr
   td:first-child {
   border-right: none;
+}
+
+.planning-wrapper--sm {
+  max-width: 700px;
+  padding: 1rem;
+  font-size: 0.8rem;
+}
+
+.planning-wrapper--lg {
+  max-width: 1200px;
+  padding: 2rem;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .planning-wrapper {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .planning-wrapper .fc-toolbar {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }

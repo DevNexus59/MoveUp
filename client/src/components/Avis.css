@@ -32,7 +32,7 @@
   margin: 0;
   text-align: start;
   font-size: 1.3em;
-  color: white;
+  color: var(--bg-font);
 }
 
 .mu-avis-card .mu-avis-note {
@@ -45,7 +45,7 @@
   text-align: start;
   color: black;
   font-size: 0.9em;
-  color: white;
+  color: var(--bg-font);
 }
 
 .mu-avis-author-card {
@@ -66,7 +66,17 @@
   margin: 0;
   text-align: start;
   font-size: 1em;
-  color: #ffe5ec;
+  color: var(--bg-font);
+  opacity: 0.7;
+}
+.mu-avis-star {
+  opacity: 0.5;
+  filter: grayscale(100%);
+}
+
+.mu-avis-star.is-active {
+  opacity: 1;
+  filter: none;
 }
 
 /*Tablette (≤1024px) */

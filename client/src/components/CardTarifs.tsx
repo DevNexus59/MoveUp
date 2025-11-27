@@ -27,10 +27,10 @@ function CardTarifs() {
       priceMonthly: 19,
       note: "Des exercices ciblés pour progresser à votre rythme",
       features: [
-        { id: "feature1", label: "Accès aux videos de base" },
+        { id: "feature1", label: "Accès aux vidéos de base" },
         { id: "feature2", label: "Support par email" },
         { id: "feature3", label: "Gestion de planning" },
-        { id: "feature4", label: "Exercice personnalises" },
+        { id: "feature4", label: "Exercices personnalisés" },
       ],
     },
     {
@@ -43,7 +43,7 @@ function CardTarifs() {
         { id: "feature1", label: "Accès à toutes les vidéos" },
         { id: "feature2", label: "Support prioritaire par email" },
         { id: "feature3", label: "Gestion de planning" },
-        { id: "feature4", label: "Coach present" },
+        { id: "feature4", label: "Coach présent" },
       ],
     },
     {

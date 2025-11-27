@@ -1,30 +1,29 @@
+.badges-main {
+  margin: 5rem auto;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #676472;
+  border-radius: 8px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .badges-main {
+    width: fit-content;
+  }
+}
+
 .badges-container {
   width: 100%;
   display: flex;
   justify-content: center;
   text-align: center;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 15px;
   padding: 30px;
   box-sizing: border-box;
-}
-
-.badge-item {
-  width: 100px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.badge-unlocked {
-  background: whitesmoke;
-  border-radius: 50%;
-}
-
-.badge-locked {
-  background: grey;
-  border-radius: 50%;
 }
 
 @media (max-width: 768px) {
@@ -32,4 +31,83 @@
     gap: 10px;
     padding: 15px;
   }
+}
+
+.badges-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+.badge-item {
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.badge-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.badge-name {
+  margin-top: 5px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  word-wrap: break-word;
+  line-height: 1rem;
+  width: 100%;
+}
+
+.badge-unlocked {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+.badge-unlocked img {
+  filter: none;
+  transition: transform 0.3s;
+}
+
+.badge-unlocked img:hover {
+  transform: scale(1.2);
+}
+.badge-unlocked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 65px;
+  height: 65px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  box-shadow: 0 0 15px 6px rgba(192, 132, 252, 0.9), 0 0 25px 10px
+    rgba(249, 168, 212, 0.8);
+}
+
+.badge-unlocked:hover::before {
+  opacity: 1;
+  animation: haloSpin 3s linear infinite;
+}
+
+@keyframes haloSpin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.badge-locked img {
+  filter: grayscale(100%) opacity(0.4);
 }

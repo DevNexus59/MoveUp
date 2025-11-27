@@ -111,6 +111,7 @@
     border-radius: 8px;
     z-index: 99;
   }
+
   .NavBar-links.active {
     display: flex;
   }

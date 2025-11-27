@@ -30,7 +30,7 @@
   border-radius: 1.5rem;
   padding: 2rem;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
-  color: #fff;
+  color: var(--bg-font);
 }
 
 .profile-personal-content {
@@ -69,10 +69,14 @@
 
 .profile-fields .label {
   font-weight: 600;
-  color: #fff;
+  color: var(--bg-font);
 }
 
 .profile-fields .value {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+:root[data-theme="dark"] .profile-fields .value {
   color: rgba(255, 255, 255, 0.9);
 }
 
@@ -112,13 +116,12 @@
 }
 
 .profile-actions .button-delete {
-  background: transparent;
-  color: hsl(0, 94%, 43%);
-  border: 1px solid rgba(212, 7, 7, 0.7);
-}
-
-.profile-actions .button-delete:hover {
-  background: rgba(255, 179, 217, 0.15);
+  background: none;
+  margin: 0;
+  font: inherit;
+  color: var(--bg-font);
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 @media (max-width: 900px) {
