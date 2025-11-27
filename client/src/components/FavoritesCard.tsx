@@ -1,23 +1,18 @@
 import { type ReactElement, useEffect, useState } from "react";
-// 1. Importer le hook useAuth
 import { useAuth } from "../context/AuthContext";
 import "./Avis.css";
-import type { Exercice } from "../types/types"; // Assurez-vous d'importer le bon type si possible
+import type { Exercice } from "../types/types";
 import ExerciceCard from "./ExerciceCard";
 
 const API_BASE_URL = "http://localhost:4000";
 
-interface Favorite extends Exercice {
-  // Ajoutez ici des champs spécifiques si nécessaire
-}
+interface Favorite extends Exercice {}
 
 function FavoritesCard(): ReactElement {
-  // 2. Récupérer le userId depuis le contexte
-  const { userId } = useAuth();
-
+  const { userId, user } = useAuth();
   const [favorites, setFavorites] = useState<Favorite[]>([]);
   const [status, setStatus] = useState("");
-
+  // biome-ignore lint/correctness/useExhaustiveDependencies(user): suppress dependency user
   useEffect(() => {
     if (!userId) {
       console.log("Pas de userId détecté !");
@@ -48,7 +43,6 @@ function FavoritesCard(): ReactElement {
             "Attention: L'API n'a pas renvoyé un tableau !",
             favoritesData,
           );
-          // Si l'API renvoie { data: [...] }, utilisez setFavorites(favoritesData.data)
         }
       } catch (error) {
         console.error("Erreur lors du chargement:", error);
@@ -57,7 +51,7 @@ function FavoritesCard(): ReactElement {
     };
 
     fetchData();
-  }, [userId]);
+  }, [userId, user]);
 
   if (!userId) return <p>Veuillez vous connecter pour voir vos favoris.</p>;
   if (status === "error") return <p>Erreur lors du chargement des favoris.</p>;
@@ -65,11 +59,7 @@ function FavoritesCard(): ReactElement {
   return (
     <div className="favorites-container">
       {favorites.map((exercise) => (
-        <ExerciceCard
-          // Attention: assurez-vous que 'exercise' contient bien un 'id' ou 'exerciseId' unique
-          key={exercise.exerciseId}
-          exoData={exercise}
-        />
+        <ExerciceCard key={exercise.exerciseId} exoData={exercise} />
       ))}
     </div>
   );

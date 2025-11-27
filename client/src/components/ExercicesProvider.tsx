@@ -1,5 +1,6 @@
 import type React from "react";
 import { useEffect, useState } from "react";
+import { useAuth } from "../context/AuthContext";
 import ExercicesContext from "../context/ExercicesContext";
 import type {
   Exercice,
@@ -16,8 +17,7 @@ export const ExercicesProvider = ({ children }: ExercicesProviderProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
   const [events, setEvents] = useState<PlanningEvent[]>([]);
-  const innerUserId = localStorage.getItem("userId");
-  const userId = innerUserId ? Number(innerUserId) : null;
+  const { userId } = useAuth();
 
   useEffect(() => {
     const fetchData = async () => {

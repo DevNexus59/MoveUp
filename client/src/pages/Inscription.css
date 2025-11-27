@@ -1,6 +1,6 @@
 .register-container {
   max-width: 500px;
-  margin: 2rem auto;
+  margin: 6rem auto;
   padding: 2rem;
   background: var(--card);
   border-radius: 8px;
@@ -178,4 +178,15 @@
 
   /* Ajout : Un peu de transparence pour le fond */
   opacity: 0.7;
+}
+
+@media screen and (max-width: 800px) {
+  .register-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch;
+    padding: 1rem;
+    margin: 8rem auto;
+    flex-direction: column;
+  }
 }
