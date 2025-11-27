@@ -45,9 +45,6 @@ function Register() {
   const [password, setPassword] = useState<string>("");
   const [checkpassword, setCheckPassword] = useState<string>("");
   const [usertype, setUserType] = useState<string>("");
-  // const [levelexperiency, setLevelExperiency] = useState<string>("");
-  // const [timerequired, setTimeRequired] = useState<string>("");
-  // const [diet, setDiet] = useState<string>("");
   const [subscription, setSubscription] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const [step, setStep] = useState<number>(1);
@@ -93,23 +90,39 @@ function Register() {
   };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setMessage("");
+    setMessage(""); // On nettoie les anciens messages
 
-    if (password !== checkpassword) {
-      setMessage("Erreur : Les mots de passe ne correspondent pas.");
-      return;
+    switch (step) {
+      case 1:
+        if (password !== checkpassword) {
+          setMessage("Erreur : Les mots de passe ne correspondent pas.");
+          return;
+        }
+
+        setStep(2);
+        break;
+
+      case 2:
+        if (regexCodePostal.test(zipcode) === false) {
+          setMessage("Erreur : Le code postal doit être composé de 5 chiffres");
+          return;
+        }
+        if (regexPhoneNumber.test(phone) === false) {
+          setMessage("Erreur : Le téléphone doit être composé de 10 chiffres");
+          return;
+        }
+        setStep(3);
+        break;
+
+      case 3:
+        if (subscription === "") {
+          setMessage("Erreur : Veuillez sélectionner un abonnement");
+          return;
+        }
+        setStep(4);
+        break;
     }
-    if (regexCodePostal.test(zipcode) === false) {
-      setMessage("Erreur : Le code postal doit être composé de 5 chiffres");
-      return;
-    }
-    if (regexPhoneNumber.test(phone) === false) {
-      setMessage("Erreur : Le téléphone doit être composé de 10 chiffres");
-      return;
-    }
-    setStep(2);
   };
-
   const handleFinalSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isValidCreditCard(cardNumber) === false) {
@@ -133,9 +146,6 @@ function Register() {
           email,
           password,
           usertype,
-          // levelexperiency,
-          // timerequired,
-          // diet,
           subscription,
           paymentMethod,
         }),
@@ -143,7 +153,6 @@ function Register() {
 
       if (response.ok) {
         setMessage("Inscription réussie !");
-        // Reset form fields here if needed
       } else {
         const errorText = await response.text();
         setMessage(`Erreur lors de l'inscription : ${errorText}`);
@@ -160,8 +169,80 @@ function Register() {
         <h2>Inscription</h2>
         {step === 1 && (
           <form onSubmit={handleSubmit}>
+            <h3>Informations de connexion</h3>
+            <p>
+              Commençons par créer vos identifiants, une séance commence
+              toujours par une bonne connexion.
+            </p>
+            <div>
+              <label htmlFor="email">
+                Email<span className="required-star">*</span>:
+              </label>
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+
+            {/* --- MODIFICATION MOT DE PASSE --- */}
+            <div>
+              <label htmlFor="password">
+                Mot de passe<span className="required-star">*</span>:
+              </label>
+              <div className="password-wrapper">
+                <input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <button
+                  type="button"
+                  className="toggle-password-btn"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? "🙈" : "👁️"}
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="checkpassword">
+                Confirmation du mot de passe
+                <span className="required-star">*</span>:
+              </label>
+              <div className="password-wrapper">
+                <input
+                  id="checkpassword"
+                  type={showCheckPassword ? "text" : "password"}
+                  value={checkpassword}
+                  onChange={(e) => setCheckPassword(e.target.value)}
+                  required
+                />
+                <button
+                  type="button"
+                  className="toggle-password-btn"
+                  onClick={() => setShowCheckPassword(!showCheckPassword)}
+                >
+                  {showCheckPassword ? "🙈" : "👁️"}
+                </button>
+              </div>
+            </div>
+            <button type="submit">Suivant</button>
+          </form>
+        )}
+        {step === 2 && (
+          <form onSubmit={handleSubmit}>
             <section>
               <h3>Informations personnelles</h3>
+              <p>
+                Maintenant, remplissons vos informations personnelles pour mieux
+                vous connaître.
+              </p>
             </section>
             <div>
               <label htmlFor="name">
@@ -247,66 +328,6 @@ function Register() {
               />
             </div>
             <div>
-              <label htmlFor="email">
-                Email<span className="required-star">*</span>:
-              </label>
-              <input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-
-            {/* --- MODIFICATION MOT DE PASSE --- */}
-            <div>
-              <label htmlFor="password">
-                Mot de passe<span className="required-star">*</span>:
-              </label>
-              <div className="password-wrapper">
-                <input
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-                <button
-                  type="button"
-                  className="toggle-password-btn"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? "🙈" : "👁️"}
-                </button>
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="checkpassword">
-                Confirmation du mot de passe
-                <span className="required-star">*</span>:
-              </label>
-              <div className="password-wrapper">
-                <input
-                  id="checkpassword"
-                  type={showCheckPassword ? "text" : "password"}
-                  value={checkpassword}
-                  onChange={(e) => setCheckPassword(e.target.value)}
-                  required
-                />
-                <button
-                  type="button"
-                  className="toggle-password-btn"
-                  onClick={() => setShowCheckPassword(!showCheckPassword)}
-                >
-                  {showCheckPassword ? "🙈" : "👁️"}
-                </button>
-              </div>
-            </div>
-            {/* --- FIN DES MODIFICATIONS --- */}
-
-            <div>
               <label htmlFor="usertype">
                 Type d'utilisateur <span className="required-star">*</span>:
               </label>
@@ -321,27 +342,44 @@ function Register() {
                 <option value="Personnel">Personnel</option>
               </select>
             </div>
+            <button type="button" onClick={() => setStep(1)}>
+              Retour
+            </button>
+            <button type="submit">Suivant</button>
+          </form>
+        )}
+        {step === 3 && (
+          <form onSubmit={handleSubmit}>
+            <h3>Choisissez votre abonnement</h3>
+            <p>
+              Sélectionnez l'abonnement qui correspond le mieux à vos besoins.
+            </p>
             <div>
-              <label htmlFor="subscription">Mon abonnement:</label>
-              <select
-                id="subscription"
-                value={subscription}
-                onChange={(e) => setSubscription(e.target.value)}
-                required
-              >
-                <option value="">-- Veuillez choisir --</option>
-                <option value="Basic">
-                  Essai gratuit de 7 jours - Basic - 19€ par mois
-                </option>
-                <option value="Pro">Pro - 29€ par mois</option>
-                <option value="Premium">Premium - 49€ par mois</option>
-              </select>
+              <div>
+                <label htmlFor="subscription">Mon abonnement:</label>
+                <select
+                  id="subscription"
+                  value={subscription}
+                  onChange={(e) => setSubscription(e.target.value)}
+                  required
+                >
+                  <option value="">-- Veuillez choisir --</option>
+                  <option value="Basic">
+                    Essai gratuit de 7 jours - Basic - 19€ par mois
+                  </option>
+                  <option value="Pro">Pro - 29€ par mois</option>
+                  <option value="Premium">Premium - 49€ par mois</option>
+                </select>
+              </div>
+              <button type="button" onClick={() => setStep(2)}>
+                Retour
+              </button>
+              <button type="submit">S'inscrire</button>
             </div>
-            <button type="submit">S'inscrire</button>
           </form>
         )}
 
-        {step === 2 && (
+        {step === 4 && (
           <div>
             <h3>Récapitulatif</h3>
             <p>Vérifiez vos informations avant de continuer.</p>
@@ -372,16 +410,16 @@ function Register() {
                 <strong>Niveau d'abonnement :</strong> {subscription}
               </li>
             </ul>
-            <button type="button" onClick={() => setStep(1)}>
+            <button type="button" onClick={() => setStep(3)}>
               Retour
             </button>
-            <button type="button" onClick={() => setStep(3)}>
+            <button type="button" onClick={() => setStep(5)}>
               Valider et payer
             </button>
           </div>
         )}
 
-        {step === 3 && (
+        {step === 5 && (
           <div>
             <h3>Paiement</h3>
             <section>
@@ -391,7 +429,7 @@ function Register() {
                   type="button"
                   onClick={() => {
                     setPaymentMethod("CB");
-                    setStep(4);
+                    setStep(6);
                   }}
                 >
                   Choisir
@@ -403,7 +441,7 @@ function Register() {
                   type="button"
                   onClick={() => {
                     setPaymentMethod("APAY");
-                    setStep(4);
+                    setStep(6);
                   }}
                 >
                   Choisir
@@ -415,7 +453,7 @@ function Register() {
                   type="button"
                   onClick={() => {
                     setPaymentMethod("GPAY");
-                    setStep(4);
+                    setStep(6);
                   }}
                 >
                   Choisir
@@ -425,49 +463,69 @@ function Register() {
           </div>
         )}
 
-        {step === 4 && (
-          <form onSubmit={handleFinalSubmit}>
-            <div>
-              <h3>Détails du paiement</h3>
-            </div>
-            <div>
-              <label htmlFor="cardNumber">
-                Numéro de carte<span className="required-star">*</span>:
-              </label>
-              <input
-                id="cardNumber"
-                type="text"
-                value={cardNumber}
-                onChange={(e) => setCardNumber(e.target.value)}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="cardExpiry">
-                Date d'expiration<span className="required-star">*</span>:
-              </label>
-              <input
-                id="cardExpiry"
-                type="text"
-                value={cardExpiry}
-                onChange={(e) => setCardExpiry(e.target.value)}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="cardCvv">
-                Cryptogramme<span className="required-star">*</span>:
-              </label>
-              <input
-                id="cardCvv"
-                type="text"
-                value={cardCvv}
-                onChange={(e) => setCardCvv(e.target.value)}
-                required
-              />
-            </div>
-            <button type="submit">Valider et Payer</button>
-          </form>
+        {step === 6 && (
+          <div>
+            {paymentMethod === "CB" && (
+              <form onSubmit={handleFinalSubmit}>
+                <div>
+                  <h3>Détails du paiement</h3>
+                </div>
+                <div>
+                  <label htmlFor="cardNumber">
+                    Numéro de carte<span className="required-star">*</span>:
+                  </label>
+                  <input
+                    id="cardNumber"
+                    type="text"
+                    value={cardNumber}
+                    onChange={(e) => setCardNumber(e.target.value)}
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="cardExpiry">
+                    Date d'expiration<span className="required-star">*</span>:
+                  </label>
+                  <input
+                    id="cardExpiry"
+                    type="text"
+                    value={cardExpiry}
+                    onChange={(e) => setCardExpiry(e.target.value)}
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="cardCvv">
+                    Cryptogramme<span className="required-star">*</span>:
+                  </label>
+                  <input
+                    id="cardCvv"
+                    type="text"
+                    value={cardCvv}
+                    onChange={(e) => setCardCvv(e.target.value)}
+                    required
+                  />
+                </div>
+                <button type="submit">Valider et Payer</button>
+              </form>
+            )}
+            {paymentMethod === "APAY" && (
+              <>
+                <p>Redirection vers Apple Pay...</p>
+                <button type="button" onClick={handleFinalSubmit}>
+                  Payer avec Apple Pay
+                </button>
+              </>
+            )}
+            {paymentMethod === "GPAY" && (
+              <>
+                <p>Redirection vers Google Pay...</p>
+                <button type="button" onClick={handleFinalSubmit}>
+                  Payer avec Google Pay
+                </button>
+              </>
+            )}
+          </div>
         )}
 
         {message && <p>{message}</p>}

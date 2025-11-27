@@ -11,6 +11,8 @@ interface exercices {
 
 function ExerciceCard({ exoData }: exercices) {
   const { isAuthenticated, user, userId, setUser } = useAuth();
+  console.log("ID cherché :", exoData.exerciseId);
+  console.log("Liste favoris user :", user?.favoriteExercices);
   const IsFavorite =
     user?.favoriteExercices?.includes(String(exoData.exerciseId)) || false;
   const handleToggleFavorite = async () => {
@@ -43,7 +45,7 @@ function ExerciceCard({ exoData }: exercices) {
     <article className="ExerciceCardArticle">
       <div className="ExerciceCardImageContainer">
         <button
-          className="ExerciceCardButtonFavoris"
+          className={`ExerciceCardButtonFavoris ${isAuthenticated ? "exerciceCardIsConnecting" : ""}`}
           type="button"
           onClick={() => {
             handleToggleFavorite();
@@ -51,7 +53,7 @@ function ExerciceCard({ exoData }: exercices) {
           }}
         >
           <img
-            className={`ExerciceCardEtoileVide ${isAuthenticated ? "exerciceCardIsConnecting" : ""}`}
+            className="ExerciceCardEtoileVide"
             src={IsFavorite ? etoilePleine : etoileVide}
             alt="étoile"
           />
