@@ -137,7 +137,6 @@ const Timer = ({
     }
     if (termine) {
       handleExerciceComplete([h, m, s]);
-      navigate("/pages/Entrainements");
     }
 
     return () => {
@@ -145,7 +144,7 @@ const Timer = ({
         clearInterval(timerId);
       }
     };
-  }, [pause, termine, handleExerciceComplete, h, s, navigate]);
+  }, [pause, termine, handleExerciceComplete, h, s]);
 
   return (
     <div className="timer-container">
@@ -179,6 +178,7 @@ const Timer = ({
           onClick={() => {
             handleToggleExCounter([h, m, s]);
             setTermine(true);
+            navigate("/pages/Entrainements");
           }}
         >
           Terminer
