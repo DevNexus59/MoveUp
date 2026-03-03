@@ -61,7 +61,7 @@ function EntrainementDetail() {
   const handleToggleFavorite = async () => {
     try {
       const response = await fetch(
-        `http://localhost:4000/api/${userId}/favorites`,
+        `https://moveup.pierrefourdin.dev/api/${userId}/favorites`,
         {
           method: "PATCH",
           headers: {

@@ -38,7 +38,7 @@ function EventModal({
   useEffect(() => {
     const fetchExercises = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/exercices");
+        const response = await fetch("https://moveup.pierrefourdin.dev/api/exercices");
         if (!response.ok) {
           throw new Error(`Erreur HTTP: ${response.status}`);
         }

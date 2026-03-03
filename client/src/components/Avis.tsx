@@ -3,7 +3,7 @@ import starIcon from "../assets/images/star.svg";
 import "./Avis.css";
 
 // --- CONSTANTES & TYPES ---
-const API_BASE_URL = "http://localhost:4000";
+const API_BASE_URL = "https://moveup.pierrefourdin.dev";
 
 interface Review {
   id: number;

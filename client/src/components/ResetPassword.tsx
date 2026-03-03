@@ -17,7 +17,7 @@ function ResetPassword() {
       return;
     }
     try {
-      await fetch("http://localhost:4000/api/auth/reset-password", {
+      await fetch("https://moveup.pierrefourdin.dev/api/auth/reset-password", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

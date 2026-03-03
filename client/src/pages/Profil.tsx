@@ -95,7 +95,7 @@ function Profil() {
     }
 
     try {
-      const reponse = await fetch(`http://localhost:4000/api/users/${userId}`, {
+      const reponse = await fetch(`https://moveup.pierrefourdin.dev/api/users/${userId}`, {
         method: "PATCH",
         body: bodyData,
       });
@@ -124,7 +124,7 @@ function Profil() {
     if (confirmation) {
       try {
         const reponse = await fetch(
-          `http://localhost:4000/api/users/${userId}`,
+          `https://moveup.pierrefourdin.dev/api/users/${userId}`,
           { method: "DELETE" },
         );
 
@@ -159,7 +159,7 @@ function Profil() {
     const fetchUtilisateur = async () => {
       try {
         const reponse = await fetch(
-          `http://localhost:4000/api/users/${userId}`,
+          `https://moveup.pierrefourdin.dev/api/users/${userId}`,
         );
 
         if (!reponse.ok) {
@@ -225,7 +225,7 @@ function Profil() {
                 />
               ) : displayData.photoUrl ? (
                 <img
-                  src={`http://localhost:4000${displayData.photoUrl}`}
+                  src={`https://moveup.pierrefourdin.dev${displayData.photoUrl}`}
                   alt="profil user"
                   className="profile-avatar"
                 />

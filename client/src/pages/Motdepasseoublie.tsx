@@ -8,7 +8,7 @@ function MotDePasseOublie() {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:4000/api/auth/forgot-password",
+        "https://moveup.pierrefourdin.dev/api/auth/forgot-password",
         {
           method: "POST",
 
