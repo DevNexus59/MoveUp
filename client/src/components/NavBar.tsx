@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router";
+import logo from "../assets/logo.png";
 import "./NavBar.css";
 
 function NavBar() {
@@ -83,11 +84,7 @@ function NavBar() {
     <header className={`NavBar-header ${isScrolled ? "scrolled" : ""}`}>
       <div className="NavBar-header-container">
         <NavLink to="/" ref={firstLinkRef} className="NavBar-header-link-logo">
-          <img
-            src="../src/assets/logo.png"
-            alt="move up"
-            className="NavBar-header-logo"
-          />
+          <img src={logo} alt="move up" className="NavBar-header-logo" />
         </NavLink>
 
         <nav
